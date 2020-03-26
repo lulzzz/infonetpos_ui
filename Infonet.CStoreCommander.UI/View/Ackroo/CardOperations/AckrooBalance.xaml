@@ -1,0 +1,131 @@
+﻿<Page
+    x:Class="Infonet.CStoreCommander.UI.View.Ackroo.AckrooBalance"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Infonet.CStoreCommander.UI.View.Ackroo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:customControl="using:MyToolkit.Extended.Controls"
+    xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:conv="using:Infonet.CStoreCommander.UI.Converter"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background"
+                    Value="{StaticResource ButtonBackgroundColor}" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="Height"
+                    Value="42" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource ButtonForegroundColor}" />
+            <Setter Property="Padding"
+                    Value="8,0,8,0" />
+            <Setter Property="Margin"
+                    Value="20,18,0,0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Top" />
+        </Style>
+        <conv:ObjectToObjectConverter x:Key="ObjectToObjectConverter"/>
+        <conv:CurrencyConverter x:Key="CurrencyConverter" />
+        <conv:BoolToVisibilityConverter x:Key="DisplayAmount" />
+        <conv:NothingConverter x:Key="NothingConverter" />
+        <conv:DecimalToStringConverter x:Key="DecimalToStringConverter" />
+        <conv:AmountDisplayConverter x:Key="AmountDisplayConverter" />
+    </Page.Resources>
+    <StackPanel Orientation="Vertical" Padding="20,10,20,20">
+        <StackPanel Orientation="Horizontal" Padding="0,20,0,0">
+            <TextBlock Text="Balance Check"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Bottom"
+                       FontFamily="Arial"
+                       FontSize="24"
+                       Foreground="Navy"
+                       FontWeight="Bold"
+                       Margin="200,0,10,40"
+                       />
+            <Image Stretch="Fill"
+               Source="ms-appx:///Images/Others/AckrooLogo.png" 
+               Height="30"
+               Width="100"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top"
+               Margin="120,0,10,20"
+            />
+
+
+        </StackPanel>
+        <TextBlock FontSize="16" x:Uid="txtPSScanCard"  FontWeight="Bold" Margin="32,0,0,0"/>
+        <customControl:CustomTextBox Text="{Binding CardNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Width="570"
+                                     Height="30"
+                                     FontSize="12"
+                                     EnterPressedCommand="{x:Bind AKVM.CardNumberCommand,Mode=OneWay}"
+                                     Style="{StaticResource TextBox}"
+                                     x:Name="CardNumberBox"
+                                     Margin="32,10,0,0">
+            <i:Interaction.Behaviors>
+                <ic:EventTriggerBehavior EventName="GotFocus">
+                    <ic:InvokeCommandAction Command="{x:Bind AKVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                </ic:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+        </customControl:CustomTextBox>
+        <TextBlock Text="{x:Bind AKVM.BalanceInfo,Mode=OneWay}"
+                   Margin="32,20,0,10"
+                   FontSize="24"
+                   Foreground="Navy"
+                   
+                   FontFamily="Arial"
+                   HorizontalAlignment="Left"
+                   />
+        <StackPanel Orientation="Horizontal">
+            <controlLib:GenericButton 
+                                          Margin="32,20,0,10"
+                                          Width="160"
+                                          Command="{x:Bind AKVM.AckrooBalanceCommand,Mode=OneWay}"
+                                          IsEnabled="{x:Bind AKVM.EnableCommand, Mode=OneWay}"
+                                         BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+            >
+                <TextBlock   Text="Check Balance"
+                               HorizontalAlignment="Left"
+                               FontSize="16"
+                               Foreground="{StaticResource ButtonForegroundColor}"
+                               TextWrapping="Wrap" />
+            </controlLib:GenericButton>
+            <controlLib:GenericButton 
+                                          Margin="32,20,0,10"
+                                          Width="170"
+                                          Command="{x:Bind AKVM.BackToAckrooMainCommand,Mode=OneWay}"
+                                          IsEnabled="True"
+                                         BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+            >
+                <TextBlock   Text="Back to Ackroo Menu"
+                               HorizontalAlignment="Left"
+                               FontSize="16"
+                               Foreground="{StaticResource ButtonForegroundColor}"
+                               TextWrapping="Wrap" />
+            </controlLib:GenericButton>
+            <controlLib:GenericButton 
+                                          Margin="32,20,0,10"
+                                          Width="160"
+                                          Command="{x:Bind AKVM.AckrooPrintCommand,Mode=OneWay}"
+                                          IsEnabled="{x:Bind AKVM.EnablePrint, Mode=OneWay}"
+                                         BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+            >
+                <TextBlock   Text="Print"
+                               HorizontalAlignment="Left"
+                               FontSize="16"
+                               Foreground="{StaticResource ButtonForegroundColor}"
+                               TextWrapping="Wrap" />
+            </controlLib:GenericButton>
+        </StackPanel>
+        
+        
+        
+
+    </StackPanel>
+</Page>

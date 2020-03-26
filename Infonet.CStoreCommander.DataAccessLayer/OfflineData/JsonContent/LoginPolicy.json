@@ -1,0 +1,12 @@
+﻿{
+  "policies": {
+    "posId": 1,
+    "windowsLogin": false,
+    "useShifts": true,
+    "provideTillFloat": false,
+    "usePredefinedTillNumber": false,
+    "posLanguage": "English",
+    "autoShiftPick": false
+  },
+  "message": ""
+}

@@ -1,0 +1,109 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Checkout.TaxExempt.SITE"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Checkout.TaxExempt"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:control="using:MyToolkit.Extended.Controls"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <converter:CurrencyConverter x:Key="CurrencyConverter" />
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+        <Style TargetType="TextBox"
+               BasedOn="{StaticResource TextBox}">
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource LightGray}" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Padding="0,20,0,0"
+          Loaded="{x:Bind GridLoaded, Mode=OneWay}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:SecondFrameHeading Margin="0,0,0,10"
+                                     PreviousFrame="{x:Bind SiteVM.GetSaleSummaryCommand,Mode=OneWay}"
+                                     x:Uid="taxExemption" />
+
+        <Grid Background="{StaticResource BackgroundColor1Light}"
+              Grid.Row="1"
+              Margin="0,0,0,10"
+              Padding="20,0,0,0"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        Visibility="{x:Bind SiteVM.IsPermitNumberVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                <control:CustomTextBox x:Uid="permitNumber"
+                                       Height="60"
+                                       MaxLength="20"
+                                       Style="{StaticResource TextBox}"
+                                       NumericKeyType="Number"
+                                       InputScope="Number"
+                                       Text="{Binding PermitNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Margin="0,15,20,0" />
+
+                <Button x:Uid="removeTax"
+                        Command="{x:Bind SiteVM.RemoveTaxCommand, Mode=OneWay}"
+                        Margin="0,15,20,0"
+                        Width="120"
+                        HorizontalAlignment="Right"
+                        Background="White"
+                        FontSize="16"
+                        Height="42"
+                        Foreground="{StaticResource DarkGray}"
+                        VerticalAlignment="Top" />
+
+            </StackPanel>
+
+            <control:CustomTextBox x:Uid="treatyNumber"
+                                   x:Name="TreatyNumber"
+                                   NumericKeyType="Number"
+                                   InputScope="Number"
+                                   Grid.Row="1"
+                                   Height="60"
+                                   MaxLength="20"
+                                   IsEnabled="{x:Bind SiteVM.IsTreatyNumberEnable ,Mode=OneWay}"
+                                   Style="{StaticResource TextBox}"
+                                   EnterPressedCommand="{x:Bind SiteVM.GetTreatyNameCommand, Mode=OneWay}"
+                                   Text="{Binding TreatyNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   Margin="0,15,20,0" />
+
+            <control:CustomTextBox x:Uid="customerName"
+                                   x:Name="CustomerName"
+                                   Grid.Row="2"
+                                   Height="60"
+                                   MaxLength="20"
+                                   IsEnabled="{x:Bind SiteVM.IsCustomerNameEnable ,Mode=OneWay}"
+                                   Style="{StaticResource TextBox}"
+                                   Text="{Binding CustomerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   Margin="0,15,20,0" />
+
+        </Grid>
+
+        <ControlLib:GenericButton x:Uid="validate"
+                                  Grid.Row="3"
+                                  HorizontalAlignment="Right"
+                                  Command="{x:Bind SiteVM.ValidateSiteCommand, Mode=OneWay}"
+                                  Width="120"
+                                  BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}" />
+    </Grid>
+</Page>

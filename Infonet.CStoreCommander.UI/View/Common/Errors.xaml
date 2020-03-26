@@ -1,0 +1,52 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Common.Errors"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Common"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      mc:Ignorable="d">
+
+    <Grid Padding="8,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:ViewHeading x:Uid="txtErrors"
+                              BackCommand="{x:Bind ErrorsVM.BackPageCommand, Mode=OneWay}"/>
+
+        <Border Background="{StaticResource BackgroundColor1Light}"
+                HorizontalAlignment="Stretch"
+                Grid.Row="1"
+                Margin="0,10,0,10">
+            <ScrollViewer>
+                <TextBlock Padding="20"
+                           HorizontalAlignment="Center"
+                           FontSize="11"
+                           Text="{x:Bind ErrorsVM.ErrorString , Mode=OneWay}"
+                           Foreground="{StaticResource LabelTextForegroundColor}"
+                           FontFamily="Consolas" />
+            </ScrollViewer>
+        </Border>
+
+        <Grid Grid.Row="2"
+              Background="{StaticResource BackgroundColor2}"
+              Padding="0,10,0,0">
+            <controlLib:GenericButton x:Uid="Clear"
+                                      IsEnabled="{x:Bind ErrorsVM.IsClearButtonEnable, Mode=OneWay}"
+                                      Command="{x:Bind ErrorsVM.ClearErrorCommand ,Mode=OneWay}"
+                                      HorizontalAlignment="Left"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                      Width="140" />
+            <controlLib:GenericButton x:Uid="print"
+                                      IsEnabled="{x:Bind ErrorsVM.IsClearButtonEnable, Mode=OneWay}"
+                                      Command="{x:Bind ErrorsVM.PrintCommand ,Mode=OneWay}"
+                                      HorizontalAlignment="Right"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                      Width="140" />
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,251 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.GiveX.GiveX"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.GiveX"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:customControl="using:MyToolkit.Extended.Controls"
+      xmlns:triggers="using:WinRT.Triggers"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converter:CurrencyConverter x:Key="CurrencyConverter" />
+
+        <Style TargetType="Button"
+               BasedOn="{StaticResource ButtonWithNoBorder}">
+            <Setter Property="Background"
+                    Value="{StaticResource ExtraWhite}" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="Height"
+                    Value="35" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource LabelTextForegroundColor}" />
+            <Setter Property="Padding"
+                    Value="8,0,8,0" />
+            <Setter Property="Margin"
+                    Value="10,28,0,0" />
+            <Setter Property="Width"
+                    Value="88" />
+            <Setter Property="VerticalAlignment"
+                    Value="Top" />
+        </Style>
+
+        <Style TargetType="TextBox"
+               BasedOn="{StaticResource TextBox}">
+            <Setter Property="Width"
+                    Value="240" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource BackgroundColor1Light}" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+            <Setter Property="VerticalAlignment"
+                    Value="Top" />
+        </Style>
+
+        <Style TargetType="customControl:CustomTextBox"
+               BasedOn="{StaticResource TextBox}">
+            <Setter Property="Width"
+                    Value="240" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource BackgroundColor1Light}" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+            <Setter Property="VerticalAlignment"
+                    Value="Top" />
+        </Style>
+
+
+        <Style TargetType="controlLib:GenericButton">
+            <Setter Property="Width"
+                    Value="140" />
+            <Setter Property="BottomBackGroundColor"
+                    Value="{StaticResource ButtonBottomColor}" />
+        </Style>
+
+    </Page.Resources>
+
+    <Grid Padding="8,0,0,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <control:ViewHeading x:Uid="txtGiveX" />
+
+        <Grid Grid.Row="1"
+              Margin="0,0,0,15"
+              VerticalAlignment="Stretch"
+              Background="{StaticResource BackgroundColor1Light}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--#region Card Number-->
+            <Grid Padding="20,15,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <customControl:CustomTextBox x:Uid="txtCardNumber"
+                                             x:Name="txtCard"
+                                             MaxLength="100"
+                                             NumericKeyType="Card"
+                                             InputScope="Number"
+                                             Text="{Binding GivexCardNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                    <triggers:Interactions.Triggers>
+                        <triggers:EventTrigger EventName="KeyUp">
+                            <triggers:InvokeCommandAction Command="{x:Bind GiveXVM.CardNumberEnteredCommand, Mode=OneWay}"
+                                                          PassEventArgsToCommand="True" />
+                        </triggers:EventTrigger>
+                    </triggers:Interactions.Triggers>
+                </customControl:CustomTextBox>
+                
+                <Button Command="{x:Bind GiveXVM.SubmitCommand, Mode=OneWay}"
+                        IsEnabled="{x:Bind GiveXVM.IsSubmitButtonEnable,Mode=OneWay}"
+                        Grid.Column="1"
+                        Width="95"
+                        x:Uid="btnSubmit" />
+
+
+                <controlLib:GenericButton Margin="0,28,10,0"
+                                          Grid.Column="2"
+                                          Width="110"
+                                          HorizontalAlignment="Right"                                          
+                                          Command="{x:Bind GiveXVM.OpenGivexReportCommand, Mode=OneWay}"
+                                          x:Uid="btnReports" />
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Existing Card-->
+            <Grid Grid.Row="1"
+                  Visibility="{x:Bind GiveXVM.IsExistingCardVisible,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid Background="{StaticResource HeaderBackgroundColor}"
+                      Height="40">
+                    <TextBlock x:Uid="txtExistingCard"
+                               Padding="20,0,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="{StaticResource HeaderForegroundColor}" />
+                </Grid>
+
+                <StackPanel Grid.Row="1"
+                            Padding="20,0,0,25">
+                    <StackPanel Orientation="Horizontal"
+                                Padding="0,13,0,0">
+                        <customControl:CustomTextBox x:Uid="txtBalance"
+                                                     NumericKeyType="Amount"
+                                                     InputScope="Number"
+                                                     MaxLength="7"
+                                                     Text="{Binding Balance ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <triggers:Interactions.Triggers>
+                                <triggers:EventTrigger EventName="KeyUp">
+                                    <triggers:InvokeCommandAction Command="{x:Bind GiveXVM.BalanceEnteredCommand, Mode=OneWay}"
+                                                                  PassEventArgsToCommand="True" />
+                                </triggers:EventTrigger>
+                            </triggers:Interactions.Triggers>
+                        </customControl:CustomTextBox>
+                        <Button x:Uid="btnSet"
+                                IsEnabled="{x:Bind GiveXVM.AllowAdjustmentForGiveX, Mode=OneWay}"
+                                Command="{x:Bind GiveXVM.SetCommand, Mode=OneWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Padding="0,20,0,0">
+                        <customControl:CustomTextBox x:Uid="txtAddAmount"
+                                                     MaxLength="7"
+                                                     NumericKeyType="Amount"
+                                                     InputScope="Number"
+                                                     Text="{Binding AddAmount ,Mode =TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <triggers:Interactions.Triggers>
+                                <triggers:EventTrigger EventName="KeyUp">
+                                    <triggers:InvokeCommandAction Command="{x:Bind GiveXVM.AddEnteredCommand, Mode=OneWay}"
+                                                                  PassEventArgsToCommand="True" />
+                                </triggers:EventTrigger>
+                            </triggers:Interactions.Triggers>
+                        </customControl:CustomTextBox>
+                        <Button x:Uid="btnAdd"
+                                Command="{x:Bind GiveXVM.AddCommand, Mode=OneWay}" />
+
+
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region New Card-->
+            <Grid Grid.Row="1"
+                  Visibility="{x:Bind GiveXVM.IsNewCardVisible,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid Background="{StaticResource HeaderBackgroundColor}"
+                      Height="40">
+                    <TextBlock  x:Uid="txtNewCard"
+                                Padding="20,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="{StaticResource HeaderForegroundColor}" />
+                </Grid>
+
+                <customControl:CustomTextBox x:Uid="txtAmountGiveX"
+                                             Grid.Row="1"
+                                             NumericKeyType="Amount"
+                                             InputScope="Number"
+                                             MaxLength="7"
+                                             Margin="20,13,0,25"
+                                             Text="{Binding Amount ,Mode =TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <triggers:Interactions.Triggers>
+                        <triggers:EventTrigger EventName="KeyUp">
+                            <triggers:InvokeCommandAction Command="{x:Bind GiveXVM.AmountEnteredCommand, Mode=OneWay}"
+                                                          PassEventArgsToCommand="True" />
+                        </triggers:EventTrigger>
+                    </triggers:Interactions.Triggers>
+                </customControl:CustomTextBox>
+
+            </Grid>
+            <!--#endregion-->
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <controlLib:GenericButton Margin="0,0,10.2,0"
+                                      HorizontalAlignment="Right"
+                                      IsEnabled="{x:Bind GiveXVM.IsCloseBatchEnabled, Mode=OneWay}"
+                                      Command="{x:Bind GiveXVM.CloseBatchCommand, Mode=OneWay}"
+                                      x:Uid="btnCloseBatch" />
+            <controlLib:GenericButton Margin="0,0,10,0"
+                                      Command="{x:Bind GiveXVM.DeactivateCommand, Mode=OneWay}"
+                                      Visibility="{x:Bind GiveXVM.IsDeactivateVisible,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                      Grid.Column="1"
+                                      x:Uid="btnDeactivate" />
+            
+            
+        </Grid>
+
+        <controlLib:GenericButton Grid.Row="2"
+                                  Command="{x:Bind GiveXVM.ActivateCommand, Mode=OneWay}"
+                                  Visibility="{x:Bind GiveXVM.IsActiveVisible,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                  HorizontalAlignment="Right"
+                                  x:Uid="btnActivate"
+                                  BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}" />
+    </Grid>
+</Page>

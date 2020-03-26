@@ -1,0 +1,110 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.PumpOptions.Fuel_Pricing.TaxExemptIncrements"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.PumpOptions.Fuel_Pricing"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:toolsKit="using:MyToolkit.Controls"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:customControl="using:MyToolkit.Extended.Controls"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+    <triggers:Interactions.Triggers>
+        <triggers:EventTrigger EventName="Loaded">
+            <triggers:InvokeCommandAction Command="{x:Bind PriceIncrementsVM.LoadTaxExemptPricesCommand, Mode=OneWay}"
+                                          PassEventArgsToCommand="False" />
+        </triggers:EventTrigger>
+    </triggers:Interactions.Triggers>
+
+    <Page.Resources>
+        <Style TargetType="TextBlock"
+               x:Key="DataGridHeader">
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="FontFamily"
+                    Value="Segoe UI SemiBold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource HeaderForegroundColor}" />
+        </Style>
+
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:NothingConverter x:Key="NothingConverter" />
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--#region Data Grid-->
+        <toolsKit:DataGrid Background="{StaticResource BackgroundColor1Light}"
+                           HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                           HeaderForeground="{StaticResource HeaderForegroundColor}"
+                           RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                           RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                           ItemsSource="{x:Bind PriceIncrementsVM.Increments, Mode=OneWay}"
+                           SelectedItem="{x:Bind PriceIncrementsVM.SelectedIncrement, Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                           UpdateOnlyOnEnter="True">
+
+            <toolsKit:DataGrid.Columns>
+                <toolsKit:DataGridTextColumn Width="9*"
+                                             FontSize="11"
+                                             IsEdit="False"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Binding="{Binding Grade}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="Grade"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="9*"
+                                             FontSize="11"
+                                             IsEdit="True"
+                                             NumericKeyType="Amount"
+                                             InputScope="Number"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Center"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             CanSort="False"
+                                             Binding="{Binding Cash, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                                             KeyUpCommand="{x:Bind PriceIncrementsVM.SetIncrementCommand, Mode=OneWay}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtUnitTaxFree"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="9*"
+                                             FontSize="11"
+                                             IsEdit="{x:Bind PriceIncrementsVM.IsCreditEnabled, Mode=OneWay}"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Center"
+                                             NumericKeyType="Amount"
+                                             InputScope="Number"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             CanSort="False"
+                                             Binding="{Binding Credit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                                             KeyUpCommand="{x:Bind PriceIncrementsVM.SetIncrementCommand, Mode=OneWay}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtCreditTaxFree"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+            </toolsKit:DataGrid.Columns>
+        </toolsKit:DataGrid>
+        <!--#endregion-->
+
+        <Grid Grid.Row="1"
+              Margin="0,10,0,0">
+        </Grid>
+    </Grid>
+</Page>

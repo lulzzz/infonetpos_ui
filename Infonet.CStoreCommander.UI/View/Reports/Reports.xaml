@@ -1,0 +1,170 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Reports.Reports"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Settings"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:triggers="using:Infonet.CStoreCommander.UI.Trigger"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Resources/TabStyleButton.xaml" />
+    </Page.Resources>
+
+    <Grid Padding="8,0,0,0">
+        <VisualStateManager.VisualStateGroups>
+
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind ReportsScreenVM.SelectedTab, Mode=OneWay}"
+                                                     EqualTo="SalesCount" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnSalesCount.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnSalesCount.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnFlashReport.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnTillAuditReport.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnLoginPassword.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        <Setter Target="btnFlashReport.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnTillAuditReport.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnLoginPassword.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind ReportsScreenVM.SelectedTab, Mode=OneWay}"
+                                                     EqualTo="Flash" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnFlashReport.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnFlashReport.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnSalesCount.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnTillAuditReport.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        <Setter Target="btnSalesCount.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnTillAuditReport.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind ReportsScreenVM.SelectedTab, Mode=OneWay}"
+                                                     EqualTo="TillAudit" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnTillAuditReport.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnTillAuditReport.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnFlashReport.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnSalesCount.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        <Setter Target="btnFlashReport.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnSalesCount.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--#region Heading-->
+        <control:ViewHeading x:Uid="txtReports" />
+        <!--#endregion-->
+
+        <Grid Grid.Row="1"
+              Margin="0,0,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--#region  Sales Count-->
+            <Button x:Name="btnSalesCount"
+                    MinWidth="120"
+                    MaxWidth="170"
+                    Padding="0,5,0,5"
+                    Command="{x:Bind ReportsScreenVM.SalesCountSelected, Mode=OneWay}"
+                    Background="{StaticResource HeaderBackgroundColor}"
+                    Style="{StaticResource TabStyle}"
+                    Foreground="{StaticResource HeaderForegroundColor}"
+                    VerticalAlignment="Bottom">
+                <TextBlock x:Uid="btnSalesCount" 
+                           TextWrapping="Wrap"/>
+            </Button>
+            <!--#endregion-->
+
+            <!--#region Flash Report-->
+            <Button x:Name="btnFlashReport"
+                    Background="{StaticResource BackgroundColor1Light}"
+                    Grid.Column="1"
+                    MinWidth="127"
+                    Height="{Binding ActualHeight, ElementName=btnSalesCount}"
+                    MaxWidth="200"
+                    Padding="0,5,0,5"
+                    Command="{x:Bind ReportsScreenVM.FlashSelected, Mode=OneWay}"
+                    Margin="5,0,0,0"
+                    Foreground="{StaticResource LabelTextForegroundColor}"
+                    Style="{StaticResource TabStyle}"
+                    VerticalAlignment="Bottom">
+                <TextBlock x:Uid="btnFlashReport"
+                           TextWrapping="Wrap" />
+            </Button>
+            <!--#endregion-->
+
+            <!--#region Till Audit Report-->
+            <Button x:Name="btnTillAuditReport"
+                    Foreground="{StaticResource LabelTextForegroundColor}"
+                    Margin="5,0,0,0"
+                    Command="{x:Bind ReportsScreenVM.TillAuditSelected, Mode=OneWay}"
+                    MinWidth="100"
+                    MaxWidth="160"
+                    Padding="0,5,0,5"
+                    Style="{StaticResource TabStyle}"
+                    Background="{StaticResource BackgroundColor1Light}"
+                    Grid.Column="2"
+                    VerticalAlignment="Bottom">
+                <TextBlock x:Uid="btnTillAuditReport"
+                           TextWrapping="Wrap" />
+            </Button>
+            <!--#endregion-->
+
+        </Grid>
+
+        <Frame x:Name="frmReports"
+               Grid.Row="2"
+               Background="{StaticResource BackgroundColor1Light}" />
+    </Grid>
+</Page>

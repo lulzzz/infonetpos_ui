@@ -1,0 +1,207 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Customer.LoyaltyCustomers"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:toolKitControls="using:MyToolkit.Controls"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:customControl="using:MyToolkit.Extended.Controls"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+    <triggers:Interactions.Triggers>
+        <triggers:EventTrigger EventName="Loaded">
+            <triggers:InvokeCommandAction Command="{x:Bind LoyaltyCustomersScreenVM.LoadAllCustomersCommand, Mode=OneWay}"
+                                          PassEventArgsToCommand="True" />
+        </triggers:EventTrigger>
+    </triggers:Interactions.Triggers>
+    <Page.Resources>
+
+        <Style TargetType="controls:GenericButton"
+               x:Name="GenericButtonStyle">
+            <Setter Property="Width"
+                    Value="140" />
+        </Style>
+
+        <Style TargetType="TextBlock"
+               x:Key="DataGridHeader">
+            <Setter Property="TextAlignment"
+                    Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment"
+                    Value="Stretch" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="FontFamily"
+                    Value="Segoe UI SemiBold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource HeaderForegroundColor}" />
+        </Style>
+
+        <Style x:Key="ButtonWithNoBorder"
+               TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootGrid"
+                              Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="ContentPresenter"
+                                              AutomationProperties.AccessibilityView="Raw"
+                                              Background="{x:Null}"
+                                              BorderBrush="{x:Null}"
+                                              BorderThickness="{TemplateBinding BorderThickness}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTransitions="{TemplateBinding ContentTransitions}"
+                                              Content="{TemplateBinding Content}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Padding="{TemplateBinding Padding}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <converters:SelectedCustomerConverter x:Key="SelectedCustomerConverter" />
+        <converters:NothingConverter x:Key="NothingConverter" />
+    </Page.Resources>
+
+    <Grid Margin="9,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--#region Heading-->
+        <control:ViewHeading x:Uid="txtLoyaltyGift" />
+        <!--#endregion-->
+
+        <StackPanel Grid.Row="1"
+                    Padding="0,15,0,15">
+            <TextBlock x:Uid="txtSearch"
+                       Foreground="{StaticResource LabelTextForegroundColor}"
+                       FontFamily="Segoe UI Light"
+                       Margin="0,0,0,14"
+                       FontSize="11" />
+
+            <StackPanel Grid.Row="1">
+                <customControl:CustomTextBox x:Name="txtSearch"
+                                             Height="35"
+                                             Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                                             EnterPressedCommand="{x:Bind LoyaltyCustomersScreenVM.SearchCommand, Mode=OneWay}"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             BorderBrush="{StaticResource BackgroundColor1Light}"
+                                             Background="{StaticResource ExtraWhite}"
+                                             BorderThickness="1"
+                                             Style="{StaticResource TextBox}" />
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Row="2"
+              Padding="0,0,0,20">
+            <!--#region Data Grid-->
+            <toolKitControls:DataGrid ItemsSource="{Binding Customers}"
+                                      Background="{StaticResource BackgroundColor1Light}"
+                                      HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                                      HeaderForeground="{StaticResource HeaderForegroundColor}"
+                                      RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                                      RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                                      SelectedItem="{x:Bind LoyaltyCustomersScreenVM.SelectedCustomer, Mode=TwoWay, Converter={StaticResource SelectedCustomerConverter}}">
+                <triggers:Interactions.Triggers>
+                    <triggers:EventTrigger EventName="ScrolledTillEnd">
+                        <triggers:InvokeCommandAction Command="{x:Bind LoyaltyCustomersScreenVM.RefreshCommand, Mode=OneWay}" />
+                    </triggers:EventTrigger>
+                    <triggers:EventTrigger EventName="Tapped">
+                        <triggers:InvokeCommandAction Command="{x:Bind LoyaltyCustomersScreenVM.CustomerSelectedCommand, Mode=OneWay}" />
+                    </triggers:EventTrigger>
+                </triggers:Interactions.Triggers>
+                <toolKitControls:DataGrid.Columns>
+                    <toolKitControls:DataGridTextColumn Width="*"
+                                                        FontSize="11"
+                                                        Binding="{Binding Code}"
+                                                        TextAlignment="Left"
+                                                        CanSort="True"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtbCode"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn Width="*"
+                                                        Binding="{Binding LoyaltyNumber}"
+                                                        FontSize="11"
+                                                        TextAlignment="Left"
+                                                        CanSort="True"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtLoyalty"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn FontSize="11"
+                                                        Width="*"
+                                                        Binding="{Binding Name}"
+                                                        TextAlignment="Left"
+                                                        CanSort="True"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtbName"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn FontSize="11"
+                                                        Width="*"
+                                                        Binding="{Binding PhoneNumber}"
+                                                        TextAlignment="Left"
+                                                        CanSort="True"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtbPhone"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn FontSize="11"
+                                                        Width="*"
+                                                        Binding="{Binding Points}"
+                                                        TextAlignment="Left"
+                                                        CanSort="True"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtPoints"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                </toolKitControls:DataGrid.Columns>
+            </toolKitControls:DataGrid>
+            <!--#endregion-->
+        </Grid>
+
+        <!--<controls:GenericButton x:Uid="addCustomer"
+                                Grid.Row="3"
+                                Command="{x:Bind LoyaltyCustomersScreenVM.AddCustomerCommand, Mode=OneWay}"
+                                Padding="10,5"
+                                MinWidth="140"
+                                MaxWidth="170"
+                                BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom" />-->
+        <controls:GenericButton Command="{x:Bind LoyaltyCustomersScreenVM.SelectCustomerForSaleCommand, Mode=OneWay}"
+                                IsEnabled="{x:Bind LoyaltyCustomersScreenVM.IsSelectCustomerEnabled, Mode=OneWay}"
+                                Grid.Row="3"
+                                Padding="10,5"
+                                MinWidth="140"
+                                MaxWidth="170"
+                                BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                x:Uid="btnSelect" />
+
+    </Grid>
+</Page>

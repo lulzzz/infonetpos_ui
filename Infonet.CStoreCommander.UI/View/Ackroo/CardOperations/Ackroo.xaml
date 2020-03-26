@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Infonet.CStoreCommander.UI.View.Ackroo.Ackroo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Infonet.CStoreCommander.UI.View.Ackroo"
+    xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+    xmlns:triggers="using:Infonet.CStoreCommander.UI.Trigger"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+     xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Resources/TabStyleButton.xaml" />
+    </Page.Resources>
+    <Grid Padding="8,0,0,0">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+        <control:ViewHeading x:Uid="txtAkroo" />
+        <Grid Grid.Row="1">
+            
+        </Grid>
+        <Frame x:Name="frmAckroo"
+               Grid.Row="2"
+               Background="{StaticResource BackgroundColor1Light}" >
+            
+        </Frame>
+    </Grid>
+</Page>

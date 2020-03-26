@@ -1,0 +1,14 @@
+﻿{
+  "tenders": [
+    {
+      "tenderCode": "CASH",
+      "tenderName": "Cash",
+      "amountEntered": "2.00",
+      "amountValue": "2.00",
+      "maximumValue": 100.0,
+      "minimumValue": 0.0,
+      "image": ""
+    }
+  ],
+  "tenderedAmount": "2.00"
+}

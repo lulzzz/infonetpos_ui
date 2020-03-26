@@ -1,0 +1,146 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Checkout.TaxExempt.AITE"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Checkout.TaxExempt"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:control="using:MyToolkit.Extended.Controls"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <converter:CurrencyConverter x:Key="CurrencyConverter" />
+
+        <Style TargetType="TextBox"
+               BasedOn="{StaticResource TextBox}">
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource LightGray}" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Padding="0,20,0,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:SecondFrameHeading Margin="0,0,0,10"
+                                     PreviousFrame="{x:Bind AiteVM.GetSaleSummaryCommand,Mode=OneWay}"
+                                     x:Uid="validateAiteCardHolder" />
+
+        <Grid Background="{StaticResource BackgroundColor1Light}"
+              Grid.Row="1"
+              Margin="0,0,0,10"
+              Padding="20,0,0,0"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <TextBlock x:Uid="CertificationCode"
+                       HorizontalAlignment="Left"
+                       Margin="6,15,0,15"
+                       FontSize="16"
+                       Foreground="{StaticResource LabelTextForegroundColor}" />
+
+            <control:CustomTextBox x:Uid="cardNumber"
+                                   Height="60"
+                                   NumericKeyType="Card"
+                                   InputScope="Number"
+                                   Grid.Row="1"
+                                   Style="{StaticResource TextBox}"
+                                   IsEnabled="{x:Bind AiteVM.CardNumberEnabled, Mode=OneWay}"
+                                   Text="{Binding CardNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   EnterPressedCommand="{x:Bind AiteVM.ValidateAiteCommand, Mode=OneWay}"
+                                   Margin="0,15,20,0" />
+
+            <Grid  Grid.Row="2"
+                   Margin="0,15,20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Uid="cardHolderName"
+                           Padding="0,0,10,0"
+                           Foreground="{StaticResource LabelTextForegroundColor}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           FontSize="11" />
+
+                <TextBlock Text="{x:Bind AiteVM.CardholderName, Mode=OneWay}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Foreground="{StaticResource LabelTextForegroundColor}"
+                           Grid.Column="1"
+                           FontSize="11" />
+            </Grid>
+
+            <control:CustomTextBox x:Uid="barCode"
+                                   x:Name="BarCode"
+                                   NumericKeyType="Number"
+                                   InputScope="Number"
+                                   Grid.Row="3"
+                                   Height="60"
+                                   Style="{StaticResource TextBox}"
+                                   Text="{Binding BarCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   EnterPressedCommand="{x:Bind AiteVM.ValidateAiteCommand, Mode=OneWay}"
+                                   Margin="0,15,20,0" />
+
+            <Button x:Uid="btnSubmit"
+                    IsEnabled="{x:Bind AiteVM.IsAiteDoneEnabled, Mode=OneWay}"
+                    Command="{x:Bind AiteVM.AiteDoneCommand, Mode=OneWay}"
+                    HorizontalAlignment="Right"
+                    Margin="0,15,20,20"
+                    Grid.Row="4"
+                    Width="120"
+                    Background="White"
+                    FontSize="16"
+                    Height="42"
+                    Foreground="{StaticResource DarkGray}"
+                    VerticalAlignment="Top" />
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <ControlLib:GenericButton x:Uid="validate"
+                                      IsEnabled="{x:Bind AiteVM.AiteValidateEnabled, Mode=OneWay}"
+                                      Command="{x:Bind AiteVM.ValidateAiteCommand, Mode=OneWay}"
+                                      Width="120"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}" />
+
+
+            <ControlLib:GenericButton x:Uid="affixBarCode"
+                                      IsEnabled="{x:Bind AiteVM.AffixBarCodeEnabled, Mode=OneWay}"
+                                      Command="{x:Bind AiteVM.AffixBarCodeCommand, Mode=OneWay}"
+                                      Width="120"
+                                      Grid.Column="1"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}" />
+
+
+            <ControlLib:GenericButton x:Uid="gstPstTaxExempt"
+                                      Width="140"
+                                      Grid.Column="2"
+                                      IsEnabled="{x:Bind AiteVM.IsGstPstTaxExemptEnabled,Mode=OneWay}"
+                                      Command="{x:Bind AiteVM.OpenGstPstPopupCommand, Mode=OneWay}"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}" />
+        </Grid>
+    </Grid>
+</Page>

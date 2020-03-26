@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="txtLoginHeading.Text" xml:space="preserve">
+    <value>s'identifier</value>
+  </data>
+  <data name="btnEmergency.Content" xml:space="preserve">
+    <value>Urgence</value>
+  </data>
+  <data name="btnLogin.Content" xml:space="preserve">
+    <value>Accès</value>
+  </data>
+  <data name="cbShift.Header" xml:space="preserve">
+    <value>Quart de travail</value>
+  </data>
+  <data name="cbTill.Header" xml:space="preserve">
+    <value>Selection du tiroir</value>
+  </data>
+  <data name="txtTillFloat.Text" xml:space="preserve">
+    <value>Prêt Ouv</value>
+  </data>
+  <data name="txtPassword.Text" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="txtPumpOptions.Text" xml:space="preserve">
+    <value>Options de la pompe</value>
+  </data>
+  <data name="txtUser.Text" xml:space="preserve">
+    <value>Utilisateur :</value>
+  </data>
+  <data name="txtSettingMenuShift.Text" xml:space="preserve">
+    <value>Quart de travail</value>
+  </data>
+  <data name="txtTill.Text" xml:space="preserve">
+    <value>Tiroir</value>
+  </data>
+  <data name="txtMaker.Text" xml:space="preserve">
+    <value>Par INFONET TECHNOLOGY</value>
+  </data>
+  <data name="txtSystemName.Text" xml:space="preserve">
+    <value>C-STORE COMMANDER 8.0</value>
+  </data>
+  <data name="btnBanking.Text" xml:space="preserve">
+    <value>Banque</value>
+  </data>
+  <data name="btnServicePump.Text" xml:space="preserve">
+    <value>Pompe de service</value>
+  </data>
+  <data name="btnLoginPassword.Text" xml:space="preserve">
+    <value>Accès/Mot de passe</value>
+  </data>
+  <data name="btnPolicy.Text" xml:space="preserve">
+    <value>Périphériques</value>
+  </data>
+  <data name="txtPayPump.Text" xml:space="preserve">
+    <value>Pmt pompe</value>
+  </data>
+  <data name="txtPostPay.Text" xml:space="preserve">
+    <value>Payé après</value>
+  </data>
+  <data name="txtPrePay.Text" xml:space="preserve">
+    <value>Pré-payé</value>
+  </data>
+  <data name="txtMaintenance.Text" xml:space="preserve">
+    <value>Maintenance</value>
+  </data>
+  <data name="btnLogout.Content" xml:space="preserve">
+    <value>Connectez - Out</value>
+  </data>
+  <data name="btnMaintenance.Content" xml:space="preserve">
+    <value>Maintenance</value>
+  </data>
+  <data name="btnInitialize.Content" xml:space="preserve">
+    <value>Initialiser</value>
+  </data>
+  <data name="btnCloseBatch.Content" xml:space="preserve">
+    <value>Fermeture du lot</value>
+  </data>
+  <data name="btnShowError.Content" xml:space="preserve">
+    <value>Afficher les erreurs</value>
+  </data>
+  <data name="txtLogoutHeading.Text" xml:space="preserve">
+    <value>Connectez - Out</value>
+  </data>
+  <data name="btnPayments.Content" xml:space="preserve">
+    <value>Paiements</value>
+  </data>
+  <data name="btnReports.Content" xml:space="preserve">
+    <value>Rapports</value>
+  </data>
+  <data name="addCustomer.Content" xml:space="preserve">
+    <value>Ajouter Client</value>
+  </data>
+  <data name="txtbCode.Text" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="txtbLoyaltyNumber.Text" xml:space="preserve">
+    <value>Numéro de Fidélité</value>
+  </data>
+  <data name="btnSave.Content" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="txtbName.Text" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="txtbPhone.Text" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="btnCustomer.Content" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="txtAddStock.Text" xml:space="preserve">
+    <value>Ajouter article stock</value>
+  </data>
+  <data name="txtbDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="txtbRegularPrice.Text" xml:space="preserve">
+    <value>Reg. Prix</value>
+  </data>
+  <data name="btnStockSearch.Text" xml:space="preserve">
+    <value>Inventaire</value>
+  </data>
+  <data name="txtCustomers.Text" xml:space="preserve">
+    <value>Clients</value>
+  </data>
+  <data name="txtSearch.Text" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="txtLoyaltyGift.Text" xml:space="preserve">
+    <value>Fidélité / Cadeau</value>
+  </data>
+  <data name="txtAddCustomer.Text" xml:space="preserve">
+    <value>Ajouter un client</value>
+  </data>
+  <data name="txtLoyalty.Text" xml:space="preserve">
+    <value>Fidélité</value>
+  </data>
+  <data name="txtPoints.Text" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="accept.Content" xml:space="preserve">
+    <value>Accepter</value>
+  </data>
+  <data name="addStock.Content" xml:space="preserve">
+    <value>Ajouter des stocks</value>
+  </data>
+  <data name="txtAlternateCode.Text" xml:space="preserve">
+    <value>Code Alternatif</value>
+  </data>
+  <data name="txtSearchStock.Text" xml:space="preserve">
+    <value>Inventaire</value>
+  </data>
+  <data name="txtStockCode.Text" xml:space="preserve">
+    <value>Code de stock</value>
+  </data>
+  <data name="txtStockSearch.Text" xml:space="preserve">
+    <value>Inventaire</value>
+  </data>
+  <data name="btnLoyalty.Text" xml:space="preserve">
+    <value>Fidélité/Cadeau</value>
+  </data>
+  <data name="txtCheckoutOptions.Text" xml:space="preserve">
+    <value>Options de paiement</value>
+  </data>
+  <data name="cntCash.Content" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="cntDiscounts.Content" xml:space="preserve">
+    <value>Rabais</value>
+  </data>
+  <data name="cntMessage.Content" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="cntReturns.Content" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="cntSuspendSale.Content" xml:space="preserve">
+    <value>En attente</value>
+  </data>
+  <data name="cntUnsuspend.Content" xml:space="preserve">
+    <value>Rappel</value>
+  </data>
+  <data name="cntWriteOff.Content" xml:space="preserve">
+    <value>Inventaire éliminé</value>
+  </data>
+  <data name="cntBottleReturn.Content" xml:space="preserve">
+    <value>Retour de bouteille</value>
+  </data>
+  <data name="cntSaleReturn.Content" xml:space="preserve">
+    <value>Annuler transaction</value>
+  </data>
+  <data name="returnToggle.OffContent" xml:space="preserve">
+    <value>Désactivé</value>
+  </data>
+  <data name="returnToggle.OnContent" xml:space="preserve">
+    <value>Activée</value>
+  </data>
+  <data name="txtReturns.Text" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="complete.Content" xml:space="preserve">
+    <value>Compléter</value>
+  </data>
+  <data name="printReceipt.OffContent" xml:space="preserve">
+    <value>Imprimer le reçu</value>
+  </data>
+  <data name="printReceipt.OnContent" xml:space="preserve">
+    <value>Imprimer le reçu</value>
+  </data>
+  <data name="returnBottles.Text" xml:space="preserve">
+    <value>Retour de bouteille</value>
+  </data>
+  <data name="txtAmount.Text" xml:space="preserve">
+    <value>Montant à payer</value>
+  </data>
+  <data name="txtDiscount.Text" xml:space="preserve">
+    <value>Rabais</value>
+  </data>
+  <data name="txtPrice.Text" xml:space="preserve">
+    <value>Prix</value>
+  </data>
+  <data name="txtQuantity.Text" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
+  <data name="txtBottleItems.Text" xml:space="preserve">
+    <value>Articles de bouteille</value>
+  </data>
+  <data name="btnSwitchUser.Content" xml:space="preserve">
+    <value>Changer I'usager actuel</value>
+  </data>
+  <data name="txtNewPassword.Text" xml:space="preserve">
+    <value>Nom de I'usager</value>
+  </data>
+  <data name="txtConfirmNewPassword.Text" xml:space="preserve">
+    <value>Confirmer le nouveau mot de passe</value>
+  </data>
+  <data name="txtCustomer.Text" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="txtunsuspend.Text" xml:space="preserve">
+    <value>Rappel</value>
+  </data>
+  <data name="txtReturnSale.Text" xml:space="preserve">
+    <value>Annuler transaction</value>
+  </data>
+  <data name="btnCorrection.Content" xml:space="preserve">
+    <value>Correction</value>
+  </data>
+  <data name="btnReturn.Content" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="btnReturnItems.Content" xml:space="preserve">
+    <value>Articles retournés</value>
+  </data>
+  <data name="txtDate.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="txtSale.Text" xml:space="preserve">
+    <value>Vente</value>
+  </data>
+  <data name="txtTime.Text" xml:space="preserve">
+    <value>Heure</value>
+  </data>
+  <data name="date.Header" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="searchSale.Header" xml:space="preserve">
+    <value>Recherche Vente</value>
+  </data>
+  <data name="btnSelect.Content" xml:space="preserve">
+    <value>Choisir</value>
+  </data>
+  <data name="txtReturnItems.Text" xml:space="preserve">
+    <value>Articles retournés</value>
+  </data>
+  <data name="txtbDiscount.Text" xml:space="preserve">
+    <value>Rabais</value>
+  </data>
+  <data name="txtbQuantity.Text" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
+  <data name="txtID.Text" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="txtGiveX.Text" xml:space="preserve">
+    <value>GiveX</value>
+  </data>
+  <data name="txtCardNumber.Header" xml:space="preserve">
+    <value>Numéro de carte</value>
+  </data>
+  <data name="btnSubmit.Content" xml:space="preserve">
+    <value>Soumettre</value>
+  </data>
+  <data name="btnActivate.Content" xml:space="preserve">
+    <value>Activer</value>
+  </data>
+  <data name="btnDeactivate.Content" xml:space="preserve">
+    <value>Désactiver</value>
+  </data>
+  <data name="btnAdd.Content" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="btnSet.Content" xml:space="preserve">
+    <value>Réglage</value>
+  </data>
+  <data name="txtAddAmount.Header" xml:space="preserve">
+    <value>Ajouter un montant</value>
+  </data>
+  <data name="txtAmountGiveX.Header" xml:space="preserve">
+    <value>Montant</value>
+  </data>
+  <data name="txtExistingCard.Text" xml:space="preserve">
+    <value>Carte existante</value>
+  </data>
+  <data name="txtNewCard.Text" xml:space="preserve">
+    <value>Nouvelle carte</value>
+  </data>
+  <data name="btnCashSale.Content" xml:space="preserve">
+    <value>Transaction régulière</value>
+  </data>
+  <data name="servicePump.OffContent" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="servicePump.OnContent" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="addItemByCode.Text" xml:space="preserve">
+    <value>Ajouter un article par code</value>
+  </data>
+  <data name="btnFreezeTill.Content" xml:space="preserve">
+    <value>Barrer</value>
+  </data>
+  <data name="btnAcceptTender.Content" xml:space="preserve">
+    <value>Paiement</value>
+  </data>
+  <data name="btnDrawer.Content" xml:space="preserve">
+    <value>Tiroir-caisse</value>
+  </data>
+  <data name="btnExactChange.Content" xml:space="preserve">
+    <value>Monnaie exacte</value>
+  </data>
+  <data name="btnOptions.Content" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="btnPriceCheck.Content" xml:space="preserve">
+    <value>Vérif prix</value>
+  </data>
+  <data name="btnReprint.Content" xml:space="preserve">
+    <value>Réimprimer</value>
+  </data>
+  <data name="txtbCustomer.Text" xml:space="preserve">
+    <value>Client :</value>
+  </data>
+  <data name="txtbSale.Text" xml:space="preserve">
+    <value>Numéro de transaction:</value>
+  </data>
+  <data name="txtSetQuantity.Text" xml:space="preserve">
+    <value>Quantité définie</value>
+  </data>
+  <data name="giftCertificate.Text" xml:space="preserve">
+    <value>Certificat cadeau</value>
+  </data>
+  <data name="numberOfGiftCertificate.Text" xml:space="preserve">
+    <value>Nombre de certificats cadeaux disponibles</value>
+  </data>
+  <data name="priceOfEachGiftCertificate.Text" xml:space="preserve">
+    <value>Prix de chacun des certificats cadeaux</value>
+  </data>
+  <data name="startingWithNumber.Text" xml:space="preserve">
+    <value>Débutant par le numéro</value>
+  </data>
+  <data name="txtSalesSummary.Text" xml:space="preserve">
+    <value>Sommaire de transaction</value>
+  </data>
+  <data name="txtOutstanding.Text" xml:space="preserve">
+    <value>Montant dû $</value>
+  </data>
+  <data name="txtTendered.Text" xml:space="preserve">
+    <value>Reçu $</value>
+  </data>
+  <data name="tsPumpTest.OffContent" xml:space="preserve">
+    <value>Pompe d'essai</value>
+  </data>
+  <data name="tsPumpTest.OnContent" xml:space="preserve">
+    <value>Pompe d'essai</value>
+  </data>
+  <data name="tsRunAway.OffContent" xml:space="preserve">
+    <value>Vol</value>
+  </data>
+  <data name="tsRunAway.OnContent" xml:space="preserve">
+    <value>Vol</value>
+  </data>
+  <data name="txtTender.Text" xml:space="preserve">
+    <value>Paiement</value>
+  </data>
+  <data name="txtCouponNumber.Text" xml:space="preserve">
+    <value>Numéro de Coupon</value>
+  </data>
+  <data name="txtValue.Text" xml:space="preserve">
+    <value>Valeur</value>
+  </data>
+  <data name="coupon.Text" xml:space="preserve">
+    <value>Coupon</value>
+  </data>
+  <data name="txtSerialNumber.Text" xml:space="preserve">
+    <value>Numéro de série</value>
+  </data>
+  <data name="cardNumber.Text" xml:space="preserve">
+    <value>Numéro de carte</value>
+  </data>
+  <data name="txtExpiryDate.Text" xml:space="preserve">
+    <value>Date d'expiration</value>
+  </data>
+  <data name="expiryDate.Header" xml:space="preserve">
+    <value>Date d'expiration</value>
+  </data>
+  <data name="txtLanguage.Header" xml:space="preserve">
+    <value>Langage</value>
+  </data>
+  <data name="txtCertificateNumber.Header" xml:space="preserve">
+    <value>Numéro de certificat</value>
+  </data>
+  <data name="txtNumber.Text" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="txtSoldDate.Text" xml:space="preserve">
+    <value>Date de vente</value>
+  </data>
+  <data name="txtStoreCredit.Header" xml:space="preserve">
+    <value>Crédit magasin</value>
+  </data>
+  <data name="customerName.Header" xml:space="preserve">
+    <value>Nom du client</value>
+  </data>
+  <data name="treatyNumber.Header" xml:space="preserve">
+    <value>Numéro d'entente</value>
+  </data>
+  <data name="validate.Content" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="btnAR.Content" xml:space="preserve">
+    <value>Compte à recevoir</value>
+  </data>
+  <data name="btnFleet.Content" xml:space="preserve">
+    <value>CC flotte</value>
+  </data>
+  <data name="btnPayouts.Content" xml:space="preserve">
+    <value>Déboursés</value>
+  </data>
+  <data name="payments.Text" xml:space="preserve">
+    <value>Paiements</value>
+  </data>
+  <data name="customerSearch.Text" xml:space="preserve">
+    <value>Recherche de client</value>
+  </data>
+  <data name="completePayment.Content" xml:space="preserve">
+    <value>Paiement complété</value>
+  </data>
+  <data name="edit.Content" xml:space="preserve">
+    <value>Éditer</value>
+  </data>
+  <data name="priceCheck.Text" xml:space="preserve">
+    <value>Prix du texte</value>
+  </data>
+  <data name="searchCode.Text" xml:space="preserve">
+    <value>Rechercher un article</value>
+  </data>
+  <data name="txtReports.Text" xml:space="preserve">
+    <value>Rapports</value>
+  </data>
+  <data name="btnFlashReport.Text" xml:space="preserve">
+    <value>Rapport Rapide</value>
+  </data>
+  <data name="btnSalesCount.Text" xml:space="preserve">
+    <value>Sommaire des quantité de vente</value>
+  </data>
+  <data name="btnTillAuditReport.Text" xml:space="preserve">
+    <value>Rapport de vérification de tiroir</value>
+  </data>
+  <data name="txtCashDrop.Text" xml:space="preserve">
+    <value>Prélèvement</value>
+  </data>
+  <data name="txtCashDraw.Text" xml:space="preserve">
+    <value>Prêt</value>
+  </data>
+  <data name="txtCashType.Text" xml:space="preserve">
+    <value>Type d'encaisse</value>
+  </data>
+  <data name="btnRefresh.Content" xml:space="preserve">
+    <value>Initialiser</value>
+  </data>
+  <data name="department.Header" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="btnRunReport.Text" xml:space="preserve">
+    <value>Exécuter des rapports</value>
+  </data>
+  <data name="print.Content" xml:space="preserve">
+    <value>Imprimer</value>
+  </data>
+  <data name="txtReport.Text" xml:space="preserve">
+    <value>Rapport</value>
+  </data>
+  <data name="totals.Text" xml:space="preserve">
+    <value>Totaux</value>
+  </data>
+  <data name="charges.Text" xml:space="preserve">
+    <value>Dépôt</value>
+  </data>
+  <data name="invoiceDiscounts.Text" xml:space="preserve">
+    <value>Rabais transaction</value>
+  </data>
+  <data name="lineDiscounts.Text" xml:space="preserve">
+    <value>Rabais article</value>
+  </data>
+  <data name="productSales.Text" xml:space="preserve">
+    <value>Ventes d'articles</value>
+  </data>
+  <data name="refunded.Text" xml:space="preserve">
+    <value>Remboursé</value>
+  </data>
+  <data name="salesAfterDiscounts.Text" xml:space="preserve">
+    <value>Vente après rabais</value>
+  </data>
+  <data name="taxes.Text" xml:space="preserve">
+    <value>Taxes</value>
+  </data>
+  <data name="totalReceipts.Text" xml:space="preserve">
+    <value>Vente totale</value>
+  </data>
+  <data name="txtDepartment.Text" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="netSales.Text" xml:space="preserve">
+    <value>Ventes Nets</value>
+  </data>
+  <data name="txtUnFreeze.Text" xml:space="preserve">
+    <value>Dégeler</value>
+  </data>
+  <data name="affixBarCode.Content" xml:space="preserve">
+    <value>Attacher Code à Barre</value>
+  </data>
+  <data name="gstPstTaxExempt.Content" xml:space="preserve">
+    <value>GST/PST Exempter</value>
+  </data>
+  <data name="validateAiteCardHolder.Text" xml:space="preserve">
+    <value>Valider le titulaire de la carte AITE</value>
+  </data>
+  <data name="barCode.Header" xml:space="preserve">
+    <value>Code à barre</value>
+  </data>
+  <data name="cardHolderName.Text" xml:space="preserve">
+    <value>Nom du Titulaire de Carte</value>
+  </data>
+  <data name="done.Content" xml:space="preserve">
+    <value>Complété</value>
+  </data>
+  <data name="cancel.Content" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="envelopeNumber.Text" xml:space="preserve">
+    <value>SVP entrer le numéro d'enveloppe</value>
+  </data>
+  <data name="ok.Content" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TenderAmount.Text" xml:space="preserve">
+    <value>Montant du paiement</value>
+  </data>
+  <data name="txtTreatyNumber.Text" xml:space="preserve">
+    <value>Numéro d'entente</value>
+  </data>
+  <data name="customerJName.Header" xml:space="preserve">
+    <value>Nom du client</value>
+  </data>
+  <data name="permitNumber.Header" xml:space="preserve">
+    <value>Numéro de permis</value>
+  </data>
+  <data name="removeTax.Content" xml:space="preserve">
+    <value>Supprimer la taxe</value>
+  </data>
+  <data name="taxExemption.Text" xml:space="preserve">
+    <value>D'exemption de Taxe</value>
+  </data>
+  <data name="txtErrors.Text" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="Clear.Content" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="cbOverrideCode.Header" xml:space="preserve">
+    <value>Code d'autorisation</value>
+  </data>
+  <data name="cbReason.Header" xml:space="preserve">
+    <value>Raison</value>
+  </data>
+  <data name="document.Header" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="explanation.Header" xml:space="preserve">
+    <value>Explication</value>
+  </data>
+  <data name="txtbEquivalent.Text" xml:space="preserve">
+    <value>équivalent</value>
+  </data>
+  <data name="txtbExemptedTax.Text" xml:space="preserve">
+    <value>Impôt exonéré</value>
+  </data>
+  <data name="txtbQuotaLimit.Text" xml:space="preserve">
+    <value>Limite de quota</value>
+  </data>
+  <data name="txtbQuotaUsed.Text" xml:space="preserve">
+    <value>Quota utilisé</value>
+  </data>
+  <data name="txtbTaxFreePrice.Text" xml:space="preserve">
+    <value>Prix exempt de taxes</value>
+  </data>
+  <data name="txtbTypeId.Text" xml:space="preserve">
+    <value>Numéro de type</value>
+  </data>
+  <data name="txtOverrideLimit.Text" xml:space="preserve">
+    <value>Limite de d'autorisation</value>
+  </data>
+  <data name="txtProduct.Text" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="txtTaxExemptReason.Text" xml:space="preserve">
+    <value>Fiscale raison exonérée</value>
+  </data>
+  <data name="txtType.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="site.Text" xml:space="preserve">
+    <value>SITE</value>
+  </data>
+  <data name="validateTreatyNumber.Text" xml:space="preserve">
+    <value>Valider le numéro du traité</value>
+  </data>
+  <data name="PayoutReson.Header" xml:space="preserve">
+    <value>Code de déboursé</value>
+  </data>
+  <data name="cardNumber.Header" xml:space="preserve">
+    <value>Numéro de carte</value>
+  </data>
+  <data name="HST.Header" xml:space="preserve">
+    <value>HST</value>
+  </data>
+  <data name="VendorSearch.Header" xml:space="preserve">
+    <value>Recherche de fournisseurs</value>
+  </data>
+  <data name="btnOverride.Content" xml:space="preserve">
+    <value>Outrepasser</value>
+  </data>
+  <data name="txtLimit.Text" xml:space="preserve">
+    <value>Limite</value>
+  </data>
+  <data name="btnComplete.Content" xml:space="preserve">
+    <value>Compléter</value>
+  </data>
+  <data name="CertificationCode.Text" xml:space="preserve">
+    <value>Code de Certification AITE : 0706IN</value>
+  </data>
+  <data name="validateBandCustomer.Text" xml:space="preserve">
+    <value>Valider la bande / client</value>
+  </data>
+  <data name="BandCustomer.Text" xml:space="preserve">
+    <value>Numéro de Bande/Client</value>
+  </data>
+  <data name="txtName.Text" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="txtCoupon.Text" xml:space="preserve">
+    <value>Coupon</value>
+  </data>
+  <data name="textCardNumber.Text" xml:space="preserve">
+    <value>Numéro de carte</value>
+  </data>
+  <data name="txtPin.Text" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="txtARBalance.Text" xml:space="preserve">
+    <value>Solde:</value>
+  </data>
+  <data name="txtCreditLimit.Text" xml:space="preserve">
+    <value>Limite de crédit :</value>
+  </data>
+  <data name="Filter.Header" xml:space="preserve">
+    <value>Filtre</value>
+  </data>
+  <data name="Reprints.Text" xml:space="preserve">
+    <value>Réimpressions</value>
+  </data>
+  <data name="reprintDate.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ReceiptPreview.Text" xml:space="preserve">
+    <value>Aperçu des reçus</value>
+  </data>
+  <data name="txtBalance.Header" xml:space="preserve">
+    <value>Solde</value>
+  </data>
+  <data name="txtDetails.Text" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="txtDocument.Text" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="txtOverrideCode.Text" xml:space="preserve">
+    <value>Code d'autorisation</value>
+  </data>
+  <data name="location.Header" xml:space="preserve">
+    <value>Emplacement</value>
+  </data>
+  <data name="loginPassword.Header" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="loginUser.Header" xml:space="preserve">
+    <value>Utilisateur</value>
+  </data>
+  <data name="StoreCredit.Text" xml:space="preserve">
+    <value>Crédit magasin</value>
+  </data>
+  <data name="purchaseOrder.Text" xml:space="preserve">
+    <value>S.V.P. entrer le numéro de bon de commande pour ce client.</value>
+  </data>
+  <data name="purchaseOrderNumber.PlaceholderText" xml:space="preserve">
+    <value>Bon de commande :</value>
+  </data>
+  <data name="tankDip.Text" xml:space="preserve">
+    <value>Dip de réservoir</value>
+  </data>
+  <data name="Grade.Text" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="tankID.Text" xml:space="preserve">
+    <value>ID du réservoir</value>
+  </data>
+  <data name="Value.Text" xml:space="preserve">
+    <value>Valeur</value>
+  </data>
+  <data name="btnFuelPrices.Content" xml:space="preserve">
+    <value>Les prix du carburant</value>
+  </data>
+  <data name="btnPropaneGrade.Content" xml:space="preserve">
+    <value>Le grade propane</value>
+  </data>
+  <data name="btnTierLevel.Content" xml:space="preserve">
+    <value>Tier/Niveau</value>
+  </data>
+  <data name="txtbPumpOptions.Text" xml:space="preserve">
+    <value>Options de la pompe</value>
+  </data>
+  <data name="txtLevel.Text" xml:space="preserve">
+    <value>Niveau</value>
+  </data>
+  <data name="txtPump.Text" xml:space="preserve">
+    <value>Pompe</value>
+  </data>
+  <data name="txtSetAllPump.Text" xml:space="preserve">
+    <value>Configurer toutes les pompes</value>
+  </data>
+  <data name="txtTier.Text" xml:space="preserve">
+    <value>Tier</value>
+  </data>
+  <data name="txtTierlevel.Text" xml:space="preserve">
+    <value>Tier/Niveau</value>
+  </data>
+  <data name="btnBasePricing.Content" xml:space="preserve">
+    <value>Prix ​​de base</value>
+  </data>
+  <data name="btnTaxExemptIncrements.Text" xml:space="preserve">
+    <value>Incréments des Prix d'exemption de Taxe</value>
+  </data>
+  <data name="btnIncrements.Text" xml:space="preserve">
+    <value>Prix Incrémentiels</value>
+  </data>
+  <data name="txtFuelPricing.Text" xml:space="preserve">
+    <value>Prix du carburant</value>
+  </data>
+  <data name="btnPumpSelect.Content" xml:space="preserve">
+    <value>Choisir</value>
+  </data>
+  <data name="txtSelectPump.Text" xml:space="preserve">
+    <value>Pompe</value>
+  </data>
+  <data name="txtPropaneGrade.Text" xml:space="preserve">
+    <value>Propane Grade</value>
+  </data>
+  <data name="txtPropaneGradeAmount.Text" xml:space="preserve">
+    <value>Montant</value>
+  </data>
+  <data name="txtVolume.Header" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
+  <data name="btnReadTotalizer.Content" xml:space="preserve">
+    <value>Lecture des totalisateurs</value>
+  </data>
+  <data name="txtCreditBase.Text" xml:space="preserve">
+    <value>Base de crédit</value>
+  </data>
+  <data name="txtCreditTaxFree.Text" xml:space="preserve">
+    <value>Crédit gratuit</value>
+  </data>
+  <data name="txtUnitBase.Text" xml:space="preserve">
+    <value>Unité de base</value>
+  </data>
+  <data name="txtUnitTaxFree.Text" xml:space="preserve">
+    <value>Unité libre d'impôt</value>
+  </data>
+  <data name="txtAmountFleet.Header" xml:space="preserve">
+    <value>Montant à payer</value>
+  </data>
+  <data name="txtBatchNumber.Text" xml:space="preserve">
+    <value>No de lot</value>
+  </data>
+  <data name="txtSaleNumber.Text" xml:space="preserve">
+    <value>Numéro de transaction</value>
+  </data>
+  <data name="txtSoldOn.Text" xml:space="preserve">
+    <value>Vendu sur</value>
+  </data>
+  <data name="txtTerminalID.Text" xml:space="preserve">
+    <value>No terminal</value>
+  </data>
+  <data name="txtReprintVolume.Text" xml:space="preserve">
+    <value>Le volume</value>
+  </data>
+  <data name="txtSearchBySaleNumber.Header" xml:space="preserve">
+    <value>Rechercher par numéro de transaction</value>
+  </data>
+  <data name="LastPrint.Text" xml:space="preserve">
+    <value>Dernière_impression</value>
+  </data>
+  <data name="acceptPayment.Content" xml:space="preserve">
+    <value>Accepter paiement</value>
+  </data>
+  <data name="txtVendorCoupon.Text" xml:space="preserve">
+    <value>Coupon fournisseur</value>
+  </data>
+  <data name="txtVendorCouponNumber.Header" xml:space="preserve">
+    <value>Numéro de Coupon</value>
+  </data>
+  <data name="txtSelectedCoupon.Text" xml:space="preserve">
+    <value>Coupon sélectionné</value>
+  </data>
+  <data name="txtVendorSerialNumber.Header" xml:space="preserve">
+    <value>Numéro de Série</value>
+  </data>
+  <data name="btnDelete.Content" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="txtFleetCardNumber.Header" xml:space="preserve">
+    <value>Numéro de carte</value>
+  </data>
+  <data name="txtPaymentByFleetTender.Text" xml:space="preserve">
+    <value>CC Flotte</value>
+  </data>
+  <data name="cbGrade.Header" xml:space="preserve">
+    <value>Qualité</value>
+  </data>
+  <data name="btnSetPrepay.Content" xml:space="preserve">
+    <value>Activer la fonction prépayé</value>
+  </data>
+  <data name="btnSwitchPrepay.Text" xml:space="preserve">
+    <value>Connecter prépayé</value>
+  </data>
+  <data name="cbPaymentType.Header" xml:space="preserve">
+    <value>Type de paiement</value>
+  </data>
+  <data name="prepayHeading.Text" xml:space="preserve">
+    <value>Pré-payé</value>
+  </data>
+  <data name="cbToPump.Header" xml:space="preserve">
+    <value>Pour pomper</value>
+  </data>
+  <data name="btnTaxExemption.Content" xml:space="preserve">
+    <value>D'exemption de Taxe</value>
+  </data>
+  <data name="cbSelectPump.Header" xml:space="preserve">
+    <value>Sélectioner la pompe</value>
+  </data>
+  <data name="manualPrice.Text" xml:space="preserve">
+    <value>Prix manuel</value>
+  </data>
+  <data name="cbPaymentMode.Header" xml:space="preserve">
+    <value>Mode de paiement</value>
+  </data>
+  <data name="billCoinCounter.Text" xml:space="preserve">
+    <value>Compteur de billets/monnaie</value>
+  </data>
+  <data name="completeTillClose.Text" xml:space="preserve">
+    <value>Compléter la fermeture</value>
+  </data>
+  <data name="Count.Text" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
+  <data name="Diff.Text" xml:space="preserve">
+    <value>Diff</value>
+  </data>
+  <data name="Entered.Text" xml:space="preserve">
+    <value>Entrer</value>
+  </data>
+  <data name="Exit.Content" xml:space="preserve">
+    <value>Sortie</value>
+  </data>
+  <data name="System.Text" xml:space="preserve">
+    <value>Système</value>
+  </data>
+  <data name="txtTillClose.Text" xml:space="preserve">
+    <value>Tiroir fermé</value>
+  </data>
+  <data name="On$.Text" xml:space="preserve">
+    <value>On $</value>
+  </data>
+  <data name="reprintedOn.Text" xml:space="preserve">
+    <value>Réimprimé le</value>
+  </data>
+  <data name="txtTotal.Text" xml:space="preserve">
+    <value>Total : </value>
+  </data>
+  <data name="tenderDetails.Content" xml:space="preserve">
+    <value>Détail de_paiements</value>
+  </data>
+  <data name="Level.Text" xml:space="preserve">
+    <value>Niveau</value>
+  </data>
+  <data name="Tier.Text" xml:space="preserve">
+    <value>Tier</value>
+  </data>
+  <data name="btnSelectPricesToDisplay.Text" xml:space="preserve">
+    <value>Prix à afficher</value>
+  </data>
+  <data name="cbLevel.Header" xml:space="preserve">
+    <value>Niveau</value>
+  </data>
+  <data name="cbTier.Header" xml:space="preserve">
+    <value>Tier</value>
+  </data>
+  <data name="btnCompleteChange.Content" xml:space="preserve">
+    <value>Compléter (Reçu)</value>
+  </data>
+  <data name="btnCompleteOverPayment.Content" xml:space="preserve">
+    <value>Compléter (Paiement en trop)</value>
+  </data>
+  <data name="txtPosition.Text" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="txtPrepayAmount.Text" xml:space="preserve">
+    <value>Pré-payé Montant</value>
+  </data>
+  <data name="txtPrepayVolume.Text" xml:space="preserve">
+    <value>Pré-payé Quantité</value>
+  </data>
+  <data name="txtUnitPrice.Text" xml:space="preserve">
+    <value>Prix unitaire</value>
+  </data>
+  <data name="txtUsedAmount.Text" xml:space="preserve">
+    <value>Quantité utilisée</value>
+  </data>
+  <data name="txtUsedVolume.Text" xml:space="preserve">
+    <value>Volume utilisé</value>
+  </data>
+  <data name="txtFinish.Text" xml:space="preserve">
+    <value>Terminer</value>
+  </data>
+  <data name="Manual.Text" xml:space="preserve">
+    <value>Manuelle</value>
+  </data>
+  <data name="FlashReportTill.Text" xml:space="preserve">
+    <value>Rapport rapide par caissier #</value>
+  </data>
+  <data name="ckPricesToDisplay.Content" xml:space="preserve">
+    <value>Initialiser l'afficheur de prix</value>
+  </data>
+  <data name="ckReadTankDip.Content" xml:space="preserve">
+    <value>Read Tank Dip</value>
+  </data>
+  <data name="ckReadTotalizer.Content" xml:space="preserve">
+    <value>Lecture des totalisateurs</value>
+  </data>
+  <data name="bill.Content" xml:space="preserve">
+    <value>Billets</value>
+  </data>
+  <data name="roll.Content" xml:space="preserve">
+    <value>Rouleaux de monnaie</value>
+  </data>
+  <data name="Litre.Text" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="ManualCaption.Text" xml:space="preserve">
+    <value>Sélectionner la pompe, entrer le montant d'essence et le grade pour vente d'essence manuelle.</value>
+  </data>
+  <data name="txtTopazSignaturPad.Text" xml:space="preserve">
+    <value>Topaze Signature Pad</value>
+  </data>
+  <data name="Month.Header" xml:space="preserve">
+    <value>mois</value>
+  </data>
+  <data name="Year.Header" xml:space="preserve">
+    <value>An</value>
+  </data>
+  <data name="CashOut.Text" xml:space="preserve">
+    <value>CashOut #</value>
+  </data>
+  <data name="btnLogoutFuelOnly.Text" xml:space="preserve">
+    <value>CONNECTEZ - OUT</value>
+  </data>
+  <data name="ShiftDate.Text" xml:space="preserve">
+    <value>Date de changement:</value>
+  </data>
+  <data name="setAmount.Text" xml:space="preserve">
+    <value>Quantité définie</value>
+  </data>
+  <data name="basePriveAccept.Content" xml:space="preserve">
+    <value>Réglage</value>
+  </data>
+  <data name="lbLevel.Text" xml:space="preserve">
+    <value>Sélectionner le niveau</value>
+  </data>
+  <data name="lbTierLevel.Text" xml:space="preserve">
+    <value>Sélectionner un tier</value>
+  </data>
+  <data name="txtAmountAR.Header" xml:space="preserve">
+    <value>Montant à payer</value>
+  </data>
+  <data name="txtARPageHeading.Text" xml:space="preserve">
+    <value>Paiement compte client</value>
+  </data>
+  <data name="btnSaveInPricesToDisplay.Content" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="EmergencyHeader.Text" xml:space="preserve">
+    <value>Pompe d'urgence</value>
+  </data>
+  <data name="EmergencyResume.Content" xml:space="preserve">
+    <value>Tout résumer</value>
+  </data>
+  <data name="EmergencyStop.Content" xml:space="preserve">
+    <value>Arrête tout</value>
+  </data>
+  <data name="CarwashServerErrorMessage" xml:space="preserve">
+    <value>Ne peut pas vendre ou rembourser les produits de lavage de voiture. Le serveur Carwash est en panne, veuillez supprimer tous les produits cawash</value>
+  </data>
+  <data name="enterCarwashCode.Text" xml:space="preserve">
+    <value>Entrez le code du lavage de voiture</value>
+  </data>
+  <data name="carwashHeader.Text" xml:space="preserve">
+    <value>Valider Carwash</value>
+  </data>
+</root>

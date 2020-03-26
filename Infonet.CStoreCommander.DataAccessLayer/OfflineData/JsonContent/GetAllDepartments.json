@@ -1,0 +1,98 @@
+﻿[
+  {
+    "departmentId": "0",
+    "departmentName": "<All>"
+  },
+  {
+    "departmentId": "01",
+    "departmentName": "01 - Fuel"
+  },
+  {
+    "departmentId": "1",
+    "departmentName": "1 - LOTERY"
+  },
+  {
+    "departmentId": "10",
+    "departmentName": "10 - GROCTX"
+  },
+  {
+    "departmentId": "11",
+    "departmentName": "11 - GENERL"
+  },
+  {
+    "departmentId": "12",
+    "departmentName": "12 - PRMEAL"
+  },
+  {
+    "departmentId": "13",
+    "departmentName": "13 - BOTDEP"
+  },
+  {
+    "departmentId": "14",
+    "departmentName": "14 - PIZZA"
+  },
+  {
+    "departmentId": "15",
+    "departmentName": "15 - HOTBEV"
+  },
+  {
+    "departmentId": "16",
+    "departmentName": "16 - AUTO"
+  },
+  {
+    "departmentId": "17",
+    "departmentName": "17 - GIFTCD"
+  },
+  {
+    "departmentId": "18",
+    "departmentName": "18 - OILCLT"
+  },
+  {
+    "departmentId": "19",
+    "departmentName": "19 - FASTFD"
+  },
+  {
+    "departmentId": "2",
+    "departmentName": "2 - TOB 25"
+  },
+  {
+    "departmentId": "29",
+    "departmentName": "29 - EXTPRO"
+  },
+  {
+    "departmentId": "3",
+    "departmentName": "3 - OTHTOB"
+  },
+  {
+    "departmentId": "30",
+    "departmentName": "30 - STFCHG"
+  },
+  {
+    "departmentId": "4",
+    "departmentName": "4 - BEER"
+  },
+  {
+    "departmentId": "40",
+    "departmentName": "40 - Ezipin"
+  },
+  {
+    "departmentId": "5",
+    "departmentName": "5 - BEERWN"
+  },
+  {
+    "departmentId": "6",
+    "departmentName": "6 - SDRINK"
+  },
+  {
+    "departmentId": "7",
+    "departmentName": "7 - CDYGUM"
+  },
+  {
+    "departmentId": "8",
+    "departmentName": "8 - DAIRY"
+  },
+  {
+    "departmentId": "9",
+    "departmentName": "9 - BSCGRO"
+  }
+]

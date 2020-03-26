@@ -1,0 +1,435 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Reprint.Reprint"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Reprint"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:toolsKit="using:MyToolkit.Controls"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:Model="using:Infonet.CStoreCommander.UI.Model.Reprint"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:customControl="using:MyToolkit.Extended.Controls"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Resources/DatePicker.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="PasswordBox"
+                   BasedOn="{StaticResource PasswordBox}">
+                <Setter Property="Width"
+                        Value="240" />
+                <Setter Property="PasswordRevealMode"
+                        Value="Visible" />
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource BackgroundColor1Light}" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Left" />
+                <Setter Property="VerticalAlignment"
+                        Value="Top" />
+            </Style>
+
+            <Style TargetType="TextBlock"
+                   x:Key="DataGridHeader">
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="FontFamily"
+                        Value="Segoe UI SemiBold" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource HeaderForegroundColor}" />
+            </Style>
+
+            <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converter:NothingConverter x:Key="NothingConverter" />
+
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Padding="8,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <!--#region Heading-->
+        <control:ViewHeading x:Uid="Reprints" />
+        <!--#endregion-->
+
+        <StackPanel Grid.Row="1"
+                    Margin="0,0,0,15"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Stretch">
+
+            <ComboBox x:Uid="Filter"
+                      BorderBrush="{StaticResource BackgroundColor1Light}"
+                      BorderThickness="1"
+                      FontSize="16"
+                      ItemsSource="{x:Bind ReprintVM.ReportTypes, Mode=OneWay}"
+                      SelectedIndex="{x:Bind ReprintVM.SelectedReportIndex, Mode=TwoWay}"
+                      Foreground="{StaticResource LabelTextForegroundColor}"
+                      HorizontalAlignment="Right"
+                      Width="165"
+                      DisplayMemberPath="ReportName"
+                      Style="{StaticResource ComboBox}"
+                      VerticalAlignment="Stretch">
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="IsEnabled"
+                                Value="{Binding IsReportEnable, Mode=OneWay}" />
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+            </ComboBox>
+
+            <ControlLib:CustomCalendarDatePicker HorizontalAlignment="Left"
+                                                 x:Uid="date"
+                                                 Visibility="{x:Bind ReprintVM.IsDateEnabled, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
+                                                 Width="165"
+                                                 Margin="10,0,0,0"
+                                                 SelectedDate="{x:Bind ReprintVM.SelectedDate, Mode=TwoWay}"
+                                                 BorderBrush="{StaticResource BackgroundColor1Light}"
+                                                 BorderThickness="1"
+                                                 VerticalAlignment="Top"
+                                                 CalendarViewStyle="{StaticResource CalendarViewStyle}" />
+
+            <PasswordBox x:Uid="txtSearchBySaleNumber"
+                         Margin="10,0,0,0"
+                         Width="168"
+                         Visibility="{x:Bind ReprintVM.IsSearchBoxVisible, Mode=OneWay,  Converter={StaticResource BoolToVisibilityConverter}}"
+                         Password="{x:Bind ReprintVM.SearchSaleNumber, Mode=TwoWay}">
+
+                <triggers:Interactions.Triggers>
+                    <triggers:EventTrigger EventName="KeyUp">
+                        <triggers:InvokeCommandAction Command="{x:Bind ReprintVM.SearchBySaleNumberCommand, Mode=OneWay}"
+                                                      PassEventArgsToCommand="True" />
+                    </triggers:EventTrigger>
+                </triggers:Interactions.Triggers>
+            </PasswordBox>
+
+        </StackPanel>
+
+
+
+        <!--#region Data Grid PayInside Sales-->
+        <toolsKit:DataGrid x:Name="PayInside"
+                           Background="{StaticResource BackgroundColor1Light}"
+                           HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                           HeaderForeground="{StaticResource HeaderForegroundColor}"
+                           RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                           RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                           Grid.Row="2"
+                           SelectedItem="{x:Bind ReprintVM.SelectedPaymentInsideSale ,Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                           ItemsSource="{x:Bind ReprintVM.PayInsideSales ,Mode=OneWay}"
+                           Visibility="{x:Bind ReprintVM.IsPayInsideSaleVisible ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+
+            <toolsKit:DataGrid.Columns>
+                <toolsKit:DataGridTextColumn Width="200*"
+                                             FontSize="11"
+                                             TextAlignment="Left"
+                                             Binding="{Binding SaleNumber}"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtSaleNumber"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="107*"
+                                             FontSize="11"
+                                             Binding="{Binding SoldOn}"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtSoldOn"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="110*"
+                                             Binding="{Binding Time}"
+                                             TextAlignment="Center"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtTime"
+                                   x:Name="txtTime"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="100*"
+                                             Binding="{Binding Amount}"
+                                             MaxCharacterLength="10"
+                                             TextAlignment="Center"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtAmount"
+                                   x:Name="txtAmount"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="100*"
+                                             Binding="{Binding Customer}"
+                                             TextAlignment="Center"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtCustomer"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+
+            </toolsKit:DataGrid.Columns>
+        </toolsKit:DataGrid>
+        <!--#endregion-->
+
+        <!--#region Data Grid Pay At pump Sales-->
+        <toolsKit:DataGrid x:Name="PayAtPump"
+                           Background="{StaticResource BackgroundColor1Light}"
+                           HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                           HeaderForeground="{StaticResource HeaderForegroundColor}"
+                           RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                           RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                           Grid.Row="2"
+                           SelectedItem="{x:Bind ReprintVM.SelectedPayAtPumpSale ,Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                           ItemsSource="{x:Bind ReprintVM.PayAtPumpSales ,Mode=OneWay}"
+                           Visibility="{x:Bind ReprintVM.IsPayAtPumpSaleVisible ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+
+            <toolsKit:DataGrid.Columns>
+                <toolsKit:DataGridTextColumn Width="200*"
+                                             FontSize="11"
+                                             TextAlignment="Left"
+                                             Binding="{Binding SaleNumber}"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtSaleNumber"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="107*"
+                                             FontSize="11"
+                                             TextAlignment="Left"
+                                             Binding="{Binding Volume}"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtReprintVolume"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="110*"
+                                             Binding="{Binding Amount}"
+                                             TextAlignment="Center"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtAmount"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="100*"
+                                             MaxCharacterLength="10"
+                                             TextAlignment="Center"
+                                             Binding="{Binding Pump}"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtPump"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="100*"
+                                             TextAlignment="Center"
+                                             CanSort="False"
+                                             Binding="{Binding Grade}"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="Grade"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="100*"
+                                             TextAlignment="Center"
+                                             Binding="{Binding Date}"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="reprintDate"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="100*"
+                                             TextAlignment="Center"
+                                             Binding="{Binding Time}"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtTime"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+            </toolsKit:DataGrid.Columns>
+        </toolsKit:DataGrid>
+        <!--#endregion-->
+
+        <!--#region Data Grid Payment Sales-->
+        <toolsKit:DataGrid x:Name="PaymentSales"
+                           Background="{StaticResource BackgroundColor1Light}"
+                           HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                           HeaderForeground="{StaticResource HeaderForegroundColor}"
+                           RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                           RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                           Grid.Row="2"
+                           SelectedItem="{x:Bind ReprintVM.SelectedPaymentSale ,Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                           ItemsSource="{x:Bind ReprintVM.PaymentSales ,Mode=OneWay}"
+                           Visibility="{x:Bind ReprintVM.IsPaymentSaleVisible ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+
+            <toolsKit:DataGrid.Columns>
+                <toolsKit:DataGridTextColumn Width="200*"
+                                             FontSize="11"
+                                             Binding="{Binding SaleNumber}"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtSaleNumber"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="107*"
+                                             FontSize="11"
+                                             Binding="{Binding SoldOn}"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtSoldOn"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="110*"
+                                             Binding="{Binding Time}"
+                                             TextAlignment="Center"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtTime"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="100*"
+                                             Binding="{Binding Amount}"
+                                             MaxCharacterLength="10"
+                                             TextAlignment="Center"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtAmount"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+            </toolsKit:DataGrid.Columns>
+        </toolsKit:DataGrid>
+        <!--#endregion-->
+
+        <!--#region Data Grid Close Batch Sales-->
+        <toolsKit:DataGrid x:Name="CloseBatch"
+                           Background="{StaticResource BackgroundColor1Light}"
+                           HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                           HeaderForeground="{StaticResource HeaderForegroundColor}"
+                           RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                           RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                           Grid.Row="2"
+                           SelectedItem="{x:Bind ReprintVM.SelectedCloseBatchSale ,Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                           ItemsSource="{x:Bind ReprintVM.CloseBatchSales ,Mode=OneWay}"
+                           Visibility="{x:Bind ReprintVM.IsCloseBatchSaleVisible ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+
+            <toolsKit:DataGrid.Columns>
+                <toolsKit:DataGridTextColumn Width="200*"
+                                             FontSize="11"
+                                             Binding="{Binding BatchNumber}"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtBatchNumber"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="107*"
+                                             FontSize="11"
+                                             Binding="{Binding TerminalId}"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtTerminalID"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="110*"
+                                             TextAlignment="Center"
+                                             Binding="{Binding Date}"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="reprintDate"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="110*"
+                                             TextAlignment="Center"
+                                             Binding="{Binding Time}"
+                                             CanSort="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtTime"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+            </toolsKit:DataGrid.Columns>
+        </toolsKit:DataGrid>
+        <!--#endregion-->
+
+    </Grid>
+</Page>

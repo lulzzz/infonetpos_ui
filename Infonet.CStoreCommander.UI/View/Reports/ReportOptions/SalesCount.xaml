@@ -1,0 +1,98 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Reports.ReportOptions.SalesCount"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Reports.ReportOptions"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:triggers="using:WinRT.Triggers"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      mc:Ignorable="d">
+
+    <triggers:Interactions.Triggers>
+        <triggers:EventTrigger EventName="Loaded">
+            <triggers:InvokeCommandAction Command="{x:Bind SalesCountVM.LoadAllDataCommand, Mode=OneWay}"
+                                          PassEventArgsToCommand="False" />
+        </triggers:EventTrigger>
+    </triggers:Interactions.Triggers>
+
+    <Page.Resources>
+        <converters:NothingConverter x:Key="NothingConverter" />
+
+        <Style TargetType="ComboBox">
+            <Setter Property="VerticalAlignment"
+                    Value="Stretch" />
+            <Setter Property="Width"
+                    Value="140" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource LabelTextForegroundColor}" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource LabelTextForegroundColor}" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="FontSize"
+                    Value="11" />
+            <Setter Property="Margin"
+                    Value="0,0,0,15" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Padding="20,20,0,0">
+
+            <!--#region  department-->
+            <ComboBox x:Name="department"
+                      DisplayMemberPath="Value"
+                      SelectedValuePath="Key"
+                      SelectedIndex="{x:Bind SalesCountVM.SelectedDepartmentIndex, Mode =TwoWay, Converter={StaticResource NothingConverter}}"
+                      x:Uid="department"
+                      ItemsSource="{x:Bind SalesCountVM.Departments, Mode=OneWay}" />
+
+            <!--#endregion-->
+
+            <!--#region  Tills-->
+            <ComboBox x:Name="cbTill"
+                      x:Uid="cbTill"
+                      DisplayMemberPath="Value"
+                      SelectedValuePath="Key"
+                      SelectedIndex="{x:Bind SalesCountVM.SelectedTillIndex, Mode =TwoWay, Converter={StaticResource NothingConverter}}"
+                      ItemsSource="{x:Bind SalesCountVM.Tills, Mode=OneWay}" />
+
+            <!--#endregion-->
+
+            <!--#region Shifts-->
+            <ComboBox x:Name="cbShift"
+                      x:Uid="cbShift"
+                      DisplayMemberPath="Value"
+                      SelectedValuePath="Key"
+                      ItemsSource="{x:Bind SalesCountVM.Shifts, Mode=OneWay}"
+                      SelectedIndex="{x:Bind SalesCountVM.SelectedShiftIndex, Mode =TwoWay, Converter={StaticResource NothingConverter}}"/>
+            <!--#endregion-->
+
+        </StackPanel>
+
+        <Grid Grid.Row="1"
+              Padding="0,10,0,0"
+              Background="{StaticResource BackgroundColor2}">
+            <controlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                      HorizontalAlignment="Right"
+                                      Width="140"
+                                      Command="{x:Bind SalesCountVM.RunReportCommand, Mode=OneWay}">
+                <TextBlock x:Uid="btnRunReport"
+                           HorizontalAlignment="Left"
+                           FontSize="16"
+                           Foreground="{StaticResource ButtonForegroundColor}"
+                           TextWrapping="Wrap" />
+            </controlLib:GenericButton>
+        </Grid>
+    </Grid>
+
+</Page>

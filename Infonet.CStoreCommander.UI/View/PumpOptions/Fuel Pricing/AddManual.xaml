@@ -1,0 +1,100 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.PumpOptions.Fuel_Pricing.AddManual"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.PumpOptions.Fuel_Pricing"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:controls="using:MyToolkit.Extended.Controls"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+    <triggers:Interactions.Triggers>
+        <triggers:EventTrigger EventName="Loaded">
+            <triggers:InvokeCommandAction Command="{x:Bind AddManualVM.CheckUserCanPerformManualSalesCommand, Mode=OneWay}"
+                                          PassEventArgsToCommand="False" />
+        </triggers:EventTrigger>
+    </triggers:Interactions.Triggers>
+    <Page.Resources>
+        <Style TargetType="ComboBox"
+               BasedOn="{StaticResource ComboBox}">
+            <Setter Property="FontSize"
+                    Value="11" />
+            <Setter Property="FontSize"
+                    Value="11" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource BackgroundColor1Light}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource LabelTextForegroundColor}" />
+            <Setter Property="Width"
+                    Value="165" />
+            <Setter Property="VerticalAlignment"
+                    Value="Stretch" />
+            <Setter Property="Margin"
+                    Value="0,0,0,15" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+        </Style>
+
+        <Style TargetType="ControlLib:GenericButton">
+            <Setter Property="Width"
+                    Value="140" />
+            <Setter Property="BottomBackGroundColor"
+                    Value="{StaticResource ButtonBottomConfirmationColor}" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Right" />
+        </Style>
+
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+    </Page.Resources>
+
+    <Grid Margin="9,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--#region Heading-->
+        <control:ViewHeading x:Uid="manualPrice"
+                             BackCommand="{x:Bind AddManualVM.BackCommand, Mode=OneWay}" />
+        <!--#endregion-->
+
+        <StackPanel Grid.Row="1"
+                    Padding="20,0,20,38"
+                    Margin="0,0,0,15"
+                    Background="{StaticResource BackgroundColor2}">
+
+            <TextBlock x:Uid="ManualCaption"
+                       TextWrapping="Wrap"
+                       Foreground="{StaticResource LabelTextForegroundColor}"
+                       Margin="0,15,0,10" />
+
+            <TextBlock Text="{x:Bind  AddManualVM.Title,Mode=OneWay}"
+                       Foreground="{StaticResource LabelTextForegroundColor}"
+                       Margin="0,15,0,20" />
+
+            <ComboBox IsEnabled="{x:Bind  AddManualVM.IsPaymentModeEnabled,Mode=OneWay}"
+                      ItemsSource="{x:Bind AddManualVM.PaymentModes, Mode=OneWay}"
+                      Header="{x:Bind AddManualVM.PaymentModeHeading, Mode=OneWay}"
+                      SelectedItem="{x:Bind AddManualVM.SelectedPaymentMode, Mode=TwoWay}" />
+
+            <ComboBox x:Uid="cbGrade"
+                      IsEnabled="{x:Bind  AddManualVM.IsGradeEnabled,Mode=OneWay}"
+                      ItemsSource="{x:Bind AddManualVM.Grades, Mode=OneWay}"
+                      SelectedItem="{x:Bind AddManualVM.SelectedGrade, Mode=TwoWay}" />
+
+        </StackPanel>
+
+        <ControlLib:GenericButton  x:Uid="accept"
+                                   Command="{x:Bind AddManualVM.AddFuelCommand, Mode=OneWay}"
+                                   IsEnabled="{x:Bind AddManualVM.IsAddFuelEnabled,Mode=OneWay}"
+                                   Grid.Row="2" />
+    </Grid>
+</Page>

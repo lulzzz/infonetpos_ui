@@ -1,0 +1,149 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Checkout.VendorCoupon"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Checkout"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:customControl="using:MyToolkit.Extended.Controls"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:toolKitControls="using:MyToolkit.Controls"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <Style TargetType="TextBox"
+               BasedOn="{StaticResource TextBox}">
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="Margin"
+                    Value="0,13,0,0" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource BackgroundColor1Light}" />
+        </Style>
+        <converter:NothingConverter x:Key="NothingConverter" />
+    </Page.Resources>
+
+    <Grid Padding="0,20,0,0"
+          Loaded="{x:Bind VendorCouponLoaded}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <Border Background="{StaticResource HeaderBackgroundColor}"
+                Margin="0,0,0,10">
+            <TextBlock x:Uid="txtVendorCoupon"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Foreground="{StaticResource HeaderForegroundColor}"
+                       FontWeight="Light"
+                       Padding="10,0,0,0" />
+        </Border>
+
+        <TextBlock   Grid.Row="1"
+                     Margin="0,0,0,15"
+                     FontSize="11"
+                     Foreground="{StaticResource LabelTextForegroundColor}"
+                     x:Uid="InputCouponNumber" />
+
+        <StackPanel Orientation="Vertical"
+                    Margin="0,0,0,15"
+                    Grid.Row="2">
+
+            <customControl:CustomTextBox x:Uid="txtVendorCouponNumber"
+                                         x:Name="txtVendorCouponNumber"
+                                         TabIndex="-100"
+                                         NumericKeyType="Number"
+                                         InputScope="Number"
+                                         KeyUp="{x:Bind VendorCouponNumberKeyUp}"
+                                         Text="{Binding CouponNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         IsEnabled="{x:Bind VendorCouponVM.IsCouponNumberEnabled ,Mode=OneWay}"
+                                         Style="{StaticResource TextBox}" />
+
+            <customControl:CustomTextBox x:Uid="txtVendorSerialNumber"
+                                         x:Name="txtVendorSerialNumber"
+                                         Margin="0,15,0,0"
+                                         NumericKeyType="Number"
+                                         InputScope="Number"
+                                         Text="{Binding SerialNumber ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Style="{StaticResource TextBox}">
+                <triggers:Interactions.Triggers>
+                    <triggers:EventTrigger EventName="KeyUp">
+                        <triggers:InvokeCommandAction Command="{x:Bind VendorCouponVM.EnterPressedOnVendorSerialNumberCommand, Mode=OneWay}"
+                                                      PassEventArgsToCommand="True" />
+                    </triggers:EventTrigger>
+                </triggers:Interactions.Triggers>
+            </customControl:CustomTextBox>
+
+        </StackPanel>
+
+        <Grid Grid.Row="3"
+              Padding="0,0,0,20">
+            <!--#region Data Grid-->
+            <toolKitControls:DataGrid Background="{StaticResource BackgroundColor1Light}"
+                                      HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                                      HeaderForeground="{StaticResource HeaderForegroundColor}"
+                                      RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                                      RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                                      x:Name="DataGrid"
+                                      SelectionMode="Single"
+                                      SelectedItem="{x:Bind VendorCouponVM.SelectedVendorCoupon, Mode=TwoWay,Converter={StaticResource NothingConverter}}"
+                                      ItemsSource="{x:Bind VendorCouponVM.VendorCoupons, Mode=OneWay}">
+
+                <toolKitControls:DataGrid.Columns>
+                    <toolKitControls:DataGridTextColumn FontSize="11"
+                                                        Binding="{Binding SerialNumber}"
+                                                        TextAlignment="Left"
+                                                        CanSort="False"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtSelectedCoupon"
+                                       TextAlignment="Left"
+                                       FontSize="12"
+                                       Padding="10,0,0,0"
+                                       FontFamily="Segoe UI SemiBold"
+                                       Foreground="{StaticResource HeaderBackgroundColor}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                </toolKitControls:DataGrid.Columns>
+            </toolKitControls:DataGrid>
+            <!--#endregion-->
+        </Grid>
+        
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Grid.Row="4">
+            <ControlLib:GenericButton x:Uid="btnAdd"
+                                      IsEnabled="{x:Bind VendorCouponVM.IsAddButtonEnable ,Mode=OneWay}"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                      Command="{x:Bind VendorCouponVM.AddVendorCouponCommand ,Mode=OneWay}"
+                                      Margin="0,0,10,0"
+                                      Width="110" />
+
+            <ControlLib:GenericButton x:Uid="btnDelete"
+                                      IsEnabled="{x:Bind VendorCouponVM.IsDeleteButtonEnable ,Mode=OneWay}"
+                                      BottomBackGroundColor="{StaticResource Red}"
+                                      Command="{x:Bind VendorCouponVM.DeleteVendorCouponCommand ,Mode=OneWay}"
+                                      Margin="0,0,10,0"
+                                      Width="110" />
+        </StackPanel>
+
+        <ControlLib:GenericButton x:Uid="done"
+                                  IsEnabled="{x:Bind VendorCouponVM.IsDoneButtonEnable ,Mode=OneWay}"
+                                  Grid.Row="4"
+                                  Command="{x:Bind VendorCouponVM.CompleteVendorCouponCommand ,Mode=OneWay}"
+                                  HorizontalAlignment="Right"
+                                  BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                  Width="110" />
+
+    </Grid>
+</Page>

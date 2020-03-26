@@ -1,0 +1,53 @@
+﻿<Application x:Class="Infonet.CStoreCommander.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Infonet.CStoreCommander.UI"
+             xmlns:VMLocator="using:Infonet.CStoreCommander.UI.ViewModel"
+             RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Resources/Style.xaml" />
+                <ResourceDictionary Source="ms-appx:///Resources/DisabledTextBoxStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--#region Colours-->
+            <SolidColorBrush x:Key="LightGray">#69797E</SolidColorBrush>
+            <SolidColorBrush x:Key="DarkGray">#4A5459</SolidColorBrush>
+            <SolidColorBrush x:Key="LightWhite">#F1F1F1</SolidColorBrush>
+
+            <SolidColorBrush x:Key="BackgroundColor1Light">#A0A0A0</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundColor1Dark">#747474</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundColor2">#CFCFCF</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBackgroundColor">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonForegroundColor">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBottomConfirmationColor">#00FF00</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBottomWarningColor">#FF0000</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBottomColor">#FF0080</SolidColorBrush>
+            <SolidColorBrush x:Key="HeaderBackgroundColor">#000000</SolidColorBrush>
+            <SolidColorBrush x:Key="HeaderForegroundColor">#FFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="LabelTextForegroundColor">#000000</SolidColorBrush>
+
+            <SolidColorBrush x:Key="LightGreen">#10893E</SolidColorBrush>
+            <SolidColorBrush x:Key="ExtraWhite">#F8F8F8</SolidColorBrush>
+            <SolidColorBrush x:Key="Red">#D13438</SolidColorBrush>
+            <SolidColorBrush x:Key="Yellow">#FFB900</SolidColorBrush>
+            <SolidColorBrush x:Key="DarkGreen">#01A53F</SolidColorBrush>
+            <SolidColorBrush x:Key="Maroon">#992629</SolidColorBrush>
+            <SolidColorBrush x:Key="Orange">#FF8C00</SolidColorBrush>
+            <SolidColorBrush x:Key="GrayWhiteMixed">#73797D</SolidColorBrush>
+            <SolidColorBrush x:Key="BorderBrushForControls">#B1B7BA</SolidColorBrush>
+            <SolidColorBrush x:Key="CancelButtonForeGround">#718085</SolidColorBrush>
+            <SolidColorBrush x:Key="WaxWhite">#EAEAEA</SolidColorBrush>
+            <SolidColorBrush x:Key="BorderBrushForPopups">#FF857B7B</SolidColorBrush>
+            <SolidColorBrush x:Key="ToggleOnColor">#F4F2F4</SolidColorBrush>
+            <SolidColorBrush x:Key="FontColor">#919597</SolidColorBrush>
+            <SolidColorBrush x:Key="LightBlack">#171717</SolidColorBrush>
+            <SolidColorBrush x:Key="LightWaxWhite">#F2F0F2</SolidColorBrush>
+            <!--#endregion-->
+
+            <x:String x:Key="ApplicationBackground">ms-appx:///Images/UtilityIcons/Background.png</x:String>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

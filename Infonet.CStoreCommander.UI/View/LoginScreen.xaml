@@ -1,0 +1,279 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:control="using:MyToolkit.Extended.Controls"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      x:Class="Infonet.CStoreCommander.UI.View.LoginScreen"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+
+    <!--#region Resources-->
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:NothingConverter x:Key="NothingConverter" />
+    </Page.Resources>
+    <!--#endregion-->
+
+
+    <Grid x:Name="gdLoginScreen">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="103*" />
+            <RowDefinition Height="512*" />
+            <RowDefinition Height="153*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--#region Login Screen-->
+        <Grid Background="{StaticResource BackgroundColor1Light}"
+              CornerRadius="0,0,4,4"
+              x:Name="loginSection"
+              Grid.Column="1"
+              VerticalAlignment="Top"
+              Grid.Row="1"
+              BorderThickness="1"
+              BorderBrush="{StaticResource BorderBrushForPopups}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--#region Heading including Cancel button-->
+
+            <controls:LargePopupHeader x:Uid="txtLoginHeading"
+                                       CancelCommand="{x:Bind LoginScreenVM.ShutDownApplicationCommand, Mode=OneWay}" />
+
+            <!--#endregion-->
+
+            <StackPanel x:Name="spLoginDetails"
+                        Grid.Row="1"
+                        Background="{StaticResource BackgroundColor2}"
+                        HorizontalAlignment="Left">
+
+                <!--#region User Name-->
+                <TextBox x:Name="User"
+                         x:Uid="loginUser"
+                         TabIndex="-1"
+                         Margin="20,7,20,12"
+                         Width="290"
+                         MaxLength="10"
+                         Style="{StaticResource TextBox}"
+                         IsEnabled="{x:Bind LoginScreenVM.IsUserNameEnabled, Mode=OneWay}"
+                         Text="{x:Bind LoginScreenVM.LoginModel.UserName, Mode=TwoWay}">
+                    <i:Interaction.Behaviors>
+                        <ic:EventTriggerBehavior EventName="GotFocus">
+                            <ic:InvokeCommandAction Command="{x:Bind LoginScreenVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                        </ic:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <!--#endregion-->
+
+                <!--#region Password-->
+                <PasswordBox x:Name="Password"
+                             x:Uid="loginPassword"
+                             MaxLength="10"
+                             Margin="20,0"
+                             VerticalAlignment="Top"
+                             IsEnabled="{x:Bind LoginScreenVM.IsPasswordEnabled, Mode=OneWay}"
+                             BorderBrush="{StaticResource BackgroundColor1Light}"
+                             PasswordChar="*"
+                             Width="290"
+                             Password="{x:Bind LoginScreenVM.LoginModel.Password, Mode=TwoWay}"
+                             Style="{StaticResource PasswordBox}">
+
+                    <triggers:Interactions.Triggers>
+                        <triggers:EventTrigger EventName="KeyUp">
+                            <triggers:InvokeCommandAction Command="{x:Bind LoginScreenVM.PasswordCompletedCommand, Mode=OneWay}"
+                                                          PassEventArgsToCommand="True" />
+                        </triggers:EventTrigger>
+                    </triggers:Interactions.Triggers>
+                    <i:Interaction.Behaviors>
+                        <ic:EventTriggerBehavior EventName="GotFocus">
+                            <ic:InvokeCommandAction Command="{x:Bind LoginScreenVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                        </ic:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+
+                    <!--<i:Interaction.Behaviors>
+                                        <ic:EventTriggerBehavior EventName="PointerExited">
+                                            <ic:InvokeCommandAction 
+										Command="{x:Bind LoginScreenVM.GetTillsCommand, Mode=OneWay}"/>
+                                        </ic:EventTriggerBehavior>
+                                    </i:Interaction.Behaviors>-->
+
+                </PasswordBox>
+
+                <!--#endregion-->
+
+
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,12,0,0">
+                    <!--#region  Tills-->
+                    <ComboBox x:Name="cbTill"
+                              x:Uid="cbTill"
+                              Margin="20,0,0,0"
+                              BorderThickness="1"
+                              Visibility="{x:Bind LoginScreenVM.IsTillVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                              Style="{StaticResource ComboBox}"
+                              HorizontalAlignment="Stretch"
+                              IsEnabled="{x:Bind LoginScreenVM.IsTillEnabled, Mode=OneWay}"
+                              ItemsSource="{x:Bind LoginScreenVM.LoginModel.TillNumbers, Mode=OneWay}"
+                              BorderBrush="{StaticResource LabelTextForegroundColor}"
+                              SelectedIndex="{x:Bind LoginScreenVM.SelectedTillIndex, Mode =TwoWay, Converter={StaticResource NothingConverter}}"
+                              Width="140"
+                              VerticalAlignment="Stretch">
+                        <!--<i:Interaction.Behaviors>
+                            <ic:EventTriggerBehavior EventName="SelectionChanged">
+                                <ic:InvokeCommandAction Command="{x:Bind LoginScreenVM.TillsSelectedCommand, Mode=OneWay}"
+                                                        CommandParameter="{x:Bind cbTill.SelectedItem, Mode=OneWay}" />
+                            </ic:EventTriggerBehavior>
+                        </i:Interaction.Behaviors>-->
+                    </ComboBox>
+                    <!--#endregion-->
+
+                    <!--#region Shifts-->
+                    <ComboBox x:Name="cbShift"
+                              x:Uid="cbShift"
+                              BorderThickness="1"
+                              IsEnabled="{x:Bind LoginScreenVM.IsShiftEnabled, Mode=OneWay}"
+                              Visibility="{x:Bind LoginScreenVM.IsShiftVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Width="140"
+                              Margin="10,0,20,0"
+                              Style="{StaticResource ComboBox}"
+                              ItemsSource="{x:Bind LoginScreenVM.LoginModel.Shifts, Mode=OneWay}">
+                        <i:Interaction.Behaviors>
+                            <ic:EventTriggerBehavior EventName="SelectionChanged">
+                                <ic:InvokeCommandAction Command="{x:Bind LoginScreenVM.ShiftsSelectedCommand, Mode=OneWay}"
+                                                        CommandParameter="{x:Bind cbShift.SelectedItem, Mode=OneWay}" />
+                            </ic:EventTriggerBehavior>
+                        </i:Interaction.Behaviors>
+                    </ComboBox>
+
+                    <TextBox x:Uid="cbShift"
+                             Visibility="{x:Bind LoginScreenVM.ShowSingleShift, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                             HorizontalAlignment="Stretch"
+                             IsEnabled="False"
+                             VerticalAlignment="Stretch"
+                             Width="140"
+                             Foreground="{StaticResource LabelTextForegroundColor}"
+                             Margin="10,0,20,0"
+                             Style="{StaticResource TextBox}"
+                             Text="{x:Bind LoginScreenVM.ShiftText, Mode=TwoWay}">
+                    </TextBox>
+                    <!--#endregion-->
+
+                </StackPanel>
+
+                <!--#region Bonus Float-->
+
+                <StackPanel Margin="20,0,20,0"
+                            Visibility="{x:Bind LoginScreenVM.IsTillFloatVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+
+                    <TextBlock x:Name="txtTillFloat"
+                               HorizontalAlignment="Left"
+                               x:Uid="txtTillFloat"
+                               Margin="0,12,0,12"
+                               Padding="0"
+                               TextWrapping="Wrap"
+                               Foreground="{StaticResource LabelTextForegroundColor}"
+                               VerticalAlignment="Top"
+                               FontSize="11" />
+
+                    <control:CustomTextBox x:Name="TillFloat"
+                                           Width="140"
+                                           Height="36"
+                                           NumericKeyType="Amount"
+                                           InputScope="Number"
+                                           MaxLength="11"
+                                           VerticalAlignment="Top"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource TextBox}"
+                                           IsEnabled="{x:Bind LoginScreenVM.IsTillFloatEnabled, Mode=OneWay}"
+                                           Text="{x:Bind LoginScreenVM.LoginModel.TillFloat, Mode=TwoWay}"
+                                           Margin="0,0,20,0">
+                        <i:Interaction.Behaviors>
+                            <ic:EventTriggerBehavior EventName="KeyUp">
+                                <ic:InvokeCommandAction Command="{x:Bind LoginScreenVM.TillFloatCompletedCommand, Mode=OneWay}" />
+                            </ic:EventTriggerBehavior>
+                        </i:Interaction.Behaviors>
+                        <triggers:Interactions.Triggers>
+                            <triggers:EventTrigger EventName="GotFocus">
+                                <triggers:InvokeCommandAction Command="{x:Bind LoginScreenVM.TillFloatGotFocusCommand, Mode=OneWay}"
+                                                              PassEventArgsToCommand="True" />
+                            </triggers:EventTrigger>
+                        </triggers:Interactions.Triggers>
+
+                    </control:CustomTextBox>
+
+                </StackPanel>
+                <!--#endregion-->
+
+                <!--#region Login Button-->
+                <controlLib:GenericButton x:Name="btnLogin"
+                                          x:Uid="btnLogin"
+                                          BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                          HorizontalAlignment="Right"
+                                          Margin="0,40,20,20"
+                                          Width="140"
+                                          Command="{x:Bind LoginScreenVM.LoginUserCommand, Mode=OneWay}"
+                                          IsEnabled="{x:Bind LoginScreenVM.IsLoginEnabled, Mode=OneWay}" />
+                <!--#endregion-->
+
+            </StackPanel>
+        </Grid>
+
+        <!--#endregion-->
+
+
+        <!--#region Error Popup-->
+        <Popup x:Name="errorPopup"
+               Grid.Column="1"
+               Grid.Row="1"
+               IsOpen="{x:Bind LoginScreenVM.PopupService.IsAlertPopupOpen, Mode=OneWay}">
+            <controls:NotificationPopup  BackgroundOverlay="{StaticResource DarkGray}"
+                                         VerticalAlignment="Top"
+                                         HorizontalAlignment="Left"
+                                         Height="{Binding ActualHeight, ElementName=loginSection}"
+                                         MinWidth="{Binding ActualWidth, ElementName=loginSection}"
+                                         Message="{x:Bind LoginScreenVM.PopupService.Message, Mode=OneWay}"
+                                         Continue="{x:Bind LoginScreenVM.PopupService.Continue, Mode=OneWay}"
+                                         ButtonBackgroundColor="{x:Bind LoginScreenVM.PopupService.OkButtonColor ,Mode=OneWay}"
+                                         Title="{x:Bind LoginScreenVM.PopupService.Title, Mode=OneWay}" />
+        </Popup>
+        <!--#endregion-->
+
+
+
+        <!--#region Shift Popup-->
+        <Popup x:Name="shiftPopup"
+               Grid.Column="1"
+               HorizontalAlignment="Left"
+               Grid.Row="1"
+               IsOpen="{x:Bind LoginScreenVM.PopupService.IsConfirmationPopupOpen, Mode=OneWay}">
+            <controls:PopupWithTwoButtons x:Uid="ShiftAlert"
+                                          BackgroundOverlay="{StaticResource DarkGray}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Height="{Binding ActualHeight, ElementName=loginSection}"
+                                          MinWidth="{Binding ActualWidth, ElementName=loginSection}"
+                                          HeadingText="{x:Bind LoginScreenVM.PopupService.Title, Mode=OneWay}"
+                                          FirstButtonBottomBackgroundColor="{x:Bind LoginScreenVM.PopupService.YesButtonColor,Mode=OneWay}"
+                                          SecondButtonBottomBackgroundColor="{x:Bind LoginScreenVM.PopupService.NoButtonColor,Mode=OneWay}"
+                                          FirstButtonText="{x:Bind LoginScreenVM.PopupService.YesButtonText, Mode=OneWay}"
+                                          SecondButtonText="{x:Bind LoginScreenVM.PopupService.NoButtonText, Mode=OneWay}"
+                                          Description="{x:Bind LoginScreenVM.PopupService.Message, Mode=OneWay}" />
+        </Popup>
+        <!--#endregion-->
+    </Grid>
+
+
+</Page>

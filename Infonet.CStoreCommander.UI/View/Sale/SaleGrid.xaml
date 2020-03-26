@@ -1,0 +1,336 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Sale.SaleGrid"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:toolsKit="using:MyToolkit.Controls"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <Style TargetType="controlLib:GenericButton">
+            <Setter Property="BottomBackGroundColor"
+                    Value="{StaticResource ButtonBottomColor}" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+            <Setter Property="Margin"
+                    Value="0,0,9,0" />
+        </Style>
+
+        <Style TargetType="TextBlock"
+               x:Key="DataGridHeader">
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="FontFamily"
+                    Value="Segoe UI SemiBold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource HeaderForegroundColor}" />
+        </Style>
+
+        <Style TargetType="TextBlock"
+               x:Key="SaleAndCustomerDetails">
+            <Setter Property="FontSize"
+                    Value="11" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource LabelTextForegroundColor}" />
+            <Setter Property="FontWeight"
+                    Value="Medium" />
+        </Style>
+
+        <converter:CurrencyConverter x:Key="CurrencyConverter" />
+        <converter:BoolToVisibilityConverter x:Key="DeleteAllLineItems" />
+        <converter:NothingConverter x:Key="NothingConverter" />
+        <converter:DecimalToStringConverter x:Key="DecimalToStringConverter" />
+        <converter:AmountDisplayConverter x:Key="AmountDisplayConverter" />
+    </Page.Resources>
+
+    <Grid Margin="0,20,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--#region Data Grid-->
+        <toolsKit:DataGrid ItemsSource="{x:Bind SaleGridVM.SaleModel.SaleLines, Mode=OneWay}"
+                           Background="{StaticResource BackgroundColor1Light}"
+                           HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                           HeaderForeground="{StaticResource HeaderForegroundColor}"
+                           DeleteCommand="{x:Bind SaleGridVM.SaleLineDeletedCommand, Mode=OneWay}"
+                           IsDeleteEnabled="True"
+                           x:DeferLoadStrategy="Lazy"
+                           RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                           RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                           x:Name="GridSale"
+                           Visibility="Collapsed"
+                           FocusOnEditableRow="{x:Bind SaleGridVM.FocusOnNewRow, Mode=OneWay}"
+                           SelectedItem="{x:Bind SaleGridVM.SelectedSaleLine, Mode=TwoWay, Converter={StaticResource NothingConverter}}">
+
+            <toolsKit:DataGrid.Columns>
+                <toolsKit:DataGridTextColumn Width="11*"
+                                             x:Name="txtStockCode"
+                                             FontSize="11"
+                                             IsEdit="True"
+                                             NumericKeyType="StockCodeNumber"
+                                             TextAlignment="Left"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Edit="{Binding AllowStockCodeChange}"
+                                             FocusOnEditableRow="{x:Bind SaleGridVM.FocusOnNewRow, Mode=OneWay}"
+                                             Binding="{Binding Code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                                             CanSort="False"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtbCode"
+                                   x:Name="txtbCode"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="18*"
+                                             Binding="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                                             FontSize="11"
+                                             IsEdit="False"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             MaxCharacterLength="25"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtbDescription"
+                                   x:Name="txtbDescription"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="7*"
+                                             MaxCharacterLength="7"
+                                             NumericKeyType="Amount"
+                                             InputScope="Number"
+                                             Binding="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                                             Edit="{Binding AllowQuantityChange}"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             IsEdit="True"
+                                             TextAlignment="Center"
+                                             KeyUpCommand="{x:Bind SaleGridVM.QuantityChangedCommand ,Mode=OneWay}"
+                                             CanSort="False"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtQuantity"
+                                   x:Name="txtQuantity"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="7*"
+                                             MaxCharacterLength="10"
+                                             TextAlignment="Center"
+                                             NumericKeyType="Amount"
+                                             InputScope="Number"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Binding="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                                             Edit="{Binding AllowPriceChange}"
+                                             IsEdit="True"
+                                             KeyUpCommand="{x:Bind SaleGridVM.PriceChangedCommand ,Mode=OneWay}"
+                                             CanSort="False"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtPrice"
+                                   x:Name="txtPrice"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="7*"
+                                             TextAlignment="Center"
+                                             MaxCharacterLength="7"
+                                             NumericKeyType="Amount"
+                                             InputScope="Number"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Binding="{Binding Discount, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                             Edit="{Binding AllowDiscountChange}"
+                                             IsEdit="True"
+                                             KeyUpCommand="{x:Bind SaleGridVM.DiscountChangedCommand ,Mode=OneWay}"
+                                             CanSort="False"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtDiscount"
+                                   x:Name="txtDiscount"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn x:Name="Column"
+                                             FontSize="11"
+                                             Width="7*"
+                                             TextAlignment="Center"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             Binding="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             IsEdit="False"
+                                             CanSort="False"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtAmount"
+                                   x:Name="txtAmount"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+            </toolsKit:DataGrid.Columns>
+        </toolsKit:DataGrid>
+        <!--#endregion-->
+
+        <!--#region Sale Total And Customer Name-->
+        <Grid HorizontalAlignment="Stretch"
+              VerticalAlignment="Center"
+              Height="50"
+              Grid.Row="1"
+              Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="280" />
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="7" />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="1"
+                            Margin="0,0,0,6"
+                            VerticalAlignment="Top">
+                    <TextBlock FontWeight="Bold"
+                               Style="{StaticResource SaleAndCustomerDetails}"
+                               x:Uid="txtbSale" />
+                    <TextBlock Text="{x:Bind SaleGridVM.SaleNumber, Mode=OneWay}"
+                               FontWeight="Bold"
+                               Style="{StaticResource SaleAndCustomerDetails}"
+                               Padding="2,0,0,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            Grid.Row="2">
+                    <TextBlock FontWeight="Bold"
+                               Style="{StaticResource SaleAndCustomerDetails}"
+                               x:Uid="txtbCustomer" />
+                    <TextBlock Text="{x:Bind SaleGridVM.CustomerName, Mode=OneWay}"
+                               Style="{StaticResource SaleAndCustomerDetails}"
+                               FontWeight="Normal"
+                               Padding="2,0,0,0" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1"
+                  Background="{StaticResource BackgroundColor1Light}">
+                <TextBlock Text="{x:Bind SaleGridVM.SaleModel.Summary, Mode=OneWay}"
+                           Style="{StaticResource SaleAndCustomerDetails}"
+                           VerticalAlignment="Center"
+                           FontWeight="Normal"
+                           TextWrapping="WrapWholeWords"
+                           Padding="10,0,5,0" />
+            </Grid>
+        </Grid>
+        <!--#endregion-->
+
+        <StackPanel HorizontalAlignment="Stretch"
+                    Grid.Row="2"
+                    Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <controlLib:GenericButton x:Uid="btnCustomer"
+                                          Command="{x:Bind SaleGridVM.RaiseCustomerPopupCommand, Mode=OneWay}"
+                                          Margin="0,0,10,0"
+                                          Width="100" />
+
+                <controlLib:GenericButton Grid.Column="1"
+                                          Margin="0,0,10,0"
+                                          Command="{x:Bind SaleGridVM.RaiseLoyaltyGiftPopupCommand, Mode=OneWay}"
+                                          Width="100">
+                    <TextBlock x:Uid="btnLoyalty"
+                               HorizontalAlignment="Left"
+                               FontSize="16"
+                               Foreground="{StaticResource ButtonForegroundColor}"
+                               TextWrapping="Wrap" />
+                </controlLib:GenericButton>
+
+
+                <Grid HorizontalAlignment="Right"
+                      Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="180" />
+                    </Grid.ColumnDefinitions>
+                    <Button  Background="{StaticResource Red}"
+                             Height="50"
+                             Width="60"
+                             Margin="0,0,10,0"
+                             Content="&#xEA39;"
+                             Visibility="{x:Bind SaleGridVM.IsVoidSaleVisible, Mode=OneWay, Converter={StaticResource DeleteAllLineItems}}"
+                             HorizontalAlignment="Stretch"
+                             FontFamily="Segoe MDL2 Assets"
+                             FontSize="18"
+                             Command="{x:Bind SaleGridVM.RaiseVoidSalePopupCommand, Mode=OneWay}"
+                             Style="{StaticResource ButtonWithNoBorder}"
+                             Foreground="White" />
+
+                    <Grid Background="{StaticResource BackgroundColor1Light}"
+                          Height="50"
+                          Grid.Column="1">
+                        <TextBlock Text="{x:Bind SaleGridVM.SaleModel.TotalAmount, Mode=OneWay, Converter={StaticResource CurrencyConverter}}"
+                                   FontSize="28"
+                                   Margin="0,0,0,3"
+                                   Padding="0,0,18,0"
+                                   Foreground="{StaticResource LabelTextForegroundColor}"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Normal"
+                                   HorizontalAlignment="Right" />
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Border BorderBrush="{StaticResource HeaderBackgroundColor}"
+                    Margin="0,10,0,0"
+                    BorderThickness="0,1,0,0" />
+
+        </StackPanel>
+
+        <!--#region Tender And accept details button-->
+        <StackPanel  Grid.Row="3"
+                     Orientation="Horizontal">
+            <controlLib:GenericButton x:Uid="btnOptions"
+                                      x:Name="btnOptions"
+                                      Width="100"
+                                      Command="{x:Bind SaleGridVM.OpenCheckoutOptionsPopupCommmand, Mode=OneWay}" />
+            <controlLib:GenericButton x:Uid="btnDrawer"
+                                      IsEnabled="{x:Bind SaleGridVM.IsCashDrawerEnabled, Mode=OneWay}"
+                                      Command="{x:Bind SaleGridVM.OpenCashDrawerCommand, Mode=OneWay}"
+                                      Width="100" />
+            <controlLib:GenericButton x:Uid="btnExactChange"
+                                      Command="{x:Bind SaleGridVM.ExactChangeCommand ,Mode=OneWay}"
+                                      IsEnabled="{x:Bind SaleGridVM.IsExactCashEnabled, Mode=OneWay}"
+                                      Width="120" />
+        </StackPanel>
+
+        <controlLib:GenericButton x:Uid="btnAcceptTender"
+                                  Grid.Row="3"
+                                  Margin="0"
+                                  Width="180"
+                                  IsEnabled="{x:Bind SaleGridVM.IsAcceptTenderEnabled, Mode=OneWay}"
+                                  Command="{x:Bind SaleGridVM.AcceptTenderCommand,Mode=OneWay}"
+                                  HorizontalAlignment="Right"
+                                  BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}" />
+
+        <!--#endregion-->
+
+
+    </Grid>
+</Page>
+
+
+

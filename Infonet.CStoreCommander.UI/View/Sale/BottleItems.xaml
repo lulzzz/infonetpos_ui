@@ -1,0 +1,93 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Sale.BottleItems"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Sale"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      mc:Ignorable="d">
+
+    <!--#region Resources-->
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>                
+                <ResourceDictionary Source="ms-appx:///Resources/CustomPivot.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="ProductDataTemplate">
+                <controls:ProductDatatemplate SetQuantityCommand="{Binding DataContext.SetQuantityCommand,ElementName=RootGrid, Mode=OneWay}"
+                                              IncreaseQuantityCommand="{Binding DataContext.IncreaseQuantity,ElementName=RootGrid, Mode=OneWay}"
+                                              DecreaseQuantityCommand="{Binding DataContext.ReduceQuantityCommand,ElementName=RootGrid, Mode=OneWay}" />
+            </DataTemplate>
+
+            <Style TargetType="GridViewItem">
+                <Setter Property="FontFamily"
+                        Value="{ThemeResource ContentControlThemeFontFamily}" />
+                <Setter Property="FontSize"
+                        Value="{ThemeResource ControlContentThemeFontSize}" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="TabNavigation"
+                        Value="Local" />
+                <Setter Property="IsHoldingEnabled"
+                        Value="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewItem">
+                            <ContentPresenter />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <converters:ProductQuantityVisibilityConverter x:Key="ProductQuantityVisibilityConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
+    <!--#endregion-->
+
+    <Grid x:Name="RootGrid"
+          Padding="0,20,0,0">
+        
+        <Pivot ItemsSource="{x:Bind BottleReturnsScreenVM.Bottles, Mode=OneWay}"
+               Style="{StaticResource CustomPivot}"
+               Background="{StaticResource BackgroundColor1Light}">
+            <Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          Padding="0"
+                          Margin="0">
+                        <TextBlock Text="{Binding PageName, Mode=OneWay}"
+                                   FontSize="20"
+                                   Padding="0"
+                                   VerticalAlignment="Center"
+                                   Foreground="{StaticResource HeaderForegroundColor}">
+                        </TextBlock>
+
+                    </Grid>
+                </DataTemplate>
+            </Pivot.HeaderTemplate>
+            <Pivot.ItemTemplate>
+                <DataTemplate>
+                    <GridView ItemsSource="{Binding BottleDetails}"
+                              x:Name="gvProductDetails"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              ScrollViewer.VerticalScrollMode="Enabled"
+                              ItemTemplate="{StaticResource ProductDataTemplate}">
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="Margin"
+                                        Value="0,6,6,0" />
+                            </Style>
+                        </GridView.ItemContainerStyle>
+                    </GridView>
+                </DataTemplate>
+            </Pivot.ItemTemplate>
+        </Pivot>
+        
+    </Grid>
+</Page>

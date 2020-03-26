@@ -1,0 +1,19 @@
+﻿{  
+  "summary1": null,
+  "summary2": null,
+  "enableCompletePayment": false,
+  "enableCompleteReceipt": false,
+  "enableCompleteNoReceipt": false,
+  "displayNoReceiptButton": false,
+  "tenders": [
+    {
+      "tenderCode": "CASH",
+      "tenderName": "Cash",
+      "amountEntered": "",
+      "amountValue": "",
+      "maximumValue": 100.0,
+      "minimumValue": 0.0,
+      "image": ""
+    }
+  ]
+}

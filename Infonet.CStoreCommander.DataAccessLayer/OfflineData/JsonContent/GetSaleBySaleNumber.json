@@ -1,0 +1,19 @@
+﻿{
+  "tillNumber": 1,
+  "saleNumber": 34410,
+  "customer": "Homvir",
+  "saleLines": [
+    {
+      "lineNumber": 1,
+      "stockCode": "000010120507",
+      "description": "ODOR NEUTRALIZER REFILL",
+      "quantity": -1,
+      "price": 10,
+      "discount": 0,
+      "amount": -10
+    }
+  ],
+  "totalAmount": 11.5,
+  "totalDiscount": 0,
+  "taxes": 0
+}

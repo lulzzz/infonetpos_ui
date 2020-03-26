@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="Infonet.CStoreCommander.UI.Controls.KickBackNumberPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Infonet.CStoreCommander.UI.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Controls="using:MyToolkit.Extended.Controls"
+             xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+             xmlns:triggers="using:WinRT.Triggers"
+             mc:Ignorable="d">
+
+    <Grid Loaded="{x:Bind GridLoaded, Mode=OneWay}"
+          LayoutUpdated="{x:Bind KickBackLayoutUpdated, Mode=OneWay}">
+
+        <Border Grid.RowSpan="2"
+                Opacity="0.8"
+                Background="{x:Bind BackgroundOverlay, Mode=OneWay}" />
+
+        <!--#region  Main Popup-->
+        <Grid VerticalAlignment="Top"
+              Margin="0,75,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1"
+                  Background="{StaticResource BackgroundColor1Light}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--#region Heading with close button-->
+                <local:SmallPopupHeader Text="{x:Bind SaleGridVM.PopupService.CustomKickbackMessage, Mode=OneWay}"
+                                        CancelCommand="{x:Bind SaleGridVM.CloseKickBackNumberPopupCommand, Mode=OneWay}" />
+                <!--#endregion-->
+
+                <Grid Grid.Row="1"
+                      Margin="0"
+                      Width="370"
+                      Background="{StaticResource BackgroundColor1Light}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--#region Description if any-->
+
+                    <StackPanel Padding="20">
+
+                        <TextBlock x:Uid="enterKickBackNumber"
+                                   TextWrapping="WrapWholeWords"
+                                   Margin="0,0,0,15" />
+
+                        <Controls:CustomTextBox Text="{Binding PopupService.KickBackNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                HorizontalAlignment="Stretch"
+                                                x:Name="pbText"
+                                                FontSize="16"
+                                                TabIndex="-50"
+                                                Style="{StaticResource TextBox}"
+                                                Margin="0">
+
+                            <triggers:Interactions.Triggers>
+                                <triggers:EventTrigger EventName="KeyUp">
+                                    <triggers:InvokeCommandAction Command="{Binding PopupService.KickBackNumberEnteredCommand, Mode=OneWay}"
+                                                                  PassEventArgsToCommand="True" />
+                                </triggers:EventTrigger>
+                            </triggers:Interactions.Triggers>
+
+                        </Controls:CustomTextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+
+                        <!--#region Ok  buttons-->
+                        <ControlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="20,15,10,20"
+                                                  x:Name="yesButton"
+                                                  x:Uid="ok"
+                                                  Command="{x:Bind VMBase.PopupService.YesConfirmationCommand, Mode=OneWay}"
+                                                  Width="160" />
+                        <!--#endregion-->
+
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>

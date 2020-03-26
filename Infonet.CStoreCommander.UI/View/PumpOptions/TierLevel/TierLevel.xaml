@@ -1,0 +1,220 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.TierLevel.TierLevel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.TierLevel"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:toolsKit="using:MyToolkit.Controls"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:triggers="using:WinRT.Triggers"
+      xmlns:model="using:Infonet.CStoreCommander.UI.Model.FuelPump"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Resources/CheckBoxStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="TextBlock"
+                   x:Key="DataGridHeader">
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="FontFamily"
+                        Value="Segoe UI SemiBold" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource HeaderForegroundColor}" />
+            </Style>
+
+            <Style TargetType="ListViewItem">
+                <Setter Property="FontFamily"
+                        Value="{ThemeResource ContentControlThemeFontFamily}" />
+                <Setter Property="FontSize"
+                        Value="{ThemeResource ControlContentThemeFontSize}" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="TabNavigation"
+                        Value="Local" />
+                <Setter Property="IsHoldingEnabled"
+                        Value="True" />
+                <Setter Property="Margin"
+                        Value="-2,-12,33,0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListViewItem">
+                            <ContentPresenter />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <converter:TierLevelListConverter x:Key="TierLevelListConverter" />
+            <converter:NothingConverter x:Key="NothingConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Padding="8,0,0,0"
+          x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <control:ViewHeading x:Uid="txtTierlevel"
+                             BackCommand="{x:Bind TierLevelVM.BackPageCommand,Mode=OneWay}"/>
+
+        <TextBlock Text="{x:Bind TierLevelVM.TierlevelModel.PageCaption ,Mode=OneWay}"
+                   Foreground="{StaticResource LabelTextForegroundColor}"
+                   HorizontalAlignment="Stretch"
+                   Grid.Row="1"
+                   TextWrapping="WrapWholeWords"
+                   Margin="0,0,0,10"
+                   FontSize="12" />
+
+        <!--#region Data Grid-->
+        <toolsKit:DataGrid Background="{StaticResource BackgroundColor1Light}"
+                           HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                           HeaderForeground="{StaticResource HeaderForegroundColor}"
+                           RowBackgroundEvenBrush="{StaticResource BackgroundColor1Light}"
+                           RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                           Grid.Row="2"
+                           SelectionMode="Multiple"
+                           ItemToAdd="{x:Bind TierLevelVM.PumpTierModelToAdd, Mode=OneWay, Converter={StaticResource NothingConverter}}"
+                           SelectedValues="{x:Bind TierLevelVM.SelectedTierList , Mode=TwoWay, Converter={StaticResource TierLevelListConverter}}"
+                           ItemsSource="{Binding TierlevelModel.PumpTierLevels, Mode=OneWay}">
+
+            <toolsKit:DataGrid.Columns>
+                <toolsKit:DataGridTextColumn Width="9*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             Binding="{Binding PumpId}"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtPump"
+                                   x:Name="txtPump"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="18*"
+                                             FontSize="11"
+                                             MaxCharacterLength="25"
+                                             Binding="{Binding TierName}"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtTier"
+                                   x:Name="txtTier"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn FontSize="11"
+                                             Width="7*"
+                                             MaxCharacterLength="7"
+                                             Binding="{Binding LevelName}"
+                                             Foreground="{StaticResource LabelTextForegroundColor}"
+                                             TextAlignment="Center"
+                                             CanSort="False"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtLevel"
+                                   x:Name="txtLevel"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+            </toolsKit:DataGrid.Columns>
+        </toolsKit:DataGrid>
+        <!--#endregion-->
+
+        <Border Background="{StaticResource HeaderBackgroundColor}"
+                Margin="0,10,0,0"
+                Padding="20,10,0,10"
+                Grid.Row="3">
+            <TextBlock x:Uid="txtSetAllPump"
+                       Foreground="{StaticResource HeaderForegroundColor}" />
+        </Border>
+
+
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal"
+                    Background="{StaticResource BackgroundColor1Light}">
+
+            <ListView ItemsSource="{x:Bind TierLevelVM.TierlevelModel.Tiers, Mode=OneWay}"
+                     
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      HorizontalAlignment="Left"
+                      Foreground="{StaticResource LabelTextForegroundColor}"
+                      Padding="10,5,0,0"
+                      ScrollViewer.HorizontalScrollMode="Auto">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:TierModel">
+                        <CheckBox Content="{x:Bind TierName, Mode=OneWay}"
+                                  Command="{Binding DataContext.TierCheckedCommand,ElementName=RootGrid}"
+                                  CommandParameter="{x:Bind TierId, Mode=OneWay}"
+                                  IsChecked="{x:Bind IsChecked, Mode=TwoWay}">
+                            
+                        </CheckBox>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Border Background="Transparent">
+                            <TextBlock  x:Uid="lbTierLevel"
+                                       Foreground="{StaticResource LabelTextForegroundColor}"
+                                       Padding="0,0,0,20"
+                                       FontSize="14" />
+                        </Border>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+            </ListView>
+
+            <ListView ItemsSource="{x:Bind TierLevelVM.TierlevelModel.Levels , Mode=OneWay}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      HorizontalAlignment="Right"
+                      Grid.Column="1"
+                      Foreground="{StaticResource LabelTextForegroundColor}"
+                      Padding="10,5,0,0"
+                      ScrollViewer.HorizontalScrollMode="Auto">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:LevelModel">
+                        <CheckBox Content="{x:Bind LevelName, Mode=OneWay}"
+                                  Command="{Binding DataContext.LevelCheckedCommand,ElementName=RootGrid}"
+                                  CommandParameter="{x:Bind LevelId, Mode=OneWay}"
+                                  IsChecked="{x:Bind IsChecked, Mode=TwoWay}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Border Background="Transparent">
+                            <TextBlock x:Uid="lbLevel"
+                                       Padding="0,0,0,20"
+                                       Foreground="{StaticResource LabelTextForegroundColor}"
+                                       FontSize="14" />
+                        </Border>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+            </ListView>
+
+        </StackPanel>
+
+        <ControlLib:GenericButton Width="140"
+                                  Margin="0,10,0,0"
+                                  Grid.Row="5"
+                                  IsEnabled="{x:Bind TierLevelVM.IsSetButtonEnable, Mode=OneWay}"
+                                  BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                  Command="{x:Bind TierLevelVM.UpdateTierLevelCommand ,Mode=OneWay}"
+                                  HorizontalAlignment="Right"
+                                  x:Uid="btnSet" />
+    </Grid>
+</Page>

@@ -1,0 +1,166 @@
+﻿<UserControl x:Class="Infonet.CStoreCommander.UI.Controls.ProductDatatemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Infonet.CStoreCommander.UI.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+             xmlns:i="using:Microsoft.Xaml.Interactivity"
+             xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+             xmlns:trigger="using:Infonet.CStoreCommander.UI.Trigger"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:ProductQuantityVisibilityConverter x:Key="ProductQuantityVisibilityConverter" />
+        <converters:FontsizeConverter x:Key="FontsizeConverter" />
+
+        <Style TargetType="Button"
+               BasedOn="{StaticResource ButtonWithNoBorder}"
+               x:Name="QuantityButtonStyle">
+            <Setter Property="HorizontalAlignment"
+                    Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Left" />
+            <Setter Property="Padding"
+                    Value="2,0" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource HeaderForegroundColor}" />
+            <Setter Property="FontFamily"
+                    Value="Segoe UI Light" />
+            <Setter Property="FontWeight"
+                    Value="Light" />
+            <Setter Property="VerticalAlignment"
+                    Value="Stretch" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+        </Style>
+
+    </UserControl.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Background="{StaticResource BackgroundColor2}">
+
+            <!--#region When Quantity is zero-->
+            <Grid x:Name="productWithZeroQuantity"
+                  Padding="0">
+                <Button x:Name="btnProductImage"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Padding="0"
+                        Style="{StaticResource ButtonWithNoBorder}"
+                        Command="{x:Bind IncreaseQuantityCommand,Mode=OneWay}"
+                        CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}"
+                        Height="60"
+                        Width="120">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill"
+                                    ImageSource="{x:Bind ProductDetails.ImageSource, Mode=OneWay}" />
+                    </Button.Background>
+                    <Rectangle Width="{Binding ActualWidth, ElementName=btnProductImage}"
+                               Height="{Binding ActualHeight, ElementName=btnProductImage}"
+                               Margin="0">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,0"
+                                                 EndPoint="0,1">
+                                <GradientStop Offset="0.728"
+                                              Color="#50FFFFFF" />
+                                <GradientStop Offset="1"
+                                              Color="#FFF9F1F1" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <i:Interaction.Behaviors>
+                        <ic:EventTriggerBehavior EventName="Holding">
+                            <ic:InvokeCommandAction Command="{x:Bind SetQuantityCommand, Mode=OneWay}"
+                                                    CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}" />
+                        </ic:EventTriggerBehavior>
+                        <ic:EventTriggerBehavior EventName="RightTapped">
+                            <ic:InvokeCommandAction Command="{x:Bind SetQuantityCommand, Mode=OneWay}"
+                                                    CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}" />
+                        </ic:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                </Button>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region When quantity is positive-->
+
+            <Grid Padding="0"
+                  x:Name="ProductWithPositiveQuantity"
+                  Visibility="{Binding Quantity, Converter={StaticResource ProductQuantityVisibilityConverter}}"
+                  Grid.Row="1"
+                  Height="60"
+                  Width="120">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="txtQuantity"
+                        Style="{StaticResource QuantityButtonStyle}"
+                        Command="{x:Bind IncreaseQuantityCommand,Mode=OneWay}"
+                        FontSize="{x:Bind ProductDetails.Quantity, Mode=OneWay,Converter={StaticResource FontsizeConverter}}"
+                        Content="{x:Bind ProductDetails.Quantity, Mode=OneWay}"
+                        CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}">
+                </Button>
+                <Button  Grid.Column="1"
+                         Opacity="0.95"
+                         VerticalAlignment="Stretch"
+                         HorizontalAlignment="Stretch"
+                         HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         Background="{StaticResource HeaderBackgroundColor}"
+                         Style="{StaticResource ButtonWithNoBorder}"
+                         Command="{x:Bind DecreaseQuantityCommand, Mode=OneWay}"
+                         CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}">
+                    <Image Stretch="None"
+                           Source="ms-appx:///Images/HotCategories/MinusIcon.png" />
+                </Button>
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="Holding">
+                        <ic:InvokeCommandAction Command="{x:Bind SetQuantityCommand, Mode=OneWay}"
+                                                CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}" />
+                    </ic:EventTriggerBehavior>
+                    <ic:EventTriggerBehavior EventName="RightTapped">
+                        <ic:InvokeCommandAction Command="{x:Bind SetQuantityCommand, Mode=OneWay}"
+                                                CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}" />
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </Grid>
+
+            <!--#endregion-->
+
+        </Grid>
+        <Border Background="{StaticResource HeaderBackgroundColor}"
+                Height="20"
+                Width="120"
+                Grid.Row="1">
+            <TextBlock Text="{x:Bind ProductDetails.Description, Mode=OneWay}"
+                       Padding="3,2,2,2"
+                       FontSize="12"
+                       FontWeight="SemiBold"
+                       TextTrimming="CharacterEllipsis"
+                       HorizontalAlignment="Left"
+                       Foreground="{StaticResource HeaderForegroundColor}" />
+            <i:Interaction.Behaviors>
+                <ic:EventTriggerBehavior EventName="Holding">
+                    <ic:InvokeCommandAction Command="{x:Bind SetQuantityCommand, Mode=OneWay}"
+                                            CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}" />
+                </ic:EventTriggerBehavior>
+                <ic:EventTriggerBehavior EventName="RightTapped">
+                    <ic:InvokeCommandAction Command="{x:Bind SetQuantityCommand, Mode=OneWay}"
+                                            CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}" />
+                </ic:EventTriggerBehavior>
+                <ic:EventTriggerBehavior EventName="Tapped">
+                    <ic:InvokeCommandAction Command="{x:Bind IncreaseQuantityCommand, Mode=OneWay}"
+                                            CommandParameter="{x:Bind ProductDetails.StockCode, Mode=OneWay}" />
+                </ic:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+        </Border>
+    </Grid>
+</UserControl> 

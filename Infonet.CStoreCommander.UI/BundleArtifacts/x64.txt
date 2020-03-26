@@ -1,0 +1,3 @@
+MainPackage=C:\Project\InfonetUI\Infonet.CStoreCommander.UI\bin\x64\Release\Infonet.CStoreCommander.UI_0.6.231.0_x64.appx
+SymbolPackage=C:\Project\InfonetUI\Infonet.CStoreCommander.UI\AppPackages\Carwash\Infonet.CStoreCommander.UI_0.6.231.0_Test\Infonet.CStoreCommander.UI_0.6.231.0_x64.appxsym
+ResourcePack=C:\Project\InfonetUI\Infonet.CStoreCommander.UI\bin\x64\Release\Infonet.CStoreCommander.UI_0.6.231.0_language-fr.appx

@@ -1,0 +1,3 @@
+MainPackage=C:\Infonet_final\InfonetUI-UWP_Dev\Infonet.CStoreCommander.UI\bin\x86\Release\Infonet.CStoreCommander.UI_0.6.269.0_x86.appx
+SymbolPackage=C:\temp\Next_Gen\AppPackage\Infonet.CStoreCommander.UI_0.6.269.0_Test\Infonet.CStoreCommander.UI_0.6.269.0_x86.appxsym
+ResourcePack=C:\Infonet_final\InfonetUI-UWP_Dev\Infonet.CStoreCommander.UI\bin\x86\Release\Infonet.CStoreCommander.UI_0.6.269.0_language-fr.appx

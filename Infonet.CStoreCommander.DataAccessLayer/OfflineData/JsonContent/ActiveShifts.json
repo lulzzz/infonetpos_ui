@@ -1,0 +1,15 @@
+﻿{
+  "shifts": [
+    {
+      "shiftNumber": 1,
+      "displayFormat": "Current (1) - 11:00 PM to 07:29 AM on Aug-24-2016"
+    },
+    {
+      "shiftNumber": 2,
+      "displayFormat": "Next (1) - 11:00 PM to 07:29 AM on Aug-25-2016"
+    }
+  ],
+  "shiftsUsedForDay": false,
+  "cashFloat": 4.2,
+  "forceShift": false
+}

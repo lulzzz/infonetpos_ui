@@ -1,0 +1,209 @@
+﻿<UserControl x:Class="Infonet.CStoreCommander.UI.Controls.NumberPad"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Infonet.CStoreCommander.UI.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+             xmlns:models="using:Infonet.CStoreCommander.UI.Model.Cash"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+
+        <Style TargetType="Button"
+                   x:Key="ButtonStyle">
+                <Setter Property="Width"
+                        Value="93" />
+            </Style>
+
+            <Style TargetType="controlLib:GenericButton"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin"
+                        Value="0,5,10,0" />
+                <Setter Property="UpperHeight"
+                        Value="65" />
+                <Setter Property="FontSize"
+                        Value="35" />
+                <Setter Property="BottomBackGroundColor"
+                    Value="{StaticResource ButtonBottomColor}" />
+            </Style>
+
+        <Style TargetType="controlLib:GenericButton"
+               x:Key="btnMoney"
+               BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="UpperHeight"
+                    Value="60" />
+            <Setter Property="Width"
+                    Value="61" />
+            <Setter Property="FontSize"
+                    Value="30" />
+            <Setter Property="BottomBackGroundColor"
+                    Value="{StaticResource ButtonBottomColor}" />
+        </Style>
+        
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource BackgroundColor2}"
+          Padding="0,20,0,0"
+          x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <local:SecondFrameHeading Text="{x:Bind Text, Mode=OneWay}"
+                                  BackArrowVisibility="{x:Bind BackArrowVisibility, Mode=OneWay}"
+                                  Margin="0,0,0,10"
+                                  PreviousFrame="{x:Bind BackNavigation, Mode=OneWay}" />
+
+
+        <StackPanel Height="50"
+                    Grid.Row="1"
+                    Margin="0,0,0,5"
+                    Orientation="Horizontal">
+            <Border BorderBrush="{StaticResource DarkGray}"
+                    BorderThickness="1" Background="{StaticResource WaxWhite}">
+                <TextBlock x:Name="txtNumberEntered"
+                           Width="298"
+                           Padding="7,0,0,7"
+                           TextWrapping="NoWrap"
+                           Foreground="{StaticResource LabelTextForegroundColor}"
+                           Text="{x:Bind NumberpadVM.InputText, Mode=OneWay}"
+                           FontSize="26"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch" />
+            </Border>
+            <Button Grid.Column="1"
+                    Content="&#xE94F;"
+                    FontFamily="Segoe MDL2 Assets"
+                    HorizontalAlignment="Stretch"
+                    Margin="10,0,0,0"
+                    Style="{StaticResource ButtonStyle}"
+                    VerticalAlignment="Stretch"
+                    FontSize="35"
+                    Command="{x:Bind NumberpadVM.BackSapceCommand, Mode=OneWay}"
+                    Foreground="{StaticResource ButtonForegroundColor}"
+                    Background="{StaticResource ButtonBackgroundColor}"
+                    BorderBrush="{x:Null}" />
+
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <controlLib:GenericButton Content="7"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                    <controlLib:GenericButton Content="8"
+                                              Grid.Column="1"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                    <controlLib:GenericButton Content="9"
+                                              Grid.Column="2"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <controlLib:GenericButton Content="4"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                    <controlLib:GenericButton Content="5"
+                                              Grid.Column="1"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                    <controlLib:GenericButton Content="6"
+                                              Grid.Column="2"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <controlLib:GenericButton Content="1"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                    <controlLib:GenericButton Content="2"
+                                              Grid.Column="1"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                    <controlLib:GenericButton Content="3"
+                                              Grid.Column="2"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <controlLib:GenericButton Content="00"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                    <controlLib:GenericButton Content="0"
+                                              Grid.Column="1"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                    <controlLib:GenericButton Content="."
+                                              Grid.Column="2"
+                                              IsEnabled="{x:Bind IsDecimalValueAllowed, Mode=OneWay}"
+                                              Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                              CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <controlLib:GenericButton Content="-"
+                                          IsEnabled="{x:Bind IsSubtractionEnabled, Mode=OneWay}"
+                                          Command="{x:Bind NumberpadVM.MinusTappedCommand, Mode=OneWay}"
+                                          Margin="10,5,0,5" />
+                <controlLib:GenericButton Content="+"
+                                          Grid.Row="1"
+                                          IsEnabled="{x:Bind IsAdditionEnabled,Mode=OneWay}"
+                                          Command="{x:Bind NumberpadVM.NumberTappedCommand, Mode=OneWay}"
+                                          CommandParameter="{Binding Content, RelativeSource={RelativeSource Mode=Self}}"
+                                          Margin="10,0,0,5" />
+
+                <Border BorderBrush="{StaticResource ButtonBottomColor}"
+                        BorderThickness="0,0,0,10"
+                        Grid.Row="2"
+                        Width="93"
+                        Margin="10,0,0,0"
+                        CornerRadius="0,0,3,3">
+                    <Button Content="&#x21B5;"
+                            Height="125"
+                            FontSize="70"
+                            Command="{x:Bind EnterTappedCommand, Mode=OneWay}"
+                            CommandParameter="{x:Bind txtNumberEntered.Text, Mode=OneWay}"
+                            Style="{StaticResource ButtonWithNoBorder}"
+                            Foreground="{StaticResource ButtonForegroundColor}"
+                            HorizontalAlignment="Stretch"
+                            Background="{StaticResource ButtonBackgroundColor}">
+                    </Button>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+
+        <GridView Grid.Row="3"
+                  Padding="0"
+                  Margin="0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Stretch"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  Visibility="{x:Bind IsDollarVisible, Mode=OneWay}"
+                  ItemsSource="{x:Bind CashButtonItemSource, Mode=OneWay}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:CashButtonModel">
+                    <controlLib:GenericButton Style="{StaticResource btnMoney}"
+                                              Margin="0,10,2,0"
+                                              Command="{Binding DataContext.CurrencyTappedCommand,ElementName=RootGrid, Mode=OneWay}"
+                                              CommandParameter="{x:Bind Value,Mode =OneWay}"
+                                              Content="{x:Bind Button, Mode=OneWay}" />
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+</UserControl>

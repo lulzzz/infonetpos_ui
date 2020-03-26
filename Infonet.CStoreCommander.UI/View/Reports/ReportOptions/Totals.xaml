@@ -1,0 +1,147 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Reports.ReportOptions.Totals"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Reports.ReportOptions"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <Style TargetType="TextBlock"
+               x:Name="ReportParameters">
+            <Setter Property="Foreground"
+                    Value="{StaticResource LabelTextForegroundColor}" />
+            <Setter Property="FontSize"
+                    Value="11" />
+            <Setter Property="Padding"
+                    Value="20,5,20,5" />
+        </Style>
+
+    </Page.Resources>
+
+    <!--<triggers:Interactions.Triggers>
+        <triggers:EventTrigger EventName="Loaded">
+            <triggers:InvokeCommandAction Command="{x:Bind ReportVM.GetReportCommand, Mode=OneWay}"
+                                          PassEventArgsToCommand="False" />
+        </triggers:EventTrigger>
+    </triggers:Interactions.Triggers>-->
+
+    <Grid  Padding="0,20,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource HeaderBackgroundColor}">
+            <TextBlock x:Uid="totals"
+                       Padding="20,0,0,0"
+                       FontSize="20"
+                       FontWeight="Light"
+                       Foreground="{StaticResource HeaderForegroundColor}"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Center" />
+        </Border>
+
+        <StackPanel Background="{StaticResource BackgroundColor1Light}"
+                    Margin="0,10,0,0"
+                    Grid.Row="1">
+
+            <!--#region First Row-->
+            <Grid Padding="0,10,0,0">
+                <TextBlock x:Uid="productSales"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource ReportParameters}" />
+                <TextBlock HorizontalAlignment="Right"
+                           Text="{x:Bind FlashReportVM.FlashReportTotalModel.ProductSales, Mode=OneWay}"
+                           Style="{StaticResource ReportParameters}" />
+            </Grid>
+            <Grid>
+                <TextBlock x:Uid="lineDiscounts"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource ReportParameters}" />
+                <TextBlock HorizontalAlignment="Right"
+                           Text="{x:Bind FlashReportVM.FlashReportTotalModel.LineDiscounts, Mode=OneWay}"
+                           Style="{StaticResource ReportParameters}" />
+            </Grid>
+            <Grid>
+                <TextBlock x:Uid="invoiceDiscounts"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource ReportParameters}" />
+                <TextBlock Text="{x:Bind FlashReportVM.FlashReportTotalModel.InvoiceDiscount, Mode=OneWay}"
+                           HorizontalAlignment="Right"
+                           Style="{StaticResource ReportParameters}" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="{StaticResource LabelTextForegroundColor}"
+                        Margin="5,10,5,10"
+                        Grid.Column="1"
+                        BorderThickness="0,0,0,1" />
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region  Second Row-->
+            <Grid>
+                <TextBlock  x:Uid="salesAfterDiscounts"
+                            HorizontalAlignment="Left"
+                            Style="{StaticResource ReportParameters}" />
+                <TextBlock HorizontalAlignment="Right"
+                           Text="{x:Bind FlashReportVM.FlashReportTotalModel.SalesAfterDiscount, Mode=OneWay}"
+                           Style="{StaticResource ReportParameters}" />
+            </Grid>
+            <Grid>
+                <TextBlock x:Uid="taxes"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource ReportParameters}" />
+                <TextBlock HorizontalAlignment="Right"
+                           Text="{x:Bind FlashReportVM.FlashReportTotalModel.Taxes, Mode=OneWay}"
+                           Style="{StaticResource ReportParameters}" />
+            </Grid>
+            <Grid>
+                <TextBlock x:Uid="charges"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource ReportParameters}" />
+                <TextBlock HorizontalAlignment="Right"
+                           Text="{x:Bind FlashReportVM.FlashReportTotalModel.Charges, Mode=OneWay}"
+                           Style="{StaticResource ReportParameters}" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="{StaticResource LabelTextForegroundColor}"
+                        Margin="5,10,5,10"
+                        Grid.Column="1"
+                        BorderThickness="0,0,0,1" />
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Third Row-->
+            <Grid>
+                <TextBlock x:Uid="refunded"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource ReportParameters}" />
+                <TextBlock HorizontalAlignment="Right"
+                           Text="{x:Bind FlashReportVM.FlashReportTotalModel.Refunded, Mode=OneWay}"
+                           Style="{StaticResource ReportParameters}" />
+            </Grid>
+            <Grid>
+                <TextBlock x:Uid="totalReceipts"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource ReportParameters}" />
+                <TextBlock HorizontalAlignment="Right"
+                           Text="{x:Bind FlashReportVM.FlashReportTotalModel.TotalsReceipts, Mode=OneWay}"
+                           Style="{StaticResource ReportParameters}" />
+            </Grid>
+            <!--#endregion-->
+
+        </StackPanel>
+    </Grid>
+</Page>

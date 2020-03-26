@@ -1,0 +1,18 @@
+﻿[
+  {
+    "pageId": 1,
+    "pageName": "Misc"
+  },
+  {
+    "pageId": 2,
+    "pageName": "Morning"
+  },
+  {
+    "pageId": 3,
+    "pageName": "Afternoon"
+  },
+  {
+    "pageId": 4,
+    "pageName": "Promo test"
+  }
+]

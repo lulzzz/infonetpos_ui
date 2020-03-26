@@ -1,0 +1,24 @@
+﻿{
+  "suspendedSale": [
+    {
+      "saleNumber": 1,
+      "customer": "Jones",
+      "tillNumber": 2
+    },
+    {
+      "saleNumber": 2,
+      "customer": "Jones",
+      "tillNumber": 2
+    },
+    {
+      "saleNumber": 3,
+      "customer": "Jones",
+      "tillNumber": 2
+    },
+    {
+      "saleNumber": 4,
+      "customer": "Jones",
+      "tillNumber": 2
+    }
+  ]
+}

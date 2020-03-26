@@ -1,0 +1,26 @@
+﻿[
+  {
+    "button": "$1",
+    "value": 1
+  },
+  {
+    "button": "$2",
+    "value": 2
+  },
+  {
+    "button": "$5",
+    "value": 5
+  },
+  {
+    "button": "$10",
+    "value": 10
+  },
+  {
+    "button": "$20",
+    "value": 20
+  },
+  {
+    "button": "$50",
+    "value": 50
+  }
+]

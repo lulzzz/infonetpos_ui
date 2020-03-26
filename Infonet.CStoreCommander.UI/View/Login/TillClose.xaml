@@ -1,0 +1,476 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Login.TillClose"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Login"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:toolsKit="using:MyToolkit.Controls"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="TextBlock"
+               x:Key="DataGridHeader">
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="FontFamily"
+                    Value="Segoe UI SemiBold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource HeaderForegroundColor}" />
+        </Style>
+
+        <converter:NothingConverter x:Key="NothingConverter" />
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Page.Resources>
+
+    <Grid x:Name="gdFrameContainer">
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="224" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Button Background="{StaticResource Red}"
+                x:Uid="Exit"
+                HorizontalAlignment="Right"
+                Padding="5,0,0,8"
+                Grid.Column="2"
+                VerticalContentAlignment="Bottom"
+                HorizontalContentAlignment="Left"
+                Command="{x:Bind CloseTillVM.ExitCommand ,Mode=OneWay}"
+                Margin="0,0,10,0"
+                Foreground="{StaticResource LightWhite}"
+                IsEnabled="{x:Bind CloseTillVM.IsExitButtonEnable, Mode=OneWay}"
+                Height="50"
+                Width="140"
+                FontSize="16" />
+
+        <Grid Background="{StaticResource BackgroundColor2}"
+              Padding="50,0,0,0"
+              Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition  Height="21" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="552*" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="412*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Uid="txtTillClose"
+                       Foreground="{StaticResource LabelTextForegroundColor}"
+                       FontSize="32"
+                       VerticalAlignment="Bottom"
+                       Margin="0,0,0,20" />
+
+
+            <!--#region Grid With 5 Column-->
+            <toolsKit:DataGrid Background="{StaticResource BackgroundColor1Light}"
+                               HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                               HeaderForeground="{StaticResource HeaderForegroundColor}"
+                               RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                               RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                               ItemsSource="{x:Bind CloseTillVM.CloseTillModel.Tenders ,Mode=OneWay}"
+                               SelectedItem="{x:Bind CloseTillVM.SelectedCloseTillTenders, Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                               Visibility="{x:Bind CloseTillVM.GridWidth5ColumnVisible, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter} }"
+                               Grid.Row="1">
+
+                <toolsKit:DataGrid.Columns>
+                    <toolsKit:DataGridTextColumn Width="9*"
+                                                 FontSize="11"
+                                                 Binding="{Binding Tender}"
+                                                TextAlignment="Center"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtTender"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn Width="18*"
+                                                 FontSize="11"
+                                                 IsEdit="False"
+                                                TextAlignment="Center"
+                                                 Binding="{Binding Count}"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 CanSort="False"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="Count"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn FontSize="11"
+                                                 Width="7*"
+                                                 Binding="{Binding Entered, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 MaxCharacterLength="7"
+                                                 IsEdit="True"
+                                                 InputScope="Number"
+                                                 TextAlignment="Center"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 KeyUpCommand="{x:Bind CloseTillVM.TenderValueChangedCommand ,Mode=OneWay}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="Entered"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn FontSize="11"
+                                                 Width="7*"
+                                                 TextAlignment="Center"
+                                                 Binding="{Binding System}"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="System"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn FontSize="11"
+                                                 Width="7*"
+                                                 TextAlignment="Center"
+                                                 Binding="{Binding Difference}"
+                                                 IsEdit="False"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="Diff"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                </toolsKit:DataGrid.Columns>
+            </toolsKit:DataGrid>
+            <!--#endregion-->
+
+            <!--#region Grid With 4 Column-->
+            <toolsKit:DataGrid Background="{StaticResource BackgroundColor1Light}"
+                               HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                               HeaderForeground="{StaticResource HeaderForegroundColor}"
+                               RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                               RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                               ItemsSource="{x:Bind CloseTillVM.CloseTillModel.Tenders ,Mode=OneWay}"
+                               SelectedItem="{x:Bind CloseTillVM.SelectedCloseTillTenders, Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                               Visibility="{x:Bind CloseTillVM.GridWithSystemColumnVisible, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
+                               Grid.Row="1">
+
+                <toolsKit:DataGrid.Columns>
+                    <toolsKit:DataGridTextColumn Width="9*"
+                                                 FontSize="11"
+                                                 Binding="{Binding Tender}"
+                                                TextAlignment="Center"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtTender"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn Width="18*"
+                                                 FontSize="11"
+                                                 IsEdit="False"
+                                                TextAlignment="Center"
+                                                 Binding="{Binding Count}"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="Count"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn FontSize="11"
+                                                 Width="7*"
+                                                 TextAlignment="Center"
+                                                 Binding="{Binding System}"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="System"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                </toolsKit:DataGrid.Columns>
+            </toolsKit:DataGrid>
+            <!--#endregion-->
+
+            <!--#region Grid With 3 Column-->
+            <toolsKit:DataGrid Background="{StaticResource BackgroundColor1Light}"
+                               HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                               HeaderForeground="{StaticResource HeaderForegroundColor}"
+                               RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                               RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                               ItemsSource="{x:Bind CloseTillVM.CloseTillModel.Tenders ,Mode=OneWay}"
+                               SelectedItem="{x:Bind CloseTillVM.SelectedCloseTillTenders, Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                               Visibility="{x:Bind CloseTillVM.GridWidthEnteredColumnVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                               Grid.Row="1">
+
+                <toolsKit:DataGrid.Columns>
+                    <toolsKit:DataGridTextColumn Width="9*"
+                                                 FontSize="11"
+                                                 Binding="{Binding Tender}"
+                                                TextAlignment="Center"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtTender"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn Width="18*"
+                                                 FontSize="11"
+                                                 IsEdit="False"
+                                                TextAlignment="Center"
+                                                 Binding="{Binding Count}"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="Count"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn FontSize="11"
+                                                 Width="7*"
+                                                 Binding="{Binding Entered, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }"
+                                                 MaxCharacterLength="7"
+                                                 IsEdit="True"
+                                                 TextAlignment="Center"
+                                                 KeyUpCommand="{x:Bind CloseTillVM.TenderValueChangedCommand,Mode=OneWay}"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="Entered"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                </toolsKit:DataGrid.Columns>
+            </toolsKit:DataGrid>
+            <!--#endregion-->
+
+            <!--#region Grid With 2 Column-->
+            <toolsKit:DataGrid Background="{StaticResource BackgroundColor1Light}"
+                               HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                               HeaderForeground="{StaticResource HeaderForegroundColor}"
+                               RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                               RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                               ItemsSource="{x:Bind CloseTillVM.CloseTillModel.Tenders ,Mode=OneWay}"
+                               SelectedItem="{x:Bind CloseTillVM.SelectedCloseTillTenders, Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                               Visibility="{x:Bind CloseTillVM.GridWidth2ColumnVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                               Grid.Row="1">
+
+                <toolsKit:DataGrid.Columns>
+                    <toolsKit:DataGridTextColumn Width="9*"
+                                                 FontSize="11"
+                                                 Binding="{Binding Tender}"
+                                                 TextAlignment="Center"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtTender"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn Width="18*"
+                                                 FontSize="11"
+                                                 IsEdit="False"
+                                                 TextAlignment="Center"
+                                                 Binding="{Binding Count}"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="Count"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                </toolsKit:DataGrid.Columns>
+            </toolsKit:DataGrid>
+            <!--#endregion-->
+
+            <!--#region Data Grid-->
+            <toolsKit:DataGrid Background="{StaticResource WaxWhite}"
+                               HeaderBackground="{StaticResource DarkGray}"
+                               Grid.Row="1"
+                               SelectedItem="{x:Bind CloseTillVM.SelectedBillCoin, Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                               ItemsSource="{x:Bind CloseTillVM.CloseTillModel.BillCoins ,Mode=OneWay}"
+                               Visibility="{x:Bind CloseTillVM.IsBillCoinGridVisible ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                               Grid.Column="2">
+
+                <toolsKit:DataGrid.Columns>
+                    <toolsKit:DataGridTextColumn Width="9*"
+                                                 FontSize="11"
+                                                TextAlignment="Center"
+                                                 CanSort="False"
+                                                 Binding="{Binding Description}"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="reprintedOn"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn Width="8*"
+                                                 FontSize="11"
+                                                 IsEdit="True"
+                                                 MaxCharacterLength="4"
+                                                 TextAlignment="Center"
+                                                 InputScope="DateMonthNumber"
+                                                 KeyUpCommand="{x:Bind CloseTillVM.BillCoinValueChangedCommand,Mode=OneWay}"
+                                                 CanSort="False"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Binding="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="On$"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                    <toolsKit:DataGridTextColumn FontSize="11"
+                                                 Width="7*"
+                                                 TextAlignment="Center"
+                                                 CanSort="False"
+                                                 Binding="{Binding Value}"
+                                                 Foreground="{StaticResource LabelTextForegroundColor}"
+                                                 Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolsKit:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="Value"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolsKit:DataGridTextColumn.Header>
+                    </toolsKit:DataGridTextColumn>
+                </toolsKit:DataGrid.Columns>
+            </toolsKit:DataGrid>
+            <!--#endregion-->
+
+            <!--#region Report-->
+            <Grid  Grid.Row="1"
+                   Grid.RowSpan="2"
+                   Grid.Column="2"
+                   Margin="0,0,10,0"
+                   Visibility="{x:Bind CloseTillVM.IsReportVisible ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Border Background="{StaticResource HeaderBackgroundColor}">
+                    <TextBlock x:Uid="txtReport"
+                               Padding="20,0,0,0"
+                               FontSize="20"
+                               FontWeight="Light"
+                               Foreground="{StaticResource HeaderForegroundColor}"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Center" />
+                </Border>
+
+                <Border Background="{StaticResource BackgroundColor1Light}"
+                        Margin="0,10,0,10"
+                        Grid.Row="1">
+                    <ScrollViewer>
+                        <TextBlock Padding="20"
+                                   HorizontalAlignment="Center"
+                                   FontSize="11"
+                                   Text="{x:Bind CloseTillVM.TillCloseReport.ReportContent ,Mode=OneWay}"
+                                   Foreground="{StaticResource LabelTextForegroundColor}"
+                                   FontFamily="Consolas" />
+                    </ScrollViewer>
+                </Border>
+
+                <controlLib:GenericButton Grid.Row="2"
+                                          x:Uid="print"
+                                          Command="{x:Bind CloseTillVM.PrintReportCommand, Mode=OneWay}"
+                                          HorizontalAlignment="Right"
+                                          BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                          Width="140" />
+            </Grid>
+            <!--#endregion-->
+
+            <controlLib:GenericButton Width="140"
+                                      Margin="0,15,0,0"
+                                      HorizontalAlignment="Left"
+                                      IsEnabled="{x:Bind CloseTillVM.IsBillCoinCounterEnable , Mode=OneWay}"
+                                      Visibility="{x:Bind CloseTillVM.CloseTillModel.ShowBillCoins, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                      Command="{x:Bind CloseTillVM.BillCoinButtonPressedCommand,Mode=OneWay}"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                      Grid.Row="2">
+                <TextBlock x:Uid="billCoinCounter"
+                           HorizontalAlignment="Left"
+                           FontSize="16"
+                           Foreground="{StaticResource ButtonForegroundColor}"
+                           TextWrapping="Wrap" />
+            </controlLib:GenericButton>
+
+            <controlLib:GenericButton Width="160"
+                                      Margin="0,15,0,0"
+                                      IsEnabled="{x:Bind CloseTillVM.IsCompleteTillCloseButtonEnable , Mode=OneWay}"
+                                      HorizontalAlignment="Right"
+                                      Command="{x:Bind CloseTillVM.FinishTillCloseCommand,Mode=OneWay}"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                      Grid.Row="2">
+                <TextBlock x:Uid="completeTillClose"
+                           HorizontalAlignment="Left"
+                           FontSize="16"
+                           Foreground="{StaticResource ButtonForegroundColor}"
+                           TextWrapping="Wrap" />
+            </controlLib:GenericButton>
+
+            <Grid Grid.Column="2"
+                  Margin="0,10,10,0"
+                  Visibility="{x:Bind CloseTillVM.IsBillCoinGridVisible ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                  Background="{StaticResource WaxWhite}"
+                  Grid.Row="2">
+                <TextBlock Foreground="{StaticResource DarkGray}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="16"
+                           Grid.Column="1">
+                    <Run x:Uid="txtTotal" />
+                    <Run Text="{x:Bind CloseTillVM.CloseTillModel.Total, Mode=OneWay}" />
+                </TextBlock>
+            </Grid>
+
+        </Grid>
+
+        <Popup x:Name="ConfirmationPopup"
+                   IsOpen="{x:Bind CloseTillVM.PopupService.IsConfirmationPopupOpen, Mode=OneWay}">
+            <controls:PopupWithTwoButtons HeadingText="{x:Bind CloseTillVM.PopupService.Title, Mode=OneWay }"
+                                              Height="{Binding ActualHeight, ElementName=gdFrameContainer}"
+                                              Width="{Binding ActualWidth, ElementName=gdFrameContainer}"
+                                              FirstButtonBottomBackgroundColor="{x:Bind CloseTillVM.PopupService.YesButtonColor,Mode=OneWay}"
+                                              SecondButtonBottomBackgroundColor="{x:Bind CloseTillVM.PopupService.NoButtonColor,Mode=OneWay}"
+                                              FirstButtonText="{x:Bind CloseTillVM.PopupService.YesButtonText, Mode=OneWay}"
+                                              Description="{x:Bind CloseTillVM.PopupService.Message, Mode=OneWay}"
+                                              SecondButtonText="{x:Bind CloseTillVM.PopupService.NoButtonText, Mode=OneWay}"
+                                              ThirdButtonText="{x:Bind CloseTillVM.PopupService.ThirdButtonText, Mode=OneWay}"
+                                              IsThirdButtonVisible="{x:Bind CloseTillVM.PopupService.IsThirdButtonVisible, Mode=OneWay}"
+                                              ThirdButtonBottomBackgroundColor="{x:Bind CloseTillVM.PopupService.ThirdButtonColor,Mode=OneWay}" />
+        </Popup>
+
+        <!--#region Error Popup-->
+        <Popup x:Name="AlertPopup"
+                   IsOpen="{x:Bind CloseTillVM.PopupService.IsAlertPopupOpen, Mode=OneWay}">
+            <controls:NotificationPopup Height="{Binding ActualHeight, ElementName=gdFrameContainer}"
+                                            Width="{Binding ActualWidth, ElementName=gdFrameContainer}"
+                                            Message="{x:Bind CloseTillVM.PopupService.Message, Mode=OneWay}"
+                                            Continue="{x:Bind CloseTillVM.PopupService.Continue, Mode=OneWay}"
+                                            ButtonBackgroundColor="{x:Bind CloseTillVM.PopupService.OkButtonColor ,Mode=OneWay}"
+                                            Title="{x:Bind CloseTillVM.PopupService.Title, Mode=OneWay}" />
+        </Popup>
+        <!--#endregion-->
+    </Grid>
+</Page>

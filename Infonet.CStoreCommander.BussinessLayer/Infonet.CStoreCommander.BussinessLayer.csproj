@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{00811C43-FC50-4D65-8C3F-58D0CB8E2DA2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infonet.CStoreCommander.BussinessLayer</RootNamespace>
+    <AssemblyName>Infonet.CStoreCommander.BussinessLayer</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath />
+    <SccProvider>
+    </SccProvider>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BussinessLogic\AckrooBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\CarwashBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\CashBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\CheckoutBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\DipInputBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\FuelDiscountBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\FuelPriceBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\FuelPumpBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\GiftCertificateBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\GiveXBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\KickBackBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\LogoutBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\MaintenanceBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\MessageBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\PaymentBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\PaymentSourceBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\PayoutBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\PolicyBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\ReasonsListBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\ReportsBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\ReprintBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\SaleBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\SoundBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\StockBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\ThemeBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\SystemBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IAckrooBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ICarwashBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ICashBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ICacheBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ICheckoutBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ICustomerBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IDipInputBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IFuelDiscountBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IFuelPriceBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IFuelPumpBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IGiftCertificateBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IGiveXBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IKickBackBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ILoginBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\CacheBusinessLogic.cs" />
+    <Compile Include="BussinessLogic\CustomerBussinessLogic.cs" />
+    <Compile Include="BussinessLogic\LoginBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ILogoutBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IMaintenanceBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IMessageBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IPaymentBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IPaymentSourceBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IPayoutBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IPolicyBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IReasonsListBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IReportsBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IReprintBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ISaleBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ISoundBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IStockBussinessLogic.cs" />
+    <Compile Include="IBussinessLogic\IThemeBusinessLogic.cs" />
+    <Compile Include="IBussinessLogic\ISystemBusinessLogic.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Infonet.CStoreCommander.BussinessLayer.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infonet.CStoreCommander.DataAccessLayer\Infonet.CStoreCommander.DataAccessLayer.csproj">
+      <Project>{3a7b4f2a-c0c9-4fbf-a47e-d8c4bf3d0613}</Project>
+      <Name>Infonet.CStoreCommander.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infonet.CStoreCommander.EntityLayer\Infonet.CStoreCommander.EntityLayer.csproj">
+      <Project>{5e8cb32b-35b5-40bb-9a3e-bbc8484e8e5f}</Project>
+      <Name>Infonet.CStoreCommander.EntityLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

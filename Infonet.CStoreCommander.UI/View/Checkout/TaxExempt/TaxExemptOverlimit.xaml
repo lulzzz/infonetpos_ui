@@ -1,0 +1,366 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Checkout.TaxExempt.TaxExemptOverLimit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:toolKitControls="using:MyToolkit.Controls"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:customControl="using:MyToolkit.Extended.Controls"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+    <triggers:Interactions.Triggers>
+        <triggers:EventTrigger EventName="Loaded">
+            <triggers:InvokeCommandAction Command="{x:Bind OverLimitVM.LoadOverLimitDetailsCommand, Mode=OneWay}"
+                                          PassEventArgsToCommand="False" />
+        </triggers:EventTrigger>
+    </triggers:Interactions.Triggers>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Resources/DatePicker.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="controls:GenericButton"
+                   x:Name="GenericButtonStyle">
+                <Setter Property="Width"
+                        Value="140" />
+            </Style>
+
+            <Style TargetType="TextBlock"
+                   x:Key="DataGridHeader">
+                <Setter Property="TextAlignment"
+                        Value="Center"></Setter>
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="FontFamily"
+                        Value="Segoe UI SemiBold" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource HeaderForegroundColor}" />
+            </Style>
+
+            <Style x:Key="ButtonWithNoBorder"
+                   TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid x:Name="RootGrid"
+                                  Background="{TemplateBinding Background}">
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                  AutomationProperties.AccessibilityView="Raw"
+                                                  Background="{x:Null}"
+                                                  BorderBrush="{x:Null}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  Padding="{TemplateBinding Padding}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <converters:SelectedCustomerConverter x:Key="SelectedCustomerConverter" />
+            <converters:NothingConverter x:Key="NothingConverter" />
+            <converters:BoolToVisibilityConverter x:Key="VisibilityConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Margin="9,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <control:ViewHeading x:Uid="txtTaxExemptReason"
+                             FontSize="20"
+                             BackCommand="{x:Bind OverLimitVM.BackPageCommand, Mode=OneWay}" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="0,0,10,0">
+
+                <TextBlock x:Uid="tobacco" 
+                           FontSize="11"
+                           Margin="0,10"
+                           FontFamily="Segoe WP Semibold"
+                           Foreground="{StaticResource LabelTextForegroundColor}"/>
+
+                <ComboBox x:Name="tobacco"
+                          x:Uid="cbReason"
+                          BorderBrush="{StaticResource LabelTextForegroundColor}"
+                          BorderThickness="1"
+                          Style="{StaticResource ComboBox}"
+                          IsEnabled="{x:Bind OverLimitVM.IsTobaccoReason, Mode=OneWay}"
+                          ItemsSource="{x:Bind OverLimitVM.TobaccoReasons, Mode=OneWay, Converter={StaticResource NothingConverter}}"
+                          DisplayMemberPath="Reason"
+                          SelectedValuePath="Reason"
+                          SelectedItem="{Binding TobaccoReason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                          FontSize="11"
+                          Foreground="{StaticResource LabelTextForegroundColor}"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch">
+                </ComboBox>
+
+                <TextBox Visibility="{Binding ShowTobaccoExplanation, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+                         x:Uid="explanation"
+                         Margin="0,10"
+                         Height="60"
+                         Style="{StaticResource TextBox}"
+                         IsEnabled="{x:Bind OverLimitVM.IsTobaccoReason, Mode=OneWay}"
+                         Text="{Binding TobaccoExplanation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+
+                <controls:CustomCalendarDatePicker  x:Uid="date"
+                                                    Visibility="{Binding HideTobaccoExplanation, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+                                                    FontSize="11"
+                                                    Width="163"
+                                                    SelectedDate="{x:Bind OverLimitVM.TobaccoDate ,Mode=TwoWay}"
+                                                    Margin="0,10,0,10"
+                                                    HorizontalAlignment="Left" />
+
+                <TextBox x:Uid="location"
+                         Height="60"
+                         Visibility="{Binding HideTobaccoExplanation, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+                         Margin="0,10,0,10"
+                         Style="{StaticResource TextBox}"
+                         Text="{Binding TobaccoLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"
+                        Margin="0,0,10,0">
+
+                <TextBlock x:Uid="gasoline"
+                           FontSize="11"
+                           Margin="0,10"
+                           FontFamily="Segoe WP Semibold"
+                           Foreground="{StaticResource LabelTextForegroundColor}" />
+
+                <ComboBox x:Name="gasoline"
+                          x:Uid="cbReason"
+                          BorderBrush="{StaticResource LabelTextForegroundColor}"
+                          BorderThickness="1"
+                          IsEnabled="{x:Bind OverLimitVM.IsGasReason, Mode=OneWay}"
+                          ItemsSource="{x:Bind OverLimitVM.GasolineReasons, Mode=OneWay, Converter={StaticResource NothingConverter}}"
+                          DisplayMemberPath="Reason"
+                          Style="{StaticResource ComboBox}"
+                          SelectedValuePath="Reason"
+                          SelectedItem="{Binding GasReason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                          FontSize="11"
+                          Foreground="{StaticResource LabelTextForegroundColor}"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch">
+                </ComboBox>
+
+                <TextBox x:Uid="explanation"
+                         Visibility="{Binding ShowGasExplanation, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+                         Margin="0,10"
+                         Height="60"
+                         Style="{StaticResource TextBox}"
+                         IsEnabled="{x:Bind OverLimitVM.IsGasReason, Mode=OneWay}"
+                         Text="{Binding GasolineExplanation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <controls:CustomCalendarDatePicker x:Uid="date"
+                                                   Margin="0,10"
+                                                   Width="163"
+                                                   FontSize="11"
+                                                   SelectedDate="{x:Bind OverLimitVM.GasDate ,Mode=OneWay}"
+                                                   Visibility="{Binding HideGasExplanation, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+                                                   HorizontalAlignment="Left" />
+
+
+
+                <TextBox x:Uid="location"
+                         Margin="0,10,0,10"
+                         Visibility="{Binding HideGasExplanation, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+                         Style="{StaticResource TextBox}"
+                         Text="{Binding GasLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+
+                <TextBlock x:Uid="propane"
+                           FontSize="11"
+                           Margin="0,10"
+                           FontFamily="Segoe WP Semibold"
+                           Foreground="{StaticResource LabelTextForegroundColor}" />
+
+                <ComboBox x:Name="propane"
+                          x:Uid="cbReason"
+                          BorderBrush="{StaticResource LabelTextForegroundColor}"
+                          BorderThickness="1"
+                          IsEnabled="{x:Bind OverLimitVM.IsPropaneReason, Mode=OneWay}"
+                          ItemsSource="{x:Bind OverLimitVM.PropaneReasons, Mode=OneWay, Converter={StaticResource NothingConverter}}"
+                          DisplayMemberPath="Reason"
+                          Style="{StaticResource ComboBox}"
+                          SelectedValuePath="Reason"
+                          SelectedItem="{Binding PropaneReason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NothingConverter}}"
+                          FontSize="11"
+                          Foreground="{StaticResource LabelTextForegroundColor}"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch">
+                </ComboBox>
+
+                <TextBox x:Uid="explanation"
+                         Visibility="{Binding ShowPropaneExplanation, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+                         Margin="0,10"
+                         Height="60"
+                         Style="{StaticResource TextBox}"
+                         IsEnabled="{x:Bind OverLimitVM.IsPropaneReason, Mode=OneWay}"
+                         Text="{Binding PropaneExplanation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <controls:CustomCalendarDatePicker x:Uid="date"
+                                                   FontSize="11"
+                                                   Width="163"
+                                                   SelectedDate="{x:Bind OverLimitVM.PropaneDate ,Mode=OneWay}"
+                                                   Visibility="{Binding HidePropaneExplanation, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+                                                   HorizontalAlignment="Left" />
+
+                <TextBox x:Uid="location"
+                         Grid.Column="1"
+                         Margin="0,10"
+                         Visibility="{Binding HidePropaneExplanation, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+                         Style="{StaticResource TextBox}"
+                         Text="{Binding PropaneLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2"
+              Padding="0,0,0,10">
+            <toolKitControls:DataGrid ItemsSource="{Binding OverLimitDetails}"
+                                      Background="{StaticResource BackgroundColor1Light}"
+                                      HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                                      HeaderForeground="{StaticResource HeaderForegroundColor}"
+                                      RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                                      RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                                      x:Name="DataGrid">
+                <toolKitControls:DataGrid.Columns>
+                    <toolKitControls:DataGridTextColumn Width="52*"
+                                                        FontSize="11"
+                                                        Binding="{Binding Type}"
+                                                        TextAlignment="Left"
+                                                        CanSort="False"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtType"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn Width="80*"
+                                                        FontSize="11"
+                                                        Binding="{Binding Product}"
+                                                        TextAlignment="Left"
+                                                        CanSort="False"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtProduct"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn Width="45*"
+                                                        FontSize="11"
+                                                        Binding="{Binding Quantity}"
+                                                        TextAlignment="Left"
+                                                        CanSort="False"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtQuantity"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn Width="59*"
+                                                        FontSize="11"
+                                                        Binding="{Binding RegularPrice}"
+                                                        TextAlignment="Left"
+                                                        CanSort="False"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtbRegularPrice"
+                                       TextWrapping="WrapWholeWords"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn Width="68*"
+                                                        FontSize="11"
+                                                        Binding="{Binding TaxFreePrice}"
+                                                        TextAlignment="Left"
+                                                        CanSort="False"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtbTaxFreePrice"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn Width="45*"
+                                                        FontSize="11"
+                                                        Binding="{Binding ExemptedTax}"
+                                                        TextAlignment="Left"
+                                                        CanSort="False"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtbExemptedTax"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn Width="64*"
+                                                        FontSize="11"
+                                                        Binding="{Binding QuotaUsed}"
+                                                        TextAlignment="Left"
+                                                        CanSort="False"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtbQuotaUsed"
+                                       TextWrapping="WrapWholeWords"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                    <toolKitControls:DataGridTextColumn Width="64*"
+                                                        FontSize="11"
+                                                        Binding="{Binding QuotaLimit}"
+                                                        TextAlignment="Left"
+                                                        CanSort="False"
+                                                        Foreground="{StaticResource LabelTextForegroundColor}"
+                                                        Style="{StaticResource DisabledTextBoxStyle}">
+                        <toolKitControls:DataGridTextColumn.Header>
+                            <TextBlock x:Uid="txtbQuotaLimit"
+                                       TextWrapping="WrapWholeWords"
+                                       Style="{StaticResource DataGridHeader}" />
+                        </toolKitControls:DataGridTextColumn.Header>
+                    </toolKitControls:DataGridTextColumn>
+                </toolKitControls:DataGrid.Columns>
+            </toolKitControls:DataGrid>
+        </Grid>
+
+        <controls:GenericButton Grid.Column="3"
+                                BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                x:Uid="ok"
+                                Grid.Row="3"
+                                HorizontalAlignment="Right"
+                                Command="{x:Bind OverLimitVM.CompleteOverLimitCommand, Mode=OneWay}"
+                                Style="{StaticResource GenericButtonStyle}" />
+
+    </Grid>
+</Page>
+

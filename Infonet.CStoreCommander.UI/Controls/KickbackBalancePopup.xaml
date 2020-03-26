@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="Infonet.CStoreCommander.UI.Controls.KickbackBalancePopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Infonet.CStoreCommander.UI.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:customControl="using:MyToolkit.Extended.Controls"
+             xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+             xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+             xmlns:triggers="using:WinRT.Triggers"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converter:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid Loaded="{x:Bind GridLoaded, Mode=OneWay}">
+
+        <Border Grid.RowSpan="2"
+                Opacity="0.8"
+                Background="{x:Bind BackgroundOverlay, Mode=OneWay}" />
+
+        <!--#region  Main Popup-->
+        <Grid VerticalAlignment="Top"
+              Margin="0,75,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1"
+                  Background="{StaticResource BackgroundColor1Light}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--#region Heading with close button-->
+                <local:SmallPopupHeader x:Name="TitleText"
+                                        x:Uid="kickbackPopup"
+                                        CancelCommand="{x:Bind KickbackVM.CloseKickbackBalancePopupCommand, Mode=OneWay}" />
+                <!--#endregion-->
+
+                <Grid Grid.Row="1"
+                      Margin="0"
+                      Width="500"
+                      Background="{StaticResource BackgroundColor1Light}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--#region Description if any-->
+
+                    <Grid Padding="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Uid="kickBackCardNumber"
+                                   Margin="0,0,15,0" />
+
+                        <customControl:CustomTextBox Text="{Binding CardNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     HorizontalAlignment="Stretch"
+                                                     NumericKeyType="None"
+                                                     x:Name="pbText"
+                                                     Grid.Column="1"
+                                                     FontSize="16"
+                                                     TabIndex="-50"
+                                                     Style="{StaticResource TextBox}"
+                                                     Margin="0,-5,0,0">
+
+                            <triggers:Interactions.Triggers>
+                                <triggers:EventTrigger EventName="KeyUp">
+                                    <triggers:InvokeCommandAction Command="{x:Bind KickbackVM.KickbackBalanceEnterCommand, Mode=OneWay}"
+                                                                  PassEventArgsToCommand="True" />
+                                </triggers:EventTrigger>
+                            </triggers:Interactions.Triggers>
+
+                        </customControl:CustomTextBox>
+                    </Grid>
+
+                    <TextBlock Margin="0,0,0,15"
+                               Padding="20,0,5,0"
+                               Visibility="{x:Bind KickbackVM.KickBackBalance, Mode=OneWay, Converter={StaticResource NullToVisibilityConverter}}"
+                               Grid.Row="1">
+                            <Run x:Uid="TotalPointAvailable" />
+                            <Run Text="{x:Bind KickbackVM.KickBackBalance, Mode=OneWay}"
+                                 FontSize="16" />
+                    </TextBlock>
+
+                    <!--#endregion-->
+
+                    <StackPanel Grid.Row="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+
+                        <!--#region Ok and close buttons-->
+                        <ControlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="20,15,10,20"
+                                                  x:Uid="CheckBalance"
+                                                  Command="{x:Bind KickbackVM.GetKickbackBalanceCommand, Mode=OneWay}"
+                                                  Width="140" />
+
+                        <ControlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="0,15,10,20"
+                                                  x:Uid="print"
+                                                  IsEnabled="{x:Bind KickbackVM.IsPrintEnable, Mode=OneWay}"
+                                                  Command="{x:Bind KickbackVM.PrintCommand, Mode=OneWay}"
+                                                  Width="140" />
+
+                        <ControlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="0,15,20,20"
+                                                  x:Uid="cancel"
+                                                  Command="{x:Bind KickbackVM.CloseKickbackBalancePopupCommand, Mode=OneWay}"
+                                                  Width="140" />
+                        <!--#endregion-->
+
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>

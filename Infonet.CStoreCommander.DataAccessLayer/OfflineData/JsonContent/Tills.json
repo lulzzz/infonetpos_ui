@@ -1,0 +1,15 @@
+﻿{
+  "tills": [
+    {
+      "tillNumber": 1
+    }
+  ],
+  "shiftNumber": 2,
+  "cashFloat": 0,
+  "message": {
+    "message": "Forcing Till Number  1  because _ an incomplete sale was found for that till.~Forcing Till",
+    "messageType": 0
+  },
+  "shutDownPOS": false,
+  "forceTill": false
+}

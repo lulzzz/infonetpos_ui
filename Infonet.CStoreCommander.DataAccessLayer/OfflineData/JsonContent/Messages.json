@@ -1,0 +1,22 @@
+﻿[
+  {
+    "index": 0,
+    "caption": "Generic_Message",
+    "message": ""
+  },
+  {
+    "index": 2,
+    "caption": "Vendor\r\nDelivery",
+    "message": "Vendor Delivery"
+  },
+  {
+    "index": 3,
+    "caption": "Customer\r\nDidn't Pay",
+    "message": "CD"
+  },
+  {
+    "index": 4,
+    "caption": "Too many\r\nCustomers",
+    "message": "tc"
+  }
+]

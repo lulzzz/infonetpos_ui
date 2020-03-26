@@ -1,0 +1,179 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Sale.ReturnSaleItems"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Sale"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:toolKitControls="using:MyToolkit.Controls"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="TextBlock"
+                   x:Key="DataGridHeader">
+                <Setter Property="TextAlignment"
+                        Value="Left" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="Margin"
+                        Value="0" />
+                <Setter Property="FontFamily"
+                        Value="Segoe UI SemiBold" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource HeaderForegroundColor}" />
+            </Style>
+
+            <converters:AppendHashConverter x:Key="AppendHashConverter" />
+            <converters:NothingConverter x:Key="NothingConverter" />
+    </Page.Resources>
+
+    <Grid Padding="8,5,0,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:ViewHeading x:Uid="txtReturnItems" />
+
+
+        <StackPanel Grid.Row="1"
+                    Margin="0,10,0,14">
+            <TextBlock x:Uid="txtSaleNumber"
+                       Margin="0,0,0,5"
+                       Foreground="{StaticResource LabelTextForegroundColor}"
+                       FontSize="10" />
+            <TextBlock Text="{x:Bind ReturnSaleItemVM.SaleModel.SaleNumber, Mode=OneWay, Converter={StaticResource AppendHashConverter}}"
+                       Foreground="{StaticResource LabelTextForegroundColor}"
+                       FontSize="20" />
+        </StackPanel>
+
+        <!--#region Data Grid-->
+        <toolKitControls:DataGrid ItemsSource="{Binding SaleModel.SaleLines, Mode=OneWay}"
+                                  Grid.Row="2"
+                                  x:Name="dgSaleLineItems"
+                                  Background="{StaticResource BackgroundColor1Light}"
+                                  HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                                  HeaderForeground="{StaticResource HeaderForegroundColor}"
+                                  RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                                  RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                                  SelectedItem="{x:Bind ReturnSaleItemVM.SelectedSaleModel, Mode=TwoWay,Converter={StaticResource NothingConverter}}"
+                                  SelectionMode="Multiple">
+
+            <toolKitControls:DataGrid.Columns>
+                <toolKitControls:DataGridTextColumn Width="50*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding LineNumber}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtID"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="110*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding Code}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtStockCode"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="125*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding Description}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtbDescription"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="100*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding Quantity}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtbQuantity"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="70*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding Price}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtPrice"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="85*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding Discount}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtbDiscount"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="95*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding Amount}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtAmount"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+            </toolKitControls:DataGrid.Columns>
+
+        </toolKitControls:DataGrid>
+        <!--#endregion-->
+
+        <controlLib:GenericButton Grid.Row="3"
+                                  Margin="0,20,0,0"
+                                  x:Uid="btnReturn"
+                                  IsEnabled="{x:Bind ReturnSaleItemVM.IsReturnEnabled ,Mode=OneWay}"
+                                  Command="{x:Bind ReturnSaleItemVM.ReturnSaleItemsCommand, Mode=OneWay}"
+                                  CommandParameter="{x:Bind dgSaleLineItems.SelectedRows,Mode=OneWay}"
+                                  BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                  HorizontalAlignment="Right"
+                                  Width="140" />
+
+    </Grid>
+</Page>

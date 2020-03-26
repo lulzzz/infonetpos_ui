@@ -1,0 +1,362 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Infonet.CStoreCommander.UI.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:data="using:Infonet.CStoreCommander.UI.Model"
+             xmlns:ViewModel="using:Infonet.CStoreCommander.UI.ViewModel"
+             x:Class="Infonet.CStoreCommander.UI.Controls.PumpDataTemplate"
+             xmlns:triggers="using:WinRT.Triggers"
+             xmlns:trigger="using:Infonet.CStoreCommander.UI.Trigger"
+             xmlns:i="using:Microsoft.Xaml.Interactivity"
+             xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+             xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="SeparatorColor">#849093</SolidColorBrush>
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid x:Name="pumpItems"
+          CornerRadius="2"
+          BorderThickness="1">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <trigger:EqualsStateTrigger Value="{x:Bind PumpDetailModel.Status, Mode=OneWay}"
+                                                    EqualTo="STOPPED" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="pumpContainer.Background"
+                                Value="{StaticResource Red}" />
+                        <Setter Target="pumpNumber.Foreground"
+                                Value="{StaticResource LightWhite}" />
+                        <Setter Target="pumpImage.Source"
+                                Value="ms-appx:///Images/Pumps/pump_2.png" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <trigger:EqualsStateTrigger Value="{x:Bind PumpDetailModel.Status, Mode=OneWay}"
+                                                    EqualTo="CALLING" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="pumpContainer.Background"
+                                Value="{StaticResource Yellow}" />
+                        <Setter Target="pumpNumber.Foreground"
+                                Value="{StaticResource DarkGray}" />
+                        <Setter Target="pumpImage.Source"
+                                Value="ms-appx:///Images/Pumps/pump_3.png" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <trigger:EqualsStateTrigger Value="{x:Bind PumpDetailModel.Status, Mode=OneWay}"
+                                                    EqualTo="AUTHORIZED" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="pumpContainer.Background"
+                                Value="{StaticResource LightGreen}" />
+                        <Setter Target="pumpNumber.Foreground"
+                                Value="{StaticResource LightWhite}" />
+                        <Setter Target="pumpImage.Source"
+                                Value="ms-appx:///Images/Pumps/pump_2.png" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <trigger:EqualsStateTrigger Value="{x:Bind PumpDetailModel.Status, Mode=OneWay}"
+                                                    EqualTo="IDLE" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="pumpContainer.Background"
+                                Value="{StaticResource LightWhite}" />
+                        <Setter Target="pumpNumber.Foreground"
+                                Value="{StaticResource LightGray}" />
+                        <Setter Target="pumpImage.Source"
+                                Value="ms-appx:///Images/Pumps/Gas-station-512px.png" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <trigger:EqualsStateTrigger Value="{x:Bind PumpDetailModel.Status, Mode=OneWay}"
+                                                    EqualTo="INACTIVE" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="pumpContainer.Background"
+                                Value="{StaticResource LightWhite}" />
+                        <Setter Target="pumpNumber.Foreground"
+                                Value="{StaticResource Red}" />
+                        <Setter Target="pumpImage.Source"
+                                Value="ms-appx:///Images/Pumps/pump_5.png" />
+                        <Setter Target="pumpContainer.BorderBrush"
+                                Value="{StaticResource Red}" />
+                        <Setter Target="pumpContainer.BorderThickness"
+                                Value="2" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <trigger:EqualsStateTrigger Value="{x:Bind PumpDetailModel.Status, Mode=OneWay}"
+                                                    EqualTo="PUMPING" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="pumpContainer.Background"
+                                Value="{StaticResource LightGreen}" />
+                        <Setter Target="pumpNumber.Foreground"
+                                Value="{StaticResource LightWhite}" />
+                        <Setter Target="pumpImage.Source"
+                                Value="ms-appx:///Images/Pumps/pump_4.png" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <trigger:EqualsStateTrigger Value="{x:Bind HomeScreenVM.NumberOfPumpRows, Mode=OneWay}"
+                                                    EqualTo="1" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="control.Width"
+                                Value="108" />
+                        <Setter Target="cbStacked.Width"
+                                Value="108" />
+                        <Setter Target="currentStackImage.Width"
+                                Value="108" />
+                        <Setter Target="pumpContainer.Width"
+                                Value="108" />
+                        <Setter Target="currentStackImage.Source"
+                                Value="ms-appx:///Images/UtilityIcons/greenArrow_108.png" />
+                        <Setter Target="cbPumpOptions.Width"
+                                Value="108" />
+                        <Setter Target="pumpNumber.FontSize"
+                                Value="30" />
+                        <Setter Target="pumpStatus.FontSize"
+                                Value="10" />
+                        <Setter Target="pumpImage.Margin"
+                                Value="0,7,10,0" />
+                        <Setter Target="pumpNumber.Margin"
+                                Value="0,-4,0,0" />
+                        <Setter Target="pumpNumber.Padding"
+                                Value="4,6,0,0" />
+                        <Setter Target="pumpStatus.Padding"
+                                Value="4,0,0,3" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <trigger:EqualsStateTrigger Value="{x:Bind HomeScreenVM.NumberOfPumpRows, Mode=OneWay}"
+                                                    EqualTo="2" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="control.Width"
+                                Value="80" />
+                        <Setter Target="cbStacked.Width"
+                                Value="80" />
+                        <Setter Target="pumpContainer.Width"
+                                Value="80" />
+                        <Setter Target="cbPumpOptions.Width"
+                                Value="80" />
+                        <Setter Target="pumpNumber.FontSize"
+                                Value="30" />
+                        <Setter Target="pumpStatus.FontSize"
+                                Value="10" />
+                        <Setter Target="pumpImage.Margin"
+                                Value="0,7,10,0" />
+                        <Setter Target="pumpNumber.Margin"
+                                Value="0,-4,0,0" />
+                        <Setter Target="pumpNumber.Padding"
+                                Value="2,6,0,0" />
+                        <Setter Target="pumpStatus.Padding"
+                                Value="2,0,0,2" />
+                        <Setter Target="currentStackImage.Source"
+                                Value="ms-appx:///Images/UtilityIcons/greenArrow_80.png" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid VerticalAlignment="Top"
+              x:Name="pumpContainer"
+              HorizontalAlignment="Left"
+              Height="70"
+              Background="{StaticResource LightWhite}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="{x:Bind PumpDetailModel.PumpNumber, Mode=OneWay}"
+                           x:Name="pumpNumber"
+                           FontSize="30"
+                           FontFamily="Segoe UI Regular"
+                           VerticalAlignment="Top"
+                           Margin="0,-4,0,0"
+                           Padding="4,6,0,0"
+                           Foreground="{StaticResource LightGray}" />
+                <TextBlock Grid.Row="1"
+                           Text="{Binding PayPumpOrPrepay}"
+                           FontWeight="Normal"
+                           FontFamily="Segoe UI SemiBold"
+                           Foreground="{x:Bind pumpNumber.Foreground, Mode=OneWay}"
+                           Padding="4,0,0,0"
+                           FontSize="{x:Bind pumpStatus.FontSize, Mode=OneWay}" />
+                <TextBlock Grid.Row="2"
+                           x:Name="pumpStatus"
+                           Text="{x:Bind PumpDetailModel.PumpButtonCaption, Mode=OneWay}"
+                           FontWeight="Normal"
+                           FontFamily="Segoe UI SemiBold"
+                           Foreground="{x:Bind pumpNumber.Foreground, Mode=OneWay}"
+                           Padding="4,0,0,3"
+                           FontSize="10" />
+            </Grid>
+            <StackPanel HorizontalAlignment="Right"
+                        VerticalAlignment="Stretch"
+                        Grid.Column="1">
+                <Image x:Name="pumpImage"
+                       Stretch="Fill"
+                       Margin="0,7,10,0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Top"
+                       Height="22"
+                       Width="22" />
+            </StackPanel>
+            <i:Interaction.Behaviors>
+                <ic:EventTriggerBehavior EventName="Tapped">
+                    <ic:InvokeCommandAction Command="{x:Bind HomeScreenVM.AuthorizePumpCommand, Mode=OneWay}"
+                                            CommandParameter="{x:Bind PumpDetailModel.PumpNumber, Mode=OneWay}" />
+                </ic:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+        </Grid>
+
+        <!--#region Pump Details-->
+        <!--<Button x:Name="PumpDetails"
+                Width="108"
+                Padding="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Top"
+                Background="{StaticResource LightWhite}"
+                Style="{StaticResource ButtonWithNoBorder}">
+            <Button.Flyout>
+                <Flyout local:PumpDataTemplate.ItemsSource="{Binding PumpOptions}">
+                    <local:PumpDataTemplate.ItemTemplate>
+                        <DataTemplate>
+                            <local:PumpMenu Text="{Binding}"
+                                            PumpInteractionCommand="{Binding DataContext.PumpInteractionCommand,ElementName=pumpItems, Mode=OneWay}" />
+                        </DataTemplate>
+                    </local:PumpDataTemplate.ItemTemplate>
+                </Flyout>
+            </Button.Flyout>-->
+
+
+        <ComboBox Margin="0"
+                  x:Name="cbPumpOptions"
+                  Width="108"
+                  Style="{StaticResource PumpOptions}"
+                  ItemsSource="{Binding PumpOptions}"
+                  SelectedIndex="{Binding SelectedPumpOptionIndex, Mode=TwoWay}"
+                  Background="Transparent"
+                  BorderBrush="{x:Null}"
+                  BorderThickness="0"
+                  Visibility="{x:Bind PumpDetailModel.IsPumpOptionCBVisible,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
+            <i:Interaction.Behaviors>
+                <ic:EventTriggerBehavior EventName="SelectionChanged">
+                    <ic:InvokeCommandAction Command="{x:Bind PumpInteractionCommand, Mode=OneWay}"
+                                            CommandParameter="{Binding}" />
+                </ic:EventTriggerBehavior>
+
+                <ic:EventTriggerBehavior EventName="Tapped">
+                    <ic:InvokeCommandAction Command="{x:Bind HomeScreenVM.AuthorizePumpCommand, Mode=OneWay}"
+                                            CommandParameter="{x:Bind PumpDetailModel.PumpNumber, Mode=OneWay}" />
+                </ic:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+
+        </ComboBox>
+
+
+        <!--</Button>-->
+        <!--#endregion-->
+
+        <Button Background="{x:Bind PumpDetailModel.CriticalLevelColor, Mode=OneWay}"
+                x:Name="control"
+                Height="40"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                Grid.Row="1"
+                Padding="0"
+                Foreground="{StaticResource LightBlack}"
+                Command="{x:Bind AddBasketCommand, Mode=OneWay}"
+                CommandParameter="{x:Bind PumpDetailModel.PumpNumber, Mode=OneWay}"
+                Margin="0,1,0,0">
+            <Grid HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
+                <TextBlock Text="{x:Bind PumpDetailModel.BasketButtonCaption, Mode=OneWay}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+
+                <Image Stretch="Fill"
+                       Visibility="{x:Bind PumpDetailModel.EnableStackBasketBotton, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                       x:Name="currentStackImage"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch" />
+            </Grid>
+        </Button>
+
+        <!--<TextBlock Width="108"
+                   Grid.Row="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="{StaticResource LightBlack}"
+                   Text="{Binding CriticalLevelContent}" />-->
+
+        <ComboBox Padding="0"
+                  x:Name="cbStacked"
+                  
+                  Style="{StaticResource Stacked}"
+                  SelectedIndex="{x:Bind PumpDetailModel.SelectedCurrentStackIndex, Mode=TwoWay}"
+                  Grid.Row="1"
+                  Margin="0,1,0,0"
+                  Visibility="{x:Bind PumpDetailModel.EnableStackBasketBotton, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                  ItemsSource="{x:Bind PumpDetailModel.Stacked, Mode=OneWay}"
+                  Background="Transparent"
+                  BorderBrush="{x:Null}"
+                  BorderThickness="0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Stretch">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Heading}"
+                                   HorizontalAlignment="Center"
+                                   FontWeight="SemiBold"
+                                   FontSize="11" />
+                        <TextBlock Text="{Binding Content}"
+                                   HorizontalAlignment="Center"
+                                   FontSize="16" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+            <i:Interaction.Behaviors>
+                <ic:EventTriggerBehavior EventName="SelectionChanged">
+                    <ic:InvokeCommandAction Command="{x:Bind HomeScreenVM.CurrentStackCommand, Mode=OneWay}"
+                                            CommandParameter="{Binding}" />
+                </ic:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+        </ComboBox>
+    </Grid>
+</UserControl>

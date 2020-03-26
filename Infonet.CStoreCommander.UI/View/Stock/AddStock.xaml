@@ -1,0 +1,199 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Stock.AddStock"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Stock"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:controls="using:MyToolkit.Extended.Controls"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:customControl="using:MyToolkit.Extended.Controls"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:triggers="using:WinRT.Triggers"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:Model="using:Infonet.CStoreCommander.UI.Model.Stock"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Resources/CheckBoxStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+            <Style TargetType="GridViewItem">
+                <Setter Property="FontFamily"
+                        Value="{ThemeResource ContentControlThemeFontFamily}" />
+                <Setter Property="FontSize"
+                        Value="{ThemeResource ControlContentThemeFontSize}" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="TabNavigation"
+                        Value="Local" />
+                <Setter Property="IsHoldingEnabled"
+                        Value="True" />
+                <Setter Property="Margin"
+                        Value="-2,-12,33,0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewItem">
+                            <ContentPresenter />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="TextBox"
+                   BasedOn="{StaticResource TextBox}">
+                <Setter Property="Height"
+                        Value="36" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Margin"
+                        Value="0,13,0,0" />
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource BackgroundColor1Light}" />
+            </Style>
+
+            <Style TargetType="PasswordBox"
+                   BasedOn="{StaticResource PasswordBox}">
+                <Setter Property="Height"
+                        Value="36" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Margin"
+                        Value="0,13,0,0" />
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource BackgroundColor1Light}" />
+                <Setter Property="PasswordRevealMode"
+                        Value="Visible" />
+                <Setter Property="Width"
+                        Value="180" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Left" />
+            </Style>
+
+            <Style TargetType="customControl:CustomTextBox"
+                   BasedOn="{StaticResource TextBox}">
+                <Setter Property="Height"
+                        Value="36" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Margin"
+                        Value="0,13,0,0" />
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource BackgroundColor1Light}" />
+
+                <Setter Property="Width"
+                        Value="180" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Left" />
+            </Style>
+
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize"
+                        Value="11" />
+                <Setter Property="Margin"
+                        Value="0,13,0,0" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource LabelTextForegroundColor}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Padding="8,0,0,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--#region Heading-->
+        <control:ViewHeading x:Uid="txtAddStock"
+                             BackCommand="{x:Bind AddStockScreenVM.BackCommand , Mode=OneWay}" />
+        <!--#endregion-->
+
+        <StackPanel Grid.Row="1"
+                    Padding="20,0,20,38"
+                    Background="{StaticResource BackgroundColor1Light}">
+
+            <TextBlock x:Uid="txtbCode" />
+            <customControl:CustomTextBox Text="{Binding StockCode,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         IsEnabled="{x:Bind AddStockScreenVM.IsNotReceivedFromAddSale, Mode=OneWay}"
+                                         HorizontalAlignment="Left"
+                                         x:Name="txtStockCode"
+                                         MaxLength="16">
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="GotFocus">
+                        <ic:InvokeCommandAction Command="{x:Bind AddStockScreenVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </customControl:CustomTextBox>
+
+            <TextBlock x:Uid="txtbDescription" />
+
+            <customControl:CustomTextBox Text="{Binding Description,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         HorizontalAlignment="Left"
+                                         x:Name="txtDescription"
+                                         MaxLength="25">
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="GotFocus">
+                        <ic:InvokeCommandAction Command="{x:Bind AddStockScreenVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </customControl:CustomTextBox>
+
+
+            <TextBlock x:Uid="txtbRegularPrice" />
+
+            <customControl:CustomTextBox Text="{Binding RegularPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         NumericKeyType="Amount"
+                                         InputScope="Number"
+                                         HorizontalAlignment="Left"
+                                         x:Name="txtRegularPrice"
+                                         MaxLength="10">
+                <triggers:Interactions.Triggers>
+                    <triggers:EventTrigger EventName="KeyUp">
+                        <triggers:InvokeCommandAction Command="{x:Bind AddStockScreenVM.RegularPriceCompletedCommand, Mode=OneWay}"
+                                                      PassEventArgsToCommand="True" />
+                    </triggers:EventTrigger>
+                </triggers:Interactions.Triggers>
+            </customControl:CustomTextBox>
+
+            <GridView ItemsSource="{x:Bind AddStockScreenVM.TaxCodes}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                      Padding="0,23,0,0"
+                      ScrollViewer.HorizontalScrollMode="Auto">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="Model:TaxCodes">
+                        <CheckBox Content="{x:Bind TaxCode, Mode=OneWay}"
+                                  IsChecked="{x:Bind IsChecked, Mode=TwoWay}" />
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VariableSizedWrapGrid VerticalAlignment="Top"
+                                               MaximumRowsOrColumns="2"
+                                               Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+
+        </StackPanel>
+
+
+        <ControlLib:GenericButton x:Uid="btnSave"
+                                  x:Name="btnSave"
+                                  Grid.Row="2"
+                                  IsEnabled="{x:Bind AddStockScreenVM.IsAddButtonEnabled, Mode=OneWay}"
+                                  Margin="0,25,0,0"
+                                  Command="{x:Bind AddStockScreenVM.AddStockCommand, Mode=OneWay}"
+                                  BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                  Width="140"
+                                  HorizontalAlignment="Right" />
+    </Grid>
+</Page>

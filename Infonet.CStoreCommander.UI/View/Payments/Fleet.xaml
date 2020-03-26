@@ -1,0 +1,70 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Payments.Fleet"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Payments"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:MyToolkit.Extended.Controls"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+
+    <Grid Loaded="GridLoaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Padding="20,20,20,0">
+
+            <TextBlock Text="{x:Bind FleetVM.Heading, Mode=OneWay}"
+                       HorizontalAlignment="Left"
+                       FontSize="16"
+                       FontFamily="Segoe UI Semibold"
+                       Foreground="{StaticResource LabelTextForegroundColor}"
+                       Margin="0,0,0,15" />
+
+            <controls:CustomTextBox Width="364"
+                                    x:Name="txtCardNumber"
+                                    x:Uid="txtCardNumber"
+                                    Margin="0,0,0,15"
+                                    NumericKeyType="Card"
+                                    InputScope="Number"
+                                    TabIndex="-1"
+                                    KeyUp="{x:Bind CardNumberKeyUp, Mode=OneWay}"
+                                    HorizontalAlignment="Left"
+                                    Style="{StaticResource TextBox}"
+                                    Text="{Binding CardNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+
+            <controls:CustomTextBox Width="364"
+                                    x:Uid="txtAmountFleet"
+                                    x:Name="txtAmountFleet"
+                                    NumericKeyType="Amount"
+                                    InputScope="Number"
+                                    Text="{Binding Amount,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    HorizontalAlignment="Left"
+                                    Style="{StaticResource TextBox}">
+                <triggers:Interactions.Triggers>
+                    <triggers:EventTrigger EventName="KeyUp">
+                        <triggers:InvokeCommandAction Command="{x:Bind FleetVM.EnterPressedOnAmountCommand, Mode=OneWay}"
+                                                      PassEventArgsToCommand="True" />
+                    </triggers:EventTrigger>
+                </triggers:Interactions.Triggers>
+            </controls:CustomTextBox>
+
+
+        </StackPanel>
+
+        <Grid Background="{StaticResource BackgroundColor2}"
+              Padding="0,10,0,0"
+              Grid.Row="1">
+            <ControlLib:GenericButton x:Uid="acceptPayment"
+                                      HorizontalAlignment="Right"
+                                      IsEnabled="{x:Bind FleetVM.IsAcceptButtonEnabled, Mode=OneWay}"
+                                      Command="{x:Bind FleetVM.AcceptPaymentCommand,Mode =OneWay}"
+                                      Width="180"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}" />
+        </Grid>
+    </Grid>
+</Page>

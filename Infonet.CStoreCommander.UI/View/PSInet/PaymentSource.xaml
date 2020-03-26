@@ -1,0 +1,275 @@
+﻿<Page
+    x:Class="Infonet.CStoreCommander.UI.View.PSInet.PaymentSource"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Infonet.CStoreCommander.UI.View.PSInet"
+    xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+    xmlns:triggers="using:Infonet.CStoreCommander.UI.Trigger"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Resources/TabStyleButton.xaml" />
+    </Page.Resources>
+    <Grid Padding="8,0,0,0">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind PYSVM.SelectedTab, Mode=TwoWay}"
+                                                     EqualTo="EP" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnEP.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnEP.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+                        
+                        <Setter Target="btnRefund.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        
+                        <Setter Target="btnPSIFile.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnRefund.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        
+                        <Setter Target="btnPSIFile.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        
+                        
+                        <!--<Setter Target="btnPS.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPF.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPV.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />-->
+                        
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind PYSVM.SelectedTab, Mode=TwoWay}"
+                                                     EqualTo="REFUND" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnRefund.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnRefund.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnEP.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        
+                        <Setter Target="btnPSIFile.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        <Setter Target="btnEP.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        
+                        <Setter Target="btnPSIFile.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!--<VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind PYSVM.SelectedTab, Mode=OneWay}"
+                                                     EqualTo="PF" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnPF.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnPF.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnEP.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPS.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPV.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPSIFile.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        <Setter Target="btnEP.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPS.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPV.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPSIFile.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                    </VisualState.Setters>
+                </VisualState>-->
+
+                <!--<VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind PYSVM.SelectedTab, Mode=OneWay}"
+                                                     EqualTo="PV" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnPV.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnPV.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnEP.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPS.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPF.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPSIFile.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        <Setter Target="btnEP.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPS.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPF.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPSIFile.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                    </VisualState.Setters>
+                </VisualState>-->
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind PYSVM.SelectedTab, Mode=TwoWay}"
+                                                     EqualTo="DOWNLOAD" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnPSIFile.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnPSIFile.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnEP.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnRefund.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <!--<Setter Target="btnPS.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPF.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPV.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />-->
+
+                        <Setter Target="btnEP.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnRefund.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <!--<Setter Target="btnPS.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPF.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPV.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />-->
+                    </VisualState.Setters>
+                </VisualState>
+                
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+
+        <control:ViewHeading x:Uid="txtPSInet" />
+        <Canvas x:Name="PrintCanvas" Opacity="0"/> 
+        <Grid Grid.Row="1"
+              Margin="0,0,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--#region  EP-->
+            <Button x:Name="btnEP"
+                    Background="{StaticResource HeaderBackgroundColor}"
+                    Style="{StaticResource TabStyle}"
+                    Foreground="{StaticResource HeaderForegroundColor}"
+                    MinWidth="120"
+                    MaxWidth="150"
+                    Margin="0,0,5,0"
+                    Command="{x:Bind PYSVM.EPTabPressedCommand, Mode=OneWay}">
+                <TextBlock x:Uid="btnEP"
+                           TextWrapping="Wrap" />
+            </Button>
+            <!--#endregion-->
+
+            <!--#region Refund-->
+            <Button x:Name="btnRefund"
+                    Background="{StaticResource BackgroundColor1Light}"
+                    Grid.Column="1"
+                    Margin="0,0,5,0"
+                    MinWidth="120"
+                    MaxWidth="150"
+                    Height="{Binding ActualHeight, ElementName=btnServicePump}"
+                    Foreground="{StaticResource LabelTextForegroundColor}"
+                    Command="{x:Bind PYSVM.RefundTabPressedCommand, Mode=OneWay}"
+                    Style="{StaticResource TabStyle}">
+                <TextBlock x:Uid="btnRefund"
+                           TextWrapping="Wrap" />
+            </Button>
+            <!--#endregion-->
+
+            <!--#region PF-->
+            <!--<Button x:Name="btnPF"
+                    Foreground="{StaticResource LabelTextForegroundColor}"
+                    Margin="0,0,5,0"
+                    MinWidth="80"
+                    MaxWidth="140"
+                    Height="{Binding ActualHeight, ElementName=btnServicePump}"
+                    Style="{StaticResource TabStyle}"
+                    Background="{StaticResource BackgroundColor1Light}"
+                    Command="{x:Bind PYSVM.PFTabPressedCommand, Mode=OneWay}"
+                    Grid.Column="2">
+                <TextBlock x:Uid="btnPF"
+                           TextWrapping="Wrap" />
+            </Button>-->
+            <!--#endregion-->
+
+            <!--#region PV-->
+            <!--<Button x:Name="btnPV"
+                    Foreground="{StaticResource LabelTextForegroundColor}"
+                    Margin="0,0,5,0"
+                    MinWidth="80"
+                    MaxWidth="200"
+                    Height="{Binding ActualHeight, ElementName=btnServicePump}"
+                    Style="{StaticResource TabStyle}"
+                    Command="{x:Bind PYSVM.PVTabPressedCommand, Mode=OneWay}"
+                    Background="{StaticResource BackgroundColor1Light}"
+                    Grid.Column="3">
+                <TextBlock x:Uid="btnPV"
+                           TextWrapping="Wrap" />
+            </Button>-->
+            <!--#endregion-->
+            <!--#region Download new file-->
+            <Button x:Name="btnPSIFile"
+                    Foreground="{StaticResource LabelTextForegroundColor}"
+                    Margin="0,0,5,0"
+                    MinWidth="80"
+                    MaxWidth="200"
+                    Height="{Binding ActualHeight, ElementName=btnServicePump}"
+                    Style="{StaticResource TabStyle}"
+                    Command="{x:Bind PYSVM.FileDownloadTabPressedCommand, Mode=OneWay}"
+                    Background="{StaticResource BackgroundColor1Light}"
+                    Grid.Column="4">
+                <TextBlock x:Uid="btnPSIFile"
+                           TextWrapping="Wrap" />
+            </Button>
+            <!--#endregion-->
+            
+        </Grid>
+        <Frame x:Name="frmPmtSource"
+               Grid.Row="2"
+               Background="{StaticResource BackgroundColor1Light}" />
+    </Grid>
+</Page>

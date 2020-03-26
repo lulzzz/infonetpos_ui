@@ -1,0 +1,19 @@
+﻿ {
+   "tillNumber": 2,
+   "saleNumber": 34315,
+   "customer": null,
+   "saleLines": [
+     {
+       "lineNumber": 1,
+       "stockCode": "099999000443",
+       "description": "Gift Cert3",
+       "quantity": 2,
+       "price": 1,
+       "discountRate": 0,
+       "discountType": " ",
+       "amount": 2
+     }
+   ],
+   "totalAmount": "2.00",
+   "summary": ""
+}

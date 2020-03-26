@@ -1,0 +1,23 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Prepay.PrepayNumberPad"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Prepay"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Page.Resources>
+
+    <controls:NumberPad Visibility="{x:Bind PrepayVM.IsKeyPadVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                        IsAdditionEnabled="False"
+                        IsSubtractionEnabled="False"
+                        x:Uid="setAmount"
+                        IsDollarVisible="Visible"
+                        BackNavigation="{x:Bind PrepayVM.HideKeyPadCommand, Mode=OneWay}"
+                        CashButtonItemSource="{x:Bind PrepayVM.CashButtons, Mode=OneWay}"
+                        EnterTappedCommand="{x:Bind PrepayVM.SetAmountCommand, Mode=OneWay}" />
+</Page>

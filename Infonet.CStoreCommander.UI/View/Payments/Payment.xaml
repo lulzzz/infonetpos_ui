@@ -1,0 +1,151 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Payments.Payment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Payments"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:triggers="using:Infonet.CStoreCommander.UI.Trigger"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Resources/TabStyleButton.xaml" />
+    </Page.Resources>
+
+    <Grid Padding="8,0,0,0">
+        <VisualStateManager.VisualStateGroups>
+
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind PaymentVM.SelectedTab, Mode=OneWay}"
+                                                     EqualTo="AR" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnAR.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnAR.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnFleet.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPayouts.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        <Setter Target="btnFleet.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPayouts.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind PaymentVM.SelectedTab, Mode=OneWay}"
+                                                     EqualTo="Fleet" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnFleet.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnFleet.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnAR.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnPayouts.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        <Setter Target="btnAR.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnPayouts.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <triggers:EqualsStateTrigger Value="{x:Bind PaymentVM.SelectedTab, Mode=OneWay}"
+                                                     EqualTo="Payouts" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="btnPayouts.Background"
+                                Value="{StaticResource HeaderBackgroundColor}" />
+                        <Setter Target="btnPayouts.Foreground"
+                                Value="{StaticResource HeaderForegroundColor}" />
+
+                        <Setter Target="btnFleet.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+                        <Setter Target="btnAR.Background"
+                                Value="{StaticResource BackgroundColor1Light}" />
+
+                        <Setter Target="btnFleet.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                        <Setter Target="btnAR.Foreground"
+                                Value="{StaticResource LabelTextForegroundColor}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--#region Heading-->
+        <control:ViewHeading x:Uid="payments" />
+        <!--#endregion-->
+
+        <Grid x:Name="gdTabs"
+              Grid.Row="1"
+              Margin="0,0,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--#region  AR-->
+            <Button x:Uid="btnAR"
+                    x:Name="btnAR"
+                    IsEnabled="{x:Bind PaymentVM.IsARPaymentEnable, Mode=OneWay}"
+                    Background="{StaticResource HeaderBackgroundColor}"
+                    Style="{StaticResource TabStyle}"
+                    Padding="5,0,5,0"
+                    Command="{x:Bind PaymentVM.ARTabSelected, Mode=OneWay}"
+                    Foreground="{StaticResource HeaderForegroundColor}"
+                    Margin="0,0,5,0" />
+            <!--#endregion-->
+
+            <!--#region Fleet-->
+            <Button x:Uid="btnFleet"
+                    x:Name="btnFleet"
+                    Background="{StaticResource BackgroundColor1Light}"
+                    Grid.Column="1"
+                    Padding="5,0,5,0"
+                    TabIndex="5"
+                    Margin="0,0,5,0"
+                    Command="{x:Bind PaymentVM.FleetTabSelected, Mode=OneWay}"
+                    Foreground="{StaticResource LabelTextForegroundColor}"
+                    Style="{StaticResource TabStyle}" />
+            <!--#endregion-->
+
+            <!--#region Payouts-->
+            <Button x:Uid="btnPayouts"
+                    x:Name="btnPayouts"
+                    Padding="5,0,5,0"
+                    IsEnabled="{x:Bind PaymentVM.IsPayoutEnable, Mode=OneWay}"
+                    Foreground="{StaticResource BackgroundColor1Light}"
+                    Margin="0,0,5,0"
+                    Command="{x:Bind PaymentVM.PayoutsTabSelected, Mode=OneWay}"
+                    Style="{StaticResource TabStyle}"
+                    Background="{StaticResource LabelTextForegroundColor}"
+                    Grid.Column="2" />
+            <!--#endregion-->
+        </Grid>
+
+        <Frame x:Name="frmPayment"
+               Grid.Row="2"
+               Background="{StaticResource BackgroundColor1Light}" />
+    </Grid>
+</Page>

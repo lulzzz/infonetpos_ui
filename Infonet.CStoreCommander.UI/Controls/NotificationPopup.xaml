@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Infonet.CStoreCommander.UI.Controls.NotificationPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Infonet.CStoreCommander.UI.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+        <Border Grid.RowSpan="2"
+                Opacity="0.8"
+                Background="{x:Bind BackgroundOverlay,Mode=OneWay}" />
+
+        <!--#region  Main Popup-->
+
+        <Grid HorizontalAlignment="Center"
+              Margin="0,75,0,0"
+              VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--#region Heading with close button-->
+            <local:SmallPopupHeader Text="{x:Bind VMBase.PopupService.Title, Mode=OneWay}"
+                                    x:Name="TitleText"
+                                    CancelCommand="{x:Bind VMBase.PopupService.CloseCommand, Mode=OneWay}" />
+            <!--#endregion-->
+
+            <StackPanel Grid.Row="1"
+                        Background="{StaticResource BackgroundColor2}">
+
+                <!--#region Description if any-->
+                <TextBlock Text="{x:Bind VMBase.PopupService.Message, Mode=OneWay}"
+                           HorizontalAlignment="Left"
+                           MinWidth="320"
+                           Padding="20,20,20,0"
+                           FontSize="16"
+                           Foreground="{StaticResource LabelTextForegroundColor}"
+                           TextWrapping="Wrap" />
+                <!--#endregion-->
+
+                <!--#region close buttons-->
+                <controlLib:GenericButton BottomBackGroundColor="{x:Bind ButtonBackgroundColor, Mode=OneWay}"
+                                          Command="{x:Bind VMBase.PopupService.OkCommand, Mode=OneWay}"
+                                          Width="140"
+                                          x:Name="OkButton"
+                                          HorizontalAlignment="Center"
+                                          Grid.Row="1"
+                                          Margin="0,20,0,20"
+                                          IsEnabled="{x:Bind VMBase.PopupService.IsOkButtonEnabled, Mode=OneWay}"
+                                          Content="{x:Bind VMBase.PopupService.Continue, Mode=OneWay}" />
+                <!--#endregion-->
+
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+
+    </Grid>
+
+</UserControl>

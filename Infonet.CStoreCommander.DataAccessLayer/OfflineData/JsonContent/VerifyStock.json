@@ -1,0 +1,29 @@
+﻿{
+  "quantityMessage": {
+    "message": "",
+    "messageType": 4
+  },
+  "regularPriceMessage": {
+    "message": null,
+    "messageType": 0
+  },
+  "canManuallyEnterProduct": true,
+  "manuallyEnterMessage": "Product 000011383406 cannot be manually entered.~Entry Not Allowed",
+  "addStockPage": {
+    "openAddStockPage": false,
+    "stockCode": "122344"
+  },
+  "restrictionPage": {
+    "openRestrictionPage": false,
+    "description": ""
+  },
+  "giftCertPage": {
+    "openGiftCertPage": false,
+    "stockCode": null,
+    "regularPrice": 0.0
+  },
+  "givexPage": {
+    "openGivexPage": false,
+    "stockCode": null
+  }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="BuildAll">
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\InfonetService\packages\MSBuildTasks.1.5.0.196\tools\MSBuild.Community.Tasks.dll" TaskName="NUnit"/>
+  <PropertyGroup>
+    <Build>$(MSBuildProjectDirectory)\Build</Build>
+    <ProjectFile>Infonet.CStoreCommander.UI\Infonet.CStoreCommander.UI.csproj</ProjectFile>
+	<SolutionFile>Infonet.CStoreCommander.UI.sln</SolutionFile>
+    <ProjectName>InfonetPOSUwpApp</ProjectName>
+	<TestSolution>Tests\Infonet.CStoreCommander.UI.UnitTest\Infonet.CStoreCommander.UI.UnitTest.csproj</TestSolution>
+	<TestNgResultsFile>$(Build)\unit-test-results.xml</TestNgResultsFile>	
+	<PowerShellExe>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellExe>
+  </PropertyGroup> 
+
+  <PropertyGroup>
+    <BuildAllDependsOn>Clean;Build;Deploy</BuildAllDependsOn>
+  </PropertyGroup>  
+  
+  <Target Name="BuildAll" DependsOnTargets="$(BuildAllDependsOn)"/>
+  
+  <Target Name="Clean"> 
+    <RemoveDir Directories="$(Build)"/>  
+    <MSBuild Projects="$(SolutionFile)" Targets="Clean"></MSBuild>  
+  </Target>
+  
+  <Target Name="Build"> 
+    <RemoveDir Directories="$(Build)"/>  
+    <MSBuild Projects="$(SolutionFile)" Properties="Configuration=Release;Platform=x86;OutputPath=$(Build);OutDir=$(Build)/"></MSBuild>  
+  </Target>
+  
+  <Target Name="Deploy"> 
+    <Exec Command="$(PowerShellExe) -ExecutionPolicy ByPass .\Build\Infonet.CStoreCommander.UI\AppPackages\Infonet.CStoreCommander.UI_*_Test\Add-AppDevPackage.ps1"/>  
+  </Target>
+  
+  <Target Name="ExecuteTestNg">
+    
+  </Target>
+  
+</Project>

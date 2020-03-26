@@ -1,0 +1,50 @@
+﻿[
+  {
+    "description": "5 Cent Bottle",
+    "imageUrl": "",
+    "product": "5 CentB",
+    "price": 0.05,
+    "defaultQuantity": 1.0,
+    "amount": 0.0
+  },
+  {
+    "description": "5 Cent Can",
+    "imageUrl": "",
+    "product": "5 CentC",
+    "price": 0.05,
+    "defaultQuantity": 1.0,
+    "amount": 0.0
+  },
+  {
+    "description": "20 Cent Bottle",
+    "imageUrl": "",
+    "product": "20 CentB",
+    "price": 0.2,
+    "defaultQuantity": 1.0,
+    "amount": 0.0
+  },
+  {
+    "description": "5 Gallon ",
+    "imageUrl": "",
+    "product": "5 Gal",
+    "price": 10.0,
+    "defaultQuantity": 1.0,
+    "amount": 0.0
+  },
+  {
+    "description": "testbotlle Bottle",
+    "imageUrl": "",
+    "product": "test",
+    "price": 2.0,
+    "defaultQuantity": 2.0,
+    "amount": 0.0
+  },
+  {
+    "description": " ",
+    "imageUrl": "",
+    "product": "testbottle",
+    "price": 10.0,
+    "defaultQuantity": 1.0,
+    "amount": 0.0
+  }
+]

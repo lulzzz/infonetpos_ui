@@ -1,0 +1,758 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A7B4F2A-C0C9-4FBF-A47E-D8C4BF3D0613}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infonet.CStoreCommander.DataAccessLayer</RootNamespace>
+    <AssemblyName>Infonet.CStoreCommander.DataAccessLayer</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath />
+    <SccProvider>
+    </SccProvider>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="OfflineData\JsonContent\ActiveShifts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\SuspendSale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\Tills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\LoginPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\Login.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\HotCategories.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\InitializeNewSale.Json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\AddCustomer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\Customers.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\SearchCustomers.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\SetCustomerForSale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\AddProduct.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\AllTaxes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\StockItems.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\ReasonList.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\VoidSale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\Policy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\HotProductPages.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\PasswordChange.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\Bottles.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\SwitchUser.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\SuspendedSales.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\UnsuspendSale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\SaleList.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\VerifyStock.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\AddStockToSale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\ReturnSale.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\GetSaleBySaleNumber.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\RetunSaleItems.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\GivexCardBalance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\GivexDeactivateCardBalance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\Logout.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\GetAllDepartments.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\GetAllTills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\SaleCountReport.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\FlashReport.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\CompleteCashDrop.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\CompleteCashDraw.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\GetAllTenders.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\GetCashButtons.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\GetCashDrawTypes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\ChangePrice.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\PriceCheck.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\Messages.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="OfflineData\JsonContent\SearchSaleList.json" />
+    <Content Include="OfflineData\JsonContent\StockCode.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\GetAllShifts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\TillAuditReport.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OfflineData\JsonContent\UpdateTenderForCashdrop.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContracts\Ackroo\CarwashContract.cs" />
+    <Compile Include="DataContracts\Cash\CashButtonContract.cs" />
+    <Compile Include="DataContracts\Cash\CompleteCashDropContract.cs" />
+    <Compile Include="DataContracts\Cash\OpenCashDrawerContract.cs" />
+    <Compile Include="DataContracts\Cash\TendersContract.cs" />
+    <Compile Include="DataContracts\Cash\UpdatedTenderGetContract.cs" />
+    <Compile Include="DataContracts\Cash\UpdateTenderPostContract.cs" />
+    <Compile Include="DataContracts\Checkout\AiteValidateContract.cs" />
+    <Compile Include="DataContracts\Checkout\CancelTendersContract.cs" />
+    <Compile Include="DataContracts\Checkout\CardSwipeContract.cs" />
+    <Compile Include="DataContracts\Checkout\CouponContract.cs" />
+    <Compile Include="DataContracts\Checkout\FNGTRContract.cs" />
+    <Compile Include="DataContracts\Checkout\GiftCertificateContract.cs" />
+    <Compile Include="DataContracts\Checkout\GivexPaymentContract.cs" />
+    <Compile Include="DataContracts\Checkout\OverLimitDetailsContract.cs" />
+    <Compile Include="DataContracts\Checkout\OverrideLimitDetailsContract.cs" />
+    <Compile Include="DataContracts\Checkout\PaymentByAccountContract.cs" />
+    <Compile Include="DataContracts\Checkout\PaymentByFleetContract.cs" />
+    <Compile Include="DataContracts\Checkout\CommonPaymentCompleteContract.cs" />
+    <Compile Include="DataContracts\Checkout\PaymentCompleteContract.cs" />
+    <Compile Include="DataContracts\Checkout\PaymentContract.cs" />
+    <Compile Include="DataContracts\Checkout\SaleSummaryContract.cs" />
+    <Compile Include="DataContracts\Checkout\SaleSummaryLineContract.cs" />
+    <Compile Include="DataContracts\Cash\CashDrawTypeContract.cs" />
+    <Compile Include="DataContracts\Cash\CompleteCashDrawContract.cs" />
+    <Compile Include="DataContracts\Checkout\SaveSignature.cs" />
+    <Compile Include="DataContracts\Checkout\SaveStoreCreditContract.cs" />
+    <Compile Include="DataContracts\Checkout\SiteValidateContract.cs" />
+    <Compile Include="DataContracts\Checkout\StoreCreditContract.cs" />
+    <Compile Include="DataContracts\Checkout\TaxExemptVerificationContract.cs" />
+    <Compile Include="DataContracts\Checkout\TenderContract.cs" />
+    <Compile Include="DataContracts\Checkout\TenderInformationContract.cs" />
+    <Compile Include="DataContracts\Checkout\ValidateQiteContract.cs" />
+    <Compile Include="DataContracts\Checkout\VendorCouponContract.cs" />
+    <Compile Include="DataContracts\Checkout\VerfifyByAccountContract.cs" />
+    <Compile Include="DataContracts\Checkout\VerifyByAccountGetContract.cs" />
+    <Compile Include="DataContracts\Common\ChangePasswordSuccessContract.cs" />
+    <Compile Include="DataContracts\Common\ErrorContract.cs" />
+    <Compile Include="DataContracts\Common\InternalServerErrorContract.cs" />
+    <Compile Include="DataContracts\Common\LineDisplayContract.cs" />
+    <Compile Include="DataContracts\Common\PolicyContract.cs" />
+    <Compile Include="DataContracts\Common\ReasonListContract.cs" />
+    <Compile Include="DataContracts\Common\SoundContract.cs" />
+    <Compile Include="DataContracts\Common\SuccessContract.cs" />
+    <Compile Include="DataContracts\Customer\CustomerCardContract.cs" />
+    <Compile Include="DataContracts\Customer\CustomerContract.cs" />
+    <Compile Include="DataContracts\Customer\SetCustomerForSaleContract.cs" />
+    <Compile Include="DataContracts\DipInput\DipInputContract.cs" />
+    <Compile Include="DataContracts\Discount\ClientGroupContract.cs" />
+    <Compile Include="DataContracts\FuelPrice\PriceIncrementDecrementContract.cs" />
+    <Compile Include="DataContracts\FuelPrice\PricesToDisplayContract.cs" />
+    <Compile Include="DataContracts\FuelPrice\SetGroupFuelPriceContract.cs" />
+    <Compile Include="DataContracts\FuelPrice\SetGroupPriceWithReport.cs" />
+    <Compile Include="DataContracts\FuelPump\AddFuelManuallyContract.cs" />
+    <Compile Include="DataContracts\FuelPump\ErrorWithCaptionContract.cs" />
+    <Compile Include="DataContracts\FuelPump\FuelPricesContract.cs" />
+    <Compile Include="DataContracts\FuelPump\FuelPumpContract.cs" />
+    <Compile Include="DataContracts\FuelPump\GroupFuelPricesPayLoadContract.cs" />
+    <Compile Include="DataContracts\FuelPump\PrepayContract.cs" />
+    <Compile Include="DataContracts\FuelPump\Propane.cs" />
+    <Compile Include="DataContracts\FuelPump\TierLevelContract.cs" />
+    <Compile Include="DataContracts\FuelPump\UncompleteContract.cs" />
+    <Compile Include="DataContracts\GiveX\GiveXBalanceContract.cs" />
+    <Compile Include="DataContracts\GiveX\GiveXCardContract.cs" />
+    <Compile Include="DataContracts\GiveX\GiveXReportContract.cs" />
+    <Compile Include="DataContracts\GiveX\StockCodeContract.cs" />
+    <Compile Include="DataContracts\Kickback\BalancePointContract.cs" />
+    <Compile Include="DataContracts\Kickback\KickBackBalance.cs" />
+    <Compile Include="DataContracts\Kickback\ValidateGasKingContract.cs" />
+    <Compile Include="DataContracts\Kickback\VerifyKickbackContract.cs" />
+    <Compile Include="DataContracts\Logout\LogoutContract.cs" />
+    <Compile Include="DataContracts\Logout\TillCloseContract.cs" />
+    <Compile Include="DataContracts\Message\MessageContract.cs" />
+    <Compile Include="DataContracts\PaymentSource\PSLogoContract.cs" />
+    <Compile Include="DataContracts\PaymentSource\PSProductContract.cs" />
+    <Compile Include="DataContracts\PaymentSource\PSProfileContract.cs" />
+    <Compile Include="DataContracts\PaymentSource\PSRefundContract.cs" />
+    <Compile Include="DataContracts\PaymentSource\PSTransactionContract.cs" />
+    <Compile Include="DataContracts\PaymentSource\PSVoucherContract.cs" />
+    <Compile Include="DataContracts\PaymentSource\PSVoucherInfoContract.cs" />
+    <Compile Include="DataContracts\Payment\ARCustomerCardContract.cs" />
+    <Compile Include="DataContracts\Payment\ARCustomerContract.cs" />
+    <Compile Include="DataContracts\Payment\ARPaymentContract.cs" />
+    <Compile Include="DataContracts\Payment\ExactChangeContract.cs" />
+    <Compile Include="DataContracts\Payment\FleetContract.cs" />
+    <Compile Include="DataContracts\Payment\PayByExactChangeContract.cs" />
+    <Compile Include="DataContracts\Payment\PaymentByFleetContract.cs" />
+    <Compile Include="DataContracts\Payout\CompletePayoutContract.cs" />
+    <Compile Include="DataContracts\Payout\VendorPayoutContract.cs" />
+    <Compile Include="DataContracts\Reports\DepartmentContract.cs" />
+    <Compile Include="DataContracts\Reports\FlashReportContract.cs" />
+    <Compile Include="DataContracts\Reports\ReportContract.cs" />
+    <Compile Include="DataContracts\Reports\ShiftContract.cs" />
+    <Compile Include="DataContracts\Reports\TillContract.cs" />
+    <Compile Include="DataContracts\Reprint\ReportNameContract.cs" />
+    <Compile Include="DataContracts\Reprint\ReprintReportSaleContract.cs" />
+    <Compile Include="DataContracts\Sale\AddStockToSaleContract.cs" />
+    <Compile Include="DataContracts\Sale\BottleContract.cs" />
+    <Compile Include="DataContracts\Sale\BottleReturnContract.cs" />
+    <Compile Include="DataContracts\Sale\ReturnSaleContract.cs" />
+    <Compile Include="DataContracts\Sale\ReturnSaleItemContract.cs" />
+    <Compile Include="DataContracts\Sale\SaleListContract.cs" />
+    <Compile Include="DataContracts\Sale\SuspendedSaleContract.cs" />
+    <Compile Include="DataContracts\Sale\TaxExemptionContract.cs" />
+    <Compile Include="DataContracts\Sale\UpdateSaleLineContract.cs" />
+    <Compile Include="DataContracts\Sale\VerifyStockContract.cs" />
+    <Compile Include="DataContracts\Sale\VoidSaleResponseContract.cs" />
+    <Compile Include="DataContracts\Sale\WriteOffContract.cs" />
+    <Compile Include="DataContracts\Sale\WriteOffPayload.cs" />
+    <Compile Include="DataContracts\Settings\Maintenance\ChangePasswordContract.cs" />
+    <Compile Include="DataContracts\Settings\Maintenance\CloseBatchContract.cs" />
+    <Compile Include="DataContracts\Stock\HotCategory\HotProductPageContract.cs" />
+    <Compile Include="DataContracts\Sale\SaleContract.cs" />
+    <Compile Include="DataContracts\Sale\SaleLineContract.cs" />
+    <Compile Include="DataContracts\Home\NewSale\TaxContract.cs" />
+    <Compile Include="DataContracts\Login\ActiveShiftsContract.cs" />
+    <Compile Include="DataContracts\Login\LoginContract.cs" />
+    <Compile Include="DataContracts\Stock\HotCategory\HotProductContract.cs" />
+    <Compile Include="DataContracts\Login\TillsContract.cs" />
+    <Compile Include="DataContracts\Login\LoginPolicyContract.cs" />
+    <Compile Include="DataContracts\Login\UserContract.cs" />
+    <Compile Include="DataContracts\Sale\VoidSaleContract.cs" />
+    <Compile Include="DataContracts\Stock\StockContract.cs" />
+    <Compile Include="DataContracts\Stock\StockPriceContract.cs" />
+    <Compile Include="DataContracts\Stock\TaxCodesContract.cs" />
+    <Compile Include="DataContracts\Stock\ChangePriceContract.cs" />
+    <Compile Include="DataContracts\Theme\ThemeContract.cs" />
+    <Compile Include="DataContracts\System\RegisterContract.cs" />
+    <Compile Include="HttpRestClient.cs" />
+    <Compile Include="IManager\IAckrooRestClient.cs" />
+    <Compile Include="IManager\ICarwashRestClient.cs" />
+    <Compile Include="IManager\ICashRestClient.cs" />
+    <Compile Include="IManager\ICheckoutRestClient.cs" />
+    <Compile Include="IManager\IDipInputRestClient.cs" />
+    <Compile Include="IManager\IFuelDiscountRestClient.cs" />
+    <Compile Include="IManager\IFuelPriceRestClient.cs" />
+    <Compile Include="IManager\IFuelPumpRestClient.cs" />
+    <Compile Include="IManager\IGiftCertificateRestClient.cs" />
+    <Compile Include="IManager\IGiveXRestClient.cs" />
+    <Compile Include="IManager\IKickBackRestClient.cs" />
+    <Compile Include="IManager\IMaintenanceRestClient.cs" />
+    <Compile Include="IManager\IMessageRestClient.cs" />
+    <Compile Include="IManager\IPaymentRestClient.cs" />
+    <Compile Include="IManager\IPaymentSourceRestClient.cs" />
+    <Compile Include="IManager\IPayoutRestClient.cs" />
+    <Compile Include="IManager\IPoliciesRestClient.cs" />
+    <Compile Include="IManager\ICacheManager.cs" />
+    <Compile Include="IManager\ICustomerRestClient.cs" />
+    <Compile Include="IManager\ILoginRestClient.cs" />
+    <Compile Include="IManager\IReasonListRestClient.cs" />
+    <Compile Include="IManager\IReportRestClient.cs" />
+    <Compile Include="IManager\IReprintRestClient.cs" />
+    <Compile Include="IManager\ISaleRestClient.cs" />
+    <Compile Include="IManager\ISoundRestClient.cs" />
+    <Compile Include="IManager\IStockRestClient.cs" />
+    <Compile Include="IManager\ILogoutRestClient.cs" />
+    <Compile Include="IManager\IThemeRestClient.cs" />
+    <Compile Include="IManager\ISystemRestClient.cs" />
+    <Compile Include="ISerializeManager\IAckrooSerializeManager.cs" />
+    <Compile Include="ISerializeManager\ICarwashSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IFuelDiscountSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IFuelPriceSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IFuelPumpSerializeManager.cs" />
+    <Compile Include="ISerializeManager\ICashSerializeManager.cs" />
+    <Compile Include="ISerializeManager\ICheckoutSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IDipInputSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IGiftCertificateSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IKickBackSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IMessageSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IPaymentSerializeManager.cs" />
+    <Compile Include="ISerializeManager\ICustomerSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IGiveXSerializeManager.cs" />
+    <Compile Include="ISerializeManager\ILoginSerializeManager.cs" />
+    <Compile Include="ISerializeManager\ILogoutSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IMaintenanceSeralizeManager.cs" />
+    <Compile Include="ISerializeManager\IPaymentSourceSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IPayoutSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IPolicySerializeManager.cs" />
+    <Compile Include="ISerializeManager\IReasonListSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IReportSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IReprintSerializeManager.cs" />
+    <Compile Include="ISerializeManager\ISaleSerializeManager.cs" />
+    <Compile Include="ISerializeManager\ISoundSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IStockSerializeManager.cs" />
+    <Compile Include="ISerializeManager\IThemeSerializeManager.cs" />
+    <Compile Include="ISerializeManager\ISystemSerializeManager.cs" />
+    <Compile Include="IStorageService.cs" />
+    <Compile Include="Manager\AckrooRestClient.cs" />
+    <Compile Include="Manager\CacheManager.cs" />
+    <Compile Include="Manager\CashRestClient.cs" />
+    <Compile Include="Manager\CheckoutRestClient.cs" />
+    <Compile Include="Manager\CustomerRestClient.cs" />
+    <Compile Include="Manager\FuelDiscountRestClient.cs" />
+    <Compile Include="Manager\FuelPriceRestClient.cs" />
+    <Compile Include="Manager\FuelPumpRestClient.cs" />
+    <Compile Include="Manager\CarwashRestClient.cs" />
+    <Compile Include="Manager\KickBackRestClient.cs" />
+    <Compile Include="Manager\PaymentSourceRestClient.cs" />
+    <Compile Include="Manager\SerializeTasks\Ackroo\GetAckrooCarwashStockCodeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Ackroo\GetAckrooStockCodeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Ackroo\GetCarwashCategoriesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Carwash\GetServerStatusSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Carwash\ValidateCarwashSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\FNGTRSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\PaymentByPumpTestSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\SaveSignatureSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\VerifyMultiPOSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Discount\GetAllClientGroupsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Discount\GetFuelCodesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPrice\LoadPriceIncrementsAndDecrementsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPrice\LoadPricesToDisplaySerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPrice\SavePricesToDisplaySerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPrice\SetPriceDecrementSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPrice\SetPriceIncrementSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\AddManuallySerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\AddPropaneSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\CheckErrorSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\ClearErrorSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\GetErrorSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\GetFuelVolumeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\GetPumpActionSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\LoadPricesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\LoadPropaneGradeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\LoadPropanePumpSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\LoadTierLevelSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\ReadTotalizerSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\SaveBasePricesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\SaveGroupBasePricesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\SetBasePriceSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\SetGroupBasePriceSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\StopBroadcastSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\UncompleteDeleteSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\UncompleteOverPaymentSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\UncompletePrepayChangeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\UncompletePrepayLoadSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\UpdateTierLevelSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\VerifyBasePricesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\VerifyGroupBasePricesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\GiveX\GetGiveXReportSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\KickBack\CheckKickBackBalanceSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\KickBack\CheckKickBackResponseSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\KickBack\ValidateGasKingSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\KickBack\VerifyKickBackSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Logout\CloseTillSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Logout\EndShiftSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Logout\FinishTillCloseSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Logout\ReadTankDipSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Logout\UpdateTillCloseSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Logout\ValidateTillCloseSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Login\GetPasswordSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\PaymentSource\GetDownloadedFilesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\PaymentSource\GetPSLogosSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\PaymentSource\GetPSProductsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\PaymentSource\GetPSProfileSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\PaymentSource\GetPSRefundInfoSerialAction.cs" />
+    <Compile Include="Manager\SerializeTasks\PaymentSource\GetPSTransactionIDSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\PaymentSource\GetPSTransactionsSerialAction.cs" />
+    <Compile Include="Manager\SerializeTasks\PaymentSource\GetPSVoucherInfoSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\PaymentSource\SavePSTransactionIDSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reports\GetKickBackBalanceReportSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reports\GetReceiptHeaderSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\SetTaxExemptionSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\ValidateVoidSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Settings\Maintenance\CloseBatchSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Settings\Maintenance\InitializeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Settings\Maintenance\SetPrepayOrPostpaySerializeAction.cs" />
+    <Compile Include="Manager\SoundsRestClient.cs" />
+    <Compile Include="Manager\GiftCertificateRestClient.cs" />
+    <Compile Include="Manager\GiveXRestClient.cs" />
+    <Compile Include="Manager\LoginRestClient.cs" />
+    <Compile Include="Manager\MaintenanceRestClient.cs" />
+    <Compile Include="Manager\MessageRestClient.cs" />
+    <Compile Include="Manager\PaymentRestClient.cs" />
+    <Compile Include="Manager\PolicyRestClient.cs" />
+    <Compile Include="Manager\ReasonListRestClient.cs" />
+    <Compile Include="Manager\ReportRestClient.cs" />
+    <Compile Include="Manager\ReprintRestClient.cs" />
+    <Compile Include="Manager\SaleRestClient.cs" />
+    <Compile Include="Manager\SerializeTasks\Cash\CompleteCashDropSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Cash\GetAllTendersSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Cash\GetCashButtonsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Cash\OpenCashDrawerSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Cash\UpdateTenderForCashDropSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\AddVendorCouponSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\AffixBarcodeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Cash\CompleteCashDrawSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Cash\GetCashDrawTypesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\CancelTenderSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\CardSwipeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\CompleteOverLimitsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\CompleteOverrideLimitSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\CompletePaymentSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\GetGiftCertificatesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\GetStoreCreditSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\GetTreatyNameSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\GetVendorCouponSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\GstPstTaxExemptSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\OverLimitDetailsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\OverrideLimitDetailsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\OverrideLimitOverrideSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\PaymentByAccountSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\PaymentByCardSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\PaymentByCouponSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\PaymentByGivexSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\PaymentByVendorCouponSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\RemoveSiteTaxSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\RemoveVendorCouponSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\RunAwaySerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\SaleSummarySerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\SaveGiftCertificatesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\SaveProfilePromptSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\SaveStoreCreditSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\TaxExemptVerificationSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\UpdateTenderSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\ValidateAITESerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\ValidateQiteSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\ValidateSiteSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Checkout\VerifyByAccountSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Common\GetAllPoliciesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Common\GetReasonListSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Common\GetSoundsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Customer\GetCustomerByCardSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Customer\SearchCustomersSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Customer\SetLoyalityCustomerSerializeAction.cs" />
+    <Compile Include="Manager\DipInputRestClient.cs" />
+    <Compile Include="Manager\SerializeTasks\DipInputs\GetDipInputSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\DipInputs\PrintDipInputSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\DipInputs\SaveDipInputSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\AddBasketSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\AddPrepaySerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\DeletePrepaySerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\GetHeadOfficeNotificationSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\GetPumpStatusSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\InitializeFuelPumpSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\LoadGradeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\ResumeAllSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\StopAllSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\SwitchPrepaySerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\FuelPump\UpdateFuelPriceSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\GiveX\ActivateGivexCardSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\GiveX\AddAmountSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\GiveX\CloseBatchSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\GiveX\DeactivateGivexCardSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\GiveX\GetBalanceSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\GiveX\GetGivexStockCodeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\GiveX\SetAmountInGiveXCardSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Logout\LogoutUserSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Logout\SwitchUserSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Message\AddMessageSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Message\GetMessageSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Payment\ExactChangeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Payment\GetAllARCustomerSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Payment\GetARCustomerByCustomerCodeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Payment\PaymentByFleetSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Payment\SaveARPaymentSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Payment\SearchARCustomerSerializeAction.cs" />
+    <Compile Include="Manager\PayoutRestClient.cs" />
+    <Compile Include="Manager\SerializeTasks\Payment\VerifyFleetSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Payout\CompletePayoutSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Payout\GetVendorPayoutSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reprint\GetReportSaleSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reprint\GetReprintReportNameSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reprint\GetReprintReportSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Stock\PriceChangeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Stock\PriceCheckByCodeSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reports\GetAllDepartmentSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reports\GetAllShiftSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reports\GetAllTillSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reports\GetFlashReportSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reports\GetSaleCountReportSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Reports\GetTillAuditReportSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\AddBottleReturnSaleSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\AddStockToSaleSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\GetAllSuspendSaleSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\GetBottlesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\GetSaleBySaleNumberSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\GetSaleListSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\RemoveSaleItemSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\ReturnSaleItemsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\ReturnSaleSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\SearchSaleListSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\SuspendSaleSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\UnsuspendSaleSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\VerifyStockSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\WriteOffSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Settings\Maintenance\ChangePasswordSeralizeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Stock\GetHotProductPagesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\VoidSaleSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Stock\AddProductSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Stock\SearchProductsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Stock\GetAllTaxesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Stock\GetHotProductSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Theme\GetActiveThemeSerializeAction.cs" />
+    <Compile Include="Manager\StockRestClient.cs" />
+    <Compile Include="Manager\LogoutRestClient.cs" />
+    <Compile Include="Manager\ThemeRestClient.cs" />
+    <Compile Include="Manager\SerializeTasks\System\GetRegisterSettingsSerializeAction.cs" />
+    <Compile Include="Manager\SystemRestClient.cs" />
+    <Compile Include="MockManager\MockCashRestClient.cs" />
+    <Compile Include="MockManager\MockCheckoutRestClient.cs" />
+    <Compile Include="MockManager\MockDipInputRestClient.cs" />
+    <Compile Include="MockManager\MockFuelPumpRestClient.cs" />
+    <Compile Include="MockManager\MockGiveXRestClient.cs" />
+    <Compile Include="MockManager\MockLogoutRestClient.cs" />
+    <Compile Include="MockManager\MockMaintenanceRestClient.cs" />
+    <Compile Include="MockManager\MockMessageRestClient.cs" />
+    <Compile Include="MockManager\MockPaymentRestClient.cs" />
+    <Compile Include="MockManager\MockPayoutRestClient.cs" />
+    <Compile Include="MockManager\MockPolicyRestClient.cs" />
+    <Compile Include="MockManager\MockReasonListRestClient.cs" />
+    <Compile Include="MockManager\MockReportRestClient.cs" />
+    <Compile Include="MockManager\MockReprintRestClient.cs" />
+    <Compile Include="MockManager\MockStockRestClient.cs" />
+    <Compile Include="SerializeManager\AckrooSerializeManager.cs" />
+    <Compile Include="SerializeManager\CarwashSerializeManager.cs" />
+    <Compile Include="SerializeManager\CashSerializeManager.cs" />
+    <Compile Include="SerializeManager\CheckoutSerializeManager.cs" />
+    <Compile Include="SerializeManager\DipInputSerializeManager.cs" />
+    <Compile Include="SerializeManager\FuelDiscountSerializeManager.cs" />
+    <Compile Include="SerializeManager\FuelPriceSerializeManager.cs" />
+    <Compile Include="SerializeManager\FuelPumpSerializeManager.cs" />
+    <Compile Include="SerializeManager\GiftCertificateSerializeManager.cs" />
+    <Compile Include="SerializeManager\GiveXSerializeManager.cs" />
+    <Compile Include="SerializeManager\KickBackSerializeManager.cs" />
+    <Compile Include="SerializeManager\LogoutSerializeManager.cs" />
+    <Compile Include="SerializeManager\MaintenanceSeralizeManager.cs" />
+    <Compile Include="SerializeManager\MessageSerializeManager.cs" />
+    <Compile Include="SerializeManager\PaymentSerializeManager.cs" />
+    <Compile Include="SerializeManager\PaymentSourceSerializeManager.cs" />
+    <Compile Include="SerializeManager\PayoutSerializeManager.cs" />
+    <Compile Include="SerializeManager\PolicySeralizeManager.cs" />
+    <Compile Include="Manager\SerializeTasks\Stock\GetProductsSerializeAction.cs" />
+    <Compile Include="SerializeManager\ReasonListSerializeManager.cs" />
+    <Compile Include="SerializeManager\ReportsSerializeManager.cs" />
+    <Compile Include="SerializeManager\ReprintSerializeManager.cs" />
+    <Compile Include="SerializeManager\SerializeManager.cs" />
+    <Compile Include="Manager\SerializeTasks\Customer\AddCustomerSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Home\InitializeNewSaleSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Login\GetLoginPoliciesSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Login\GetShiftsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Login\GetTillsSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Login\LoginSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Customer\GetAllCustomersSerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\SerializeAction.cs" />
+    <Compile Include="Manager\SerializeTasks\Customer\SetCustomerForSaleSerializeAction.cs" />
+    <Compile Include="MockManager\MockCustomerRestClient.cs" />
+    <Compile Include="MockManager\MockLoginRestClient.cs" />
+    <Compile Include="MockManager\MockSaleRestClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializeManager\CustomerSerializeManager.cs" />
+    <Compile Include="SerializeManager\LoginSerializeManager.cs" />
+    <Compile Include="SerializeManager\SaleSerializeManager.cs" />
+    <Compile Include="SerializeManager\SoundSerializeManager.cs" />
+    <Compile Include="SerializeManager\StockSerializeManager.cs" />
+    <Compile Include="Manager\SerializeTasks\Sale\UpdateSaleItemSerializeAction.cs" />
+    <Compile Include="SerializeManager\ThemeSerializeManager.cs" />
+    <Compile Include="SerializeManager\SystemSerializeManager.cs" />
+    <Compile Include="Utility\DALConstants.cs" />
+    <Compile Include="Utility\DeSerializer.cs" />
+    <Compile Include="Utility\Helper.cs" />
+    <Compile Include="Utility\Mapper.cs" />
+    <Compile Include="Utility\URLs.cs" />
+    <EmbeddedResource Include="Properties\Infonet.CStoreCommander.DataAccessLayer.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infonet.CStoreCommander.EntityLayer\Infonet.CStoreCommander.EntityLayer.csproj">
+      <Project>{5E8CB32B-35B5-40BB-9A3E-BBC8484E8E5F}</Project>
+      <Name>Infonet.CStoreCommander.EntityLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infonet.CStoreCommander.Logging\Infonet.CStoreCommander.Logger.csproj">
+      <Project>{8FBBFB10-08D9-478E-8586-26DCFEB309DB}</Project>
+      <Name>Infonet.CStoreCommander.Logger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infonet\CStoreCommander\DataAccessLayer\Manager\SerializeTasks\System\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.SignalR.Client">
+      <Version>2.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

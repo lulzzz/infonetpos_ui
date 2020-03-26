@@ -1,0 +1,230 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.PumpOptions.Fuel_Pricing.PricesToDisplay"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.PumpOptions.Fuel_Pricing"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+    <triggers:Interactions.Triggers>
+        <triggers:EventTrigger EventName="Loaded">
+            <triggers:InvokeCommandAction Command="{x:Bind PricesToDisplayVM.LoadCommand, Mode=OneWay}"
+                                          PassEventArgsToCommand="False" />
+        </triggers:EventTrigger>
+    </triggers:Interactions.Triggers>
+
+    <Page.Resources>
+        <Style TargetType="ComboBox"
+               BasedOn="{StaticResource ComboBox}">
+            <Setter Property="FontSize"
+                    Value="11" />
+            <Setter Property="FontSize"
+                    Value="11" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource BackgroundColor1Light}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource LabelTextForegroundColor}" />
+            <Setter Property="Width"
+                    Value="165" />
+            <Setter Property="VerticalAlignment"
+                    Value="Stretch" />
+            <Setter Property="Margin"
+                    Value="0,0,0,15" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+        </Style>
+    </Page.Resources>
+    <Grid Padding="20,0,20,0" Background="{StaticResource BackgroundColor1Light}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <ComboBox x:Uid="cbGrade"
+                      Margin="20,0,0,0"
+                      BorderThickness="1"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Grades, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Grade1, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow1Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+
+            <ComboBox x:Uid="cbTier"
+                      Margin="20,0,0,0"
+                      BorderThickness="1"
+                      Grid.Column="1"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Tiers, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Tier1, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow1Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+
+            <ComboBox x:Uid="cbLevel"
+                      Margin="20,0,20,0"
+                      BorderThickness="1"
+                      Grid.Column="2"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Levels, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Level1, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow1Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <ComboBox BorderThickness="1"
+                      Margin="20,0,0,0"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Grades, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Grade2, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow2Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+
+            <ComboBox BorderThickness="1"
+                      Grid.Column="1"
+                      Margin="20,0,0,0"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Tiers, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Tier2, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow2Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+
+            <ComboBox BorderThickness="1"
+                      Grid.Column="2"
+                      Margin="20,0,20,0"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Levels, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Level2, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow2Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Row="2"
+              Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="34*" />
+                <ColumnDefinition Width="41*" />
+                <ColumnDefinition Width="41*" />
+            </Grid.ColumnDefinitions>
+
+            <ComboBox BorderThickness="1"
+                      Margin="20,0,0,0"
+                      Style="{StaticResource ComboBox}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Grades, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Grade3, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow3Enabled, Mode=OneWay}"
+                      Grid.ColumnSpan="2">
+            </ComboBox>
+
+            <ComboBox BorderThickness="1"
+                      Grid.Column="2"
+                      Margin="20,0,0,0"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Tiers, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Tier3, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow3Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+
+            <ComboBox BorderThickness="1"
+                      Grid.Column="3"
+                      Margin="20,0,20,0"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Levels, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Level3, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow3Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Row="3"
+              Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <ComboBox BorderThickness="1"
+                      Margin="20,0,0,0"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Grades, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Grade4, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow4Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+
+            <ComboBox BorderThickness="1"
+                      Grid.Column="1"
+                      Margin="20,0,0,0"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Tiers, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Tier4, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow4Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+
+            <ComboBox BorderThickness="1"
+                      Grid.Column="2"
+                      Margin="20,0,20,0"
+                      Style="{StaticResource ComboBox}"
+                      ItemsSource="{x:Bind PricesToDisplayVM.Levels, Mode=OneWay}"
+                      SelectedItem="{x:Bind PricesToDisplayVM.Level4, Mode=TwoWay}"
+                      IsEnabled="{x:Bind PricesToDisplayVM.IsRow4Enabled, Mode=OneWay}"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Row="4"
+              VerticalAlignment="Bottom">
+            <controlLib:GenericButton x:Name="btnSave"
+                                      x:Uid="btnSaveInPricesToDisplay"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                      HorizontalAlignment="Right"
+                                      Command="{x:Bind PricesToDisplayVM.SaveCommand, Mode=OneWay}"
+                                      Margin="0,0,20,20"
+                                      Width="140" />
+        </Grid>
+    </Grid>
+</Page>

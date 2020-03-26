@@ -1,0 +1,29 @@
+﻿{
+
+  "totals": {
+    "productSales": "96.00",
+    "lineDiscount": "0.00",
+    "invoiceDiscount": "0.00",
+    "salesAfterDiscount": "96.00",
+    "taxes": "8.80",
+    "charges": "0.00",
+    "refunded": "0.00",
+    "totalsReceipts": "104.80"
+  },
+  "departments": [
+    {
+      "department": "",
+      "description": "",
+      "netSales": "56.00"
+    },
+    {
+      "department": "19",
+      "description": "FASTFD",
+      "netSales": "40.00"
+    }
+  ],
+  "report": {
+    "reportName": "FlashRep.txt",
+    "reportContent": "ICAgR0FTMSAgV2lsc29ucyBHYXMgU3RvcCAtIFNhY2t2aWxsZSAgIA0KDQogICAgIFRJTEwgRkxBU0ggUkVQT1JUIEZPUiBUSUxMICMyICAgICAgDQogIFByaW50ZWQgb24gMTktT2N0LTIwMTYgIGF0ICAwNzoxMCBQTSAgDQoNCkRlcGFydG1lbnQgICAgICAgICAgICAgICAgICAgICAgICAgU2FsZXMNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCiAgICAgTm8gRGVwYXJ0bWVudCAgICAgICAgICAgICAgICAgNTYuMDANCjE5ICAgRkFTVEZEICAgICAgICAgICAgICAgICAgICAgICAgNDAuMDANCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KDQogICAgICAgICAgICAgICAgICAgICAgICAgU2FsZXMgICAgIDk2LjAwDQogICAgICAgICAgICAgICAgTGluZSBEaXNjb3VudHMgICAgICAwLjAwDQogICAgICAgICAgICAgSW52b2ljZSBEaXNjb3VudHMgICAgICAwLjAwDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBfX19fX19fX19fDQogICAgICAgICBTYWxlcyBhZnRlciBEaXNjb3VudHMgICAgIDk2LjAwDQoNCiAgICAgICAgICAgICAgICAgICAgICAgICBUYXhlcyAgICAgIDguODANCiAgICAgICAgICAgICAgICAgICAgICAgQ2hhcmdlcyAgICAgIDAuMDANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF9fX19fX19fX18NCiAgICAgICAgICAgICAgICAgICAgIFJlZnVuZGVkICAgICAgIDAuMDANCiAgICAgICAgICAgICAgICBUb3RhbCBSZWNlaXB0cyAgICAxMDQuODANCg0KDQo="
+  }
+}

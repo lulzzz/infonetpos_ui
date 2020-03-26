@@ -1,0 +1,166 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Checkout.SalesSummary"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Checkout"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:toolKitControls="using:MyToolkit.Controls"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Resources/GreenToggleSwitch.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="TextBlock"
+                   x:Key="DataGridHeader">
+                <Setter Property="TextAlignment"
+                        Value="Center"></Setter>
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="FontFamily"
+                        Value="Segoe UI SemiBold" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource HeaderForegroundColor}" />
+            </Style>
+
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize"
+                        Value="11" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource LabelTextForegroundColor}" />
+            </Style>
+
+            <converter:CurrencyConverter x:Name="CurrencyConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Padding="8,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:ViewHeading x:Uid="txtSalesSummary"
+                              BackCommand="{x:Bind SaleSummaryVM.CancelTenderCommand, Mode=OneWay}" />
+
+        <toolKitControls:DataGrid Grid.Row="1"
+                                  Background="{StaticResource BackgroundColor1Light}"
+                                  HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                                  HeaderForeground="{StaticResource HeaderForegroundColor}"
+                                  RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                                  RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                                  SelectionAllowed="False"
+                                  ItemsSource="{x:Bind SaleSummaryVM.Lines, Mode=OneWay}">
+
+            <toolKitControls:DataGrid.Columns>
+                <toolKitControls:DataGridTextColumn Width="3*"
+                                                    FontSize="11"
+                                                    Binding="{Binding Name}"
+                                                    TextAlignment="Left"
+                                                    CanSort="False"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="1*"
+                                                    Binding="{Binding Amount, Converter={StaticResource CurrencyConverter}}"
+                                                    FontSize="11"
+                                                    TextAlignment="Center"
+                                                    CanSort="False"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtAmount"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn FontSize="11"
+                                                    Width="1*"
+                                                    Binding="{Binding Value, Converter={StaticResource CurrencyConverter}}"
+                                                    TextAlignment="Center"
+                                                    CanSort="False"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtValue"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+            </toolKitControls:DataGrid.Columns>
+        </toolKitControls:DataGrid>
+
+        <Grid Margin="0,10,0,10"
+              Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="245" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <ToggleSwitch  x:Uid="tsRunAway"
+                                   IsEnabled="{x:Bind SaleSummaryVM.IsRunAwayEnabled, Mode=OneWay}"
+                                   IsOn="{x:Bind SaleSummaryVM.RunAway, Mode=TwoWay}"
+                                   Style="{StaticResource GreenToggleSwitch}" />
+                    <ToggleSwitch x:Uid="tsPumpTest"
+                                  IsEnabled="{x:Bind SaleSummaryVM.IsPumpTestEnabled, Mode=OneWay}"
+                                  IsOn="{x:Bind SaleSummaryVM.IsPumpTestOn, Mode=TwoWay}"
+                                  Style="{StaticResource GreenToggleSwitch}" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            Padding="20,7,20,7"
+                            Background="{StaticResource BackgroundColor1Light}">
+
+                    <TextBlock Text="{x:Bind SaleSummaryVM.SaleSummary.Summary1, Mode=OneWay}"
+                               Foreground="{StaticResource LabelTextForegroundColor}"
+                               FontSize="16"
+                               HorizontalAlignment="Left" />
+
+                    <TextBlock Text="{x:Bind SaleSummaryVM.SaleSummary.Summary2, Mode=OneWay}"
+                               FontSize="16"
+                               Margin="0,5,0,0"
+                               Foreground="{StaticResource LabelTextForegroundColor}"
+                               Grid.ColumnSpan="2" />
+                </StackPanel>
+
+            </Grid>
+
+            <Border BorderBrush="{StaticResource BackgroundColor1Light}"
+                    Grid.Row="1"
+                    Margin="0,10,0,0"
+                    BorderThickness="0,1,0,0" />
+        </Grid>
+
+        <ToggleSwitch  Grid.Row="3"
+                       Margin="0,-7,0,0"
+                       HorizontalAlignment="Left"
+                       x:Uid="printReceipt"
+                       IsEnabled="{x:Bind SaleSummaryVM.IsPrintEnabled, Mode=OneWay}"
+                       IsOn="{x:Bind SaleSummaryVM.Print, Mode=TwoWay}"
+                       Style="{StaticResource GreenToggleSwitch}" />
+
+        <ControlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                  Command="{x:Bind SaleSummaryVM.CompleteSaleCommand, Mode=OneWay}"
+                                  Grid.Row="3"
+                                  x:Uid="complete"
+                                  IsEnabled="{x:Bind SaleSummaryVM.CompletePaymentEnabled, Mode=OneWay}"
+                                  Width="180"
+                                  HorizontalAlignment="Right" />
+    </Grid>
+</Page>

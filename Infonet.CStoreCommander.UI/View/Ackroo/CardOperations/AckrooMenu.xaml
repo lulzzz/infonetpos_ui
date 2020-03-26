@@ -1,0 +1,100 @@
+﻿<Page
+    x:Class="Infonet.CStoreCommander.UI.View.Ackroo.AckrooMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Infonet.CStoreCommander.UI.View.Ackroo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:customControl="using:MyToolkit.Extended.Controls"
+    xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+    xmlns:conv="using:Infonet.CStoreCommander.UI.Converter"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background"
+                    Value="{StaticResource ButtonBackgroundColor}" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="Height"
+                    Value="42" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource ButtonForegroundColor}" />
+            <Setter Property="Padding"
+                    Value="8,0,8,0" />
+            <Setter Property="Margin"
+                    Value="20,18,0,0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Top" />
+        </Style>
+        <conv:ObjectToObjectConverter x:Key="ObjectToObjectConverter"/>
+        <conv:CurrencyConverter x:Key="CurrencyConverter" />
+        <conv:BoolToVisibilityConverter x:Key="DisplayAmount" />
+        <conv:NothingConverter x:Key="NothingConverter" />
+        <conv:DecimalToStringConverter x:Key="DecimalToStringConverter" />
+        <conv:AmountDisplayConverter x:Key="AmountDisplayConverter" />
+    </Page.Resources>
+    <StackPanel Orientation="Vertical" Padding="20,10,20,20">
+        <Image HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Height="60"
+               Width="200"
+               Margin="0,0,10,20"
+            >
+            <Image.Source>
+                <BitmapImage UriSource="ms-appx:///Images/Others/AckrooLogo.png"
+                             />
+            </Image.Source> 
+        </Image>
+        
+        <StackPanel Margin="0,0,0,20"
+                                Orientation="Horizontal">
+            <controlLib:GenericButton 
+                       
+                                                  Command="{x:Bind AKVM.AckrMenuToActivateCardCommand, Mode=OneWay}"
+                                                  Width="190"
+                                                  Margin="20,0,10,0"
+                                                  BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  x:Uid="AckrActivate" />
+            <controlLib:GenericButton 
+                       
+                                                  Command="{x:Bind AKVM.AckrMenuToIncreasefundCommand, Mode=OneWay}"
+                                                  Width="190"
+                                                  Margin="20,0,10,0"
+                                                  BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  x:Uid="AckrIncrFund" />
+            <controlLib:GenericButton 
+                       
+                                                  Command="{x:Bind AKVM.AckrCheckBalanceCommand, Mode=OneWay}"
+                                                  Width="190"
+                                                  Margin="20,0,10,0"
+                                                  IsEnabled="False"
+                                                  BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  x:Uid="AckrReverse" />
+        </StackPanel>
+        <StackPanel Margin="0,0,0,20"
+                                Orientation="Horizontal">
+            <controlLib:GenericButton 
+                       
+                                                  Command="{x:Bind AKVM.AckrCheckBalanceCommand, Mode=OneWay}"
+                                                  Width="190"
+                                                  Margin="20,0,10,0"
+                                                  IsEnabled="False"
+                                                  BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  x:Uid="AckrInitCarwash" />
+            <controlLib:GenericButton 
+                       
+                                                  Command="{x:Bind AKVM.AckrMenuToCarwashCommand, Mode=OneWay}"
+                                                  Width="190"
+                                                  Margin="20,0,10,0"
+                                                  BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  x:Uid="AckrSellCarwash" />
+            <controlLib:GenericButton 
+                       
+                                                  Command="{x:Bind AKVM.AckrCheckBalanceCommand, Mode=OneWay}"
+                                                  Width="190"
+                                                  Margin="20,0,10,0"
+                                                  BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  x:Uid="AckrCheckBalance" />
+        </StackPanel>
+    </StackPanel>
+</Page>

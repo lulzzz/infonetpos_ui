@@ -1,0 +1,138 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Customer.AddCustomer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:controls="using:MyToolkit.Extended.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:triggers="using:WinRT.Triggers"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+        <Style TargetType="TextBox"
+               BasedOn="{StaticResource TextBox}">
+            <Setter Property="Height"
+                    Value="36" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="Margin"
+                    Value="0,13,0,0" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource BackgroundColor1Light}" />
+            <Setter Property="MaxLength"
+                    Value="10" />
+        </Style>
+
+        <Style TargetType="PasswordBox"
+               BasedOn="{StaticResource PasswordBox}">
+            <Setter Property="Height"
+                    Value="36" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="Margin"
+                    Value="0,13,0,0" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource BackgroundColor1Light}" />
+            <Setter Property="MaxLength"
+                    Value="10" />
+            <Setter Property="PasswordRevealMode"
+                    Value="Visible" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize"
+                    Value="11" />
+            <Setter Property="Margin"
+                    Value="0,13,0,0" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource LabelTextForegroundColor}" />
+        </Style>
+    </Page.Resources>
+
+    <Grid  Padding="9,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--#region Heading-->
+        <control:ViewHeading x:Uid="txtAddCustomer" />
+        <!--#endregion-->
+
+        <StackPanel Grid.Row="1"
+                    Padding="20,0,20,38"
+                    Background="{StaticResource BackgroundColor1Light}">
+
+            <TextBlock x:Uid="txtbCode" />
+
+            <TextBox Text="{x:Bind AddCustomerScreenVM.Customer.Code, Mode=TwoWay}"
+                     IsEnabled="{x:Bind AddCustomerScreenVM.IsAddingLoyaltyCustomer, Mode=OneWay}"
+                     x:Name="txtCode">
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="GotFocus">
+                        <ic:InvokeCommandAction Command="{x:Bind AddCustomerScreenVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </TextBox>
+
+            <TextBlock x:Uid="txtbLoyaltyNumber" />
+
+            <TextBox Text="{x:Bind AddCustomerScreenVM.Customer.LoyaltyNumber, Mode=TwoWay}"
+                     x:Name="txtLoyalityNumber">
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="GotFocus">
+                        <ic:InvokeCommandAction Command="{x:Bind AddCustomerScreenVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </TextBox>
+
+            <TextBlock x:Uid="txtbName" />
+
+            <TextBox MaxLength="30"
+                     Text="{x:Bind AddCustomerScreenVM.Customer.Name, Mode=TwoWay}"
+                     IsEnabled="{x:Bind AddCustomerScreenVM.IsAddingLoyaltyCustomer,Mode=OneWay}"
+                     x:Name="txtName">
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="GotFocus">
+                        <ic:InvokeCommandAction Command="{x:Bind AddCustomerScreenVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </TextBox>
+
+            <TextBlock x:Uid="txtbPhone" />
+
+            <controls:CustomTextBox MaxLength="14"
+                                    Style="{StaticResource CustomTextbox}"
+                                    x:Name="txtPhone"
+                                    IsEnabled="{x:Bind AddCustomerScreenVM.IsAddingLoyaltyCustomer,Mode=OneWay}"
+                                    EnterPressedCommand="{x:Bind AddCustomerScreenVM.SaveCustomerCommand, Mode=OneWay}"
+                                    Text="{Binding Customer.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="GotFocus">
+                        <ic:InvokeCommandAction Command="{x:Bind AddCustomerScreenVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </controls:CustomTextBox>
+
+        </StackPanel>
+
+        <ControlLib:GenericButton x:Uid="btnSave"
+                                  x:Name="btnSave"
+                                  Command="{x:Bind AddCustomerScreenVM.SaveCustomerCommand, Mode=OneWay}"
+                                  Grid.Row="2"
+                                  Margin="0,10,0,0"
+                                  BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                  Width="140"
+                                  HorizontalAlignment="Right" />
+    </Grid>
+
+</Page>

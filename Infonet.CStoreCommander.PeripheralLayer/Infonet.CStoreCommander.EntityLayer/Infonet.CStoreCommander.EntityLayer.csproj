@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E8CB32B-35B5-40BB-9A3E-BBC8484E8E5F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infonet.CStoreCommander.EntityLayer</RootNamespace>
+    <AssemblyName>Infonet.CStoreCommander.EntityLayer</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>"%24/TPS/Infonet 10122018/InfonetUI-UWP_Dev/Infonet.CStoreCommander.EntityLayer", FRIKAAAA</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath />
+    <SccProvider>MSSCCI:Microsoft Visual SourceSafe</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CardType.cs" />
+    <Compile Include="Entities\Ackroo\AckrooBalanceInfo.cs" />
+    <Compile Include="Entities\Ackroo\AckrooItem.cs" />
+    <Compile Include="Entities\Ackroo\Carwash.cs" />
+    <Compile Include="Entities\Cash\CashButtons.cs" />
+    <Compile Include="Entities\Cash\CompleteCashDrop.cs" />
+    <Compile Include="Entities\Cash\UpdateTenderPost.cs" />
+    <Compile Include="Entities\Cash\UpdateTenderGet.cs" />
+    <Compile Include="Entities\Checkout\AiteValidate.cs" />
+    <Compile Include="Entities\Checkout\CancelTender.cs" />
+    <Compile Include="Entities\Checkout\CardSwipeInformation.cs" />
+    <Compile Include="Entities\Checkout\CheckoutSummary.cs" />
+    <Compile Include="Entities\Checkout\CompletePayment.cs" />
+    <Compile Include="Entities\Checkout\GiftCertificate.cs" />
+    <Compile Include="Entities\Checkout\OverlLimitDetails.cs" />
+    <Compile Include="Entities\Checkout\OverrideLimitDetails.cs" />
+    <Compile Include="Entities\Checkout\QiteValidate.cs" />
+    <Compile Include="Entities\Checkout\SaleSummary.cs" />
+    <Compile Include="Entities\Cash\CashDrawTypes.cs" />
+    <Compile Include="Entities\Cash\CompleteCashDraw.cs" />
+    <Compile Include="Entities\Checkout\SiteValidate.cs" />
+    <Compile Include="Entities\Checkout\StoreCredit.cs" />
+    <Compile Include="Entities\Checkout\TaxExemptVerification.cs" />
+    <Compile Include="Entities\Checkout\TaxSummary.cs" />
+    <Compile Include="Entities\Checkout\Tender.cs" />
+    <Compile Include="Entities\Checkout\TenderSummary.cs" />
+    <Compile Include="Entities\Checkout\VendorCoupon.cs" />
+    <Compile Include="Entities\Checkout\VerifyByAccount.cs" />
+    <Compile Include="Entities\Common\ErrorMessageWithCaption.cs" />
+    <Compile Include="Entities\Common\Sounds.cs" />
+    <Compile Include="Entities\DipInput\DipInput.cs" />
+    <Compile Include="Entities\Discount\ClientGroup.cs" />
+    <Compile Include="Entities\FuelPrice\PriceIncrementDecrement.cs" />
+    <Compile Include="Entities\FuelPrice\PriceToDisplay.cs" />
+    <Compile Include="Entities\FuelPump\FuelPrices.cs" />
+    <Compile Include="Entities\FuelPump\GetPumpAction.cs" />
+    <Compile Include="Entities\FuelPump\HeadOfficeMessage.cs" />
+    <Compile Include="Entities\FuelPump\InitializeFuelPump.cs" />
+    <Compile Include="Entities\FuelPump\PropaneGrade.cs" />
+    <Compile Include="Entities\FuelPump\TierLevel.cs" />
+    <Compile Include="Entities\FuelPump\Uncomplete.cs" />
+    <Compile Include="Entities\GiveX\GiveXReport.cs" />
+    <Compile Include="Entities\Kickback\KickBackBalancePoint.cs" />
+    <Compile Include="Entities\Kickback\ValidateGasKing.cs" />
+    <Compile Include="Entities\Kickback\VerifyKickback.cs" />
+    <Compile Include="Entities\Login\Login.cs" />
+    <Compile Include="Entities\Logout\ValidateTillClose.cs" />
+    <Compile Include="Entities\LineDisplayModel.cs" />
+    <Compile Include="Entities\Message\Message.cs" />
+    <Compile Include="Entities\PaymentSource\PSLogo.cs" />
+    <Compile Include="Entities\PaymentSource\PSProduct.cs" />
+    <Compile Include="Entities\PaymentSource\PSProfile.cs" />
+    <Compile Include="Entities\PaymentSource\PSRefund.cs" />
+    <Compile Include="Entities\PaymentSource\PSTransaction.cs" />
+    <Compile Include="Entities\PaymentSource\PSVoucher.cs" />
+    <Compile Include="Entities\PaymentSource\PSVoucherInfo.cs" />
+    <Compile Include="Entities\Payment\ARCustomer.cs" />
+    <Compile Include="Entities\Payment\ExactChange.cs" />
+    <Compile Include="Entities\Payment\PaymentByFleet.cs" />
+    <Compile Include="Entities\Payout\VendorPayout.cs" />
+    <Compile Include="Entities\Reports\Department.cs" />
+    <Compile Include="Entities\Reports\FlashReport.cs" />
+    <Compile Include="Entities\Reprint\ReportName.cs" />
+    <Compile Include="Entities\Reprint\ReprintReportSale.cs" />
+    <Compile Include="Entities\Sale\BottleReturn.cs" />
+    <Compile Include="Entities\Sale\VoidSale.cs" />
+    <Compile Include="Entities\Sale\WriteOff.cs" />
+    <Compile Include="Entities\Stock\StockPrice.cs" />
+    <Compile Include="Entities\Stock\ChangePrice.cs" />
+    <Compile Include="Entities\Theme.cs" />
+    <Compile Include="Entities\System\Register.cs" />
+    <Compile Include="Exception\ApiDataException.cs" />
+    <Compile Include="Exception\CashDrawerException.cs" />
+    <Compile Include="Exception\InternalServerException.cs" />
+    <Compile Include="Exception\LineDisplayException.cs" />
+    <Compile Include="Exception\PrinterLayerException.cs" />
+    <Compile Include="Exception\PumpsOfflineException.cs" />
+    <Compile Include="Exception\PurchaseOrderRequiredException.cs" />
+    <Compile Include="Exception\SwitchUserException.cs" />
+    <Compile Include="Exception\UserAlreadyLoggedOnException.cs" />
+    <Compile Include="Exception\UserNotAuthorizedException.cs" />
+    <Compile Include="Entities\PaymentReceipt.cs" />
+    <Compile Include="Entities\Login\ActiveShifts.cs" />
+    <Compile Include="Entities\GiveX\GiveXCardBalance.cs" />
+    <Compile Include="Entities\GiveX\GiveXCard.cs" />
+    <Compile Include="Entities\Sale\Bottle.cs" />
+    <Compile Include="Entities\Sale\BottleReturnSale.cs" />
+    <Compile Include="Entities\Sale\GiftCard.cs" />
+    <Compile Include="Entities\Sale\SaleBase.cs" />
+    <Compile Include="Entities\Common\Success.cs" />
+    <Compile Include="Entities\Sale\SaleList.cs" />
+    <Compile Include="Entities\Sale\SuspendSale.cs" />
+    <Compile Include="Entities\Sale\VerifyStock.cs" />
+    <Compile Include="Entities\Stock\HotProductPageModel.cs" />
+    <Compile Include="Entities\Common\Policy.cs" />
+    <Compile Include="Entities\Common\ReasonsList.cs" />
+    <Compile Include="Entities\Customer\Customer.cs" />
+    <Compile Include="Entities\Common\Error.cs" />
+    <Compile Include="Entities\Sale\Sale.cs" />
+    <Compile Include="Entities\Sale\SaleLine.cs" />
+    <Compile Include="Entities\Login\Shifts.cs" />
+    <Compile Include="Entities\Home\Tax.cs" />
+    <Compile Include="Entities\Stock\StockModel.cs" />
+    <Compile Include="Entities\Stock\TaxCodeModel.cs" />
+    <Compile Include="Entities\Login\ActiveTills.cs" />
+    <Compile Include="Entities\Login\User.cs" />
+    <Compile Include="Entities\Login\LoginPolicy.cs" />
+    <Compile Include="Entities\PumpDetail.cs" />
+    <Compile Include="Exception\WindowsManagerException.cs" />
+    <Compile Include="ReportType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PumpInteractionsOptions.cs" />
+    <Compile Include="ReasonType.cs" />
+    <Compile Include="Entities\Reports\Report.cs" />
+    <Compile Include="Entities\Reports\Shift.cs" />
+    <Compile Include="Entities\Reports\Till.cs" />
+    <Compile Include="SoundTypes.cs" />
+    <Compile Include="TenderClass.cs" />
+    <Compile Include="TransactionType.cs" />
+    <EmbeddedResource Include="Properties\Infonet.CStoreCommander.EntityLayer.rd.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,641 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Stock.PriceCheck"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Stock"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:toolsKit="using:MyToolkit.Controls"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:converter="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:model="using:Infonet.CStoreCommander.UI.Model.Stock"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:triggers="using:WinRT.Triggers"
+      xmlns:controls="using:MyToolkit.Extended.Controls"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Resources/DatePicker.xaml" />
+                <ResourceDictionary Source="ms-appx:///Resources/CheckBoxStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+            <Style TargetType="GridViewItem">
+                <Setter Property="FontFamily"
+                        Value="{ThemeResource ContentControlThemeFontFamily}" />
+                <Setter Property="FontSize"
+                        Value="{ThemeResource ControlContentThemeFontSize}" />
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="TabNavigation"
+                        Value="Local" />
+                <Setter Property="IsHoldingEnabled"
+                        Value="True" />
+                <Setter Property="Margin"
+                        Value="2,2,0,0" />
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewItem">
+                            <ContentPresenter />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="ControlLib:GenericButton"
+                   x:Name="GenericButtonStyle">
+                <Setter Property="Width"
+                        Value="140" />
+            </Style>
+
+            <Style TargetType="TextBlock"
+                   x:Key="DataGridHeader">
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="FontFamily"
+                        Value="Segoe UI SemiBold" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource HeaderForegroundColor}" />
+            </Style>
+
+            <Style x:Key="ButtonWithNoBorder"
+                   TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid x:Name="RootGrid"
+                                  Background="{TemplateBinding Background}">
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                  AutomationProperties.AccessibilityView="Raw"
+                                                  Background="{x:Null}"
+                                                  BorderBrush="{x:Null}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  Padding="{TemplateBinding Padding}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Button"
+                   BasedOn="{StaticResource ButtonWithNoBorder}">
+                <Setter Property="Background"
+                        Value="{StaticResource ButtonBackgroundColor}" />
+                <Setter Property="Padding"
+                        Value="0,-6,0,0" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource ButtonForegroundColor}" />
+                <Setter Property="FontSize"
+                        Value="35" />
+                <Setter Property="Height"
+                        Value="35" />
+                <Setter Property="Width"
+                        Value="38" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Top" />
+                <Setter Property="FontFamily"
+                        Value="Segoe UI Semibold" />
+            </Style>
+            <Style TargetType="controls:CustomTextBox"
+                   x:Key="value"
+                   BasedOn="{StaticResource TextBox}">
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Margin"
+                        Value="0,13,0,0" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource LabelTextForegroundColor}" />
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource BackgroundColor1Light}" />
+            </Style>
+
+            <Style TargetType="PasswordBox"
+                   x:Key="PasswordBoxStyle"
+                   BasedOn="{StaticResource PasswordBox}">
+                <Setter Property="Height"
+                        Value="36" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Margin"
+                        Value="0,13,0,0" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource LabelTextForegroundColor}" />
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource BackgroundColor1Light}" />
+                <Setter Property="PasswordRevealMode"
+                        Value="Visible" />
+            </Style>
+
+            <Style TargetType="TextBlock"
+                   x:Key="Heading">
+                <Setter Property="FontSize"
+                        Value="11" />
+                <Setter Property="Margin"
+                        Value="0,13,0,0" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource LabelTextForegroundColor}" />
+            </Style>
+
+            <converters:NothingConverter x:Key="NothingConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Margin="9,0,10,0"
+          x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--#region Heading-->
+        <control:ViewHeading x:Uid="/Stock/txtPriceCheck"
+                             Visibility="{x:Bind PriceCheckVM.ShowPriceCheck, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}" />
+        <control:ViewHeading x:Uid="/Stock/txtPriceChange"
+                             Visibility="{x:Bind PriceCheckVM.ShowPriceChange, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}" />
+        <!--#endregion-->
+
+        <StackPanel Grid.Row="1"
+                    Padding="0,15,0,15">
+
+            <TextBlock x:Uid="/Stock/searchCode"
+                       Style="{StaticResource Heading}" />
+
+            <PasswordBox Password="{x:Bind PriceCheckVM.StockCode, Mode=TwoWay}"
+                         MaxLength="16"
+                         x:Name="txtStockCode"
+                         IsEnabled="{x:Bind PriceCheckVM.IsStockCodeEnabled, Mode=OneWay}"
+                         Style="{StaticResource PasswordBoxStyle}"
+                         BorderBrush="{StaticResource LabelTextForegroundColor}">
+                <triggers:Interactions.Triggers>
+                    <triggers:EventTrigger EventName="KeyUp">
+                        <triggers:InvokeCommandAction Command="{x:Bind PriceCheckVM.SearchByStockCodeCommand, Mode=OneWay}"
+                                                      PassEventArgsToCommand="True" />
+                    </triggers:EventTrigger>
+                </triggers:Interactions.Triggers>
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="GotFocus">
+                        <ic:InvokeCommandAction Command="{x:Bind PriceCheckVM.InvokeKeyboardCommand, Mode=OneWay}" />
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </PasswordBox>
+
+        </StackPanel>
+
+        <Border Background="{StaticResource HeaderBackgroundColor}"
+                Visibility="{x:Bind PriceCheckVM.IsEditButtonEnabled, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                Grid.Row="2"
+                Padding="20,0,0,0"
+                Height="40">
+            <TextBlock Foreground="{StaticResource HeaderForegroundColor}"
+                       Text="{x:Bind PriceCheckVM.StockPriceModel.Description, Mode=OneWay}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left" />
+        </Border>
+
+        <ScrollViewer Grid.Row="3"
+                      Visibility="{x:Bind PriceCheckVM.IsEditButtonEnabled, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid Padding="20,15,20,20"
+                  Background="{StaticResource BackgroundColor1Light}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ComboBox x:Uid="/Stock/PriceType"
+                          BorderBrush="{StaticResource BackgroundColor1Light}"
+                          BorderThickness="1"
+                          FontSize="11"
+                          Foreground="{StaticResource LabelTextForegroundColor}"
+                          HorizontalAlignment="Left"
+                          Width="200"
+                          Style="{StaticResource ComboBox}"
+                          IsEnabled="{x:Bind PriceCheckVM.IsEditButtonPressed, Mode=OneWay}"
+                          Visibility="{x:Bind PriceCheckVM.StockPriceModel.IsPriceVisible,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                          ItemsSource="{x:Bind PriceCheckVM.StockPriceModel.SpecialPriceTypes, Mode=OneWay}"
+                          SelectedIndex="{x:Bind PriceCheckVM.SelectedPriceIndex, Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                          VerticalAlignment="Stretch" />
+
+                <Grid Padding="0,15,0,0"
+                      Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <controls:CustomTextBox x:Uid="/Stock/txtRegularPrice"
+                                            x:Name="txtRegularPrice"
+                                            NumericKeyType="Amount"
+                                            InputScope="Number"
+                                            Margin="0,0,40,0"
+                                            Width="200"
+                                            MaxLength="10"
+                                            IsEnabled="{x:Bind PriceCheckVM.IsEditButtonPressed, Mode=OneWay}"
+                                            Visibility="{x:Bind PriceCheckVM.StockPriceModel.IsSpecialPricingVisible,Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                            Text="{Binding StockPriceModel.RegularPriceText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Style="{StaticResource value}" />
+                    <TextBox x:Uid="/Stock/txtAvailableQuantity"
+                             x:Name="txtAvailableQuantity"
+                             IsEnabled="False"
+                             Width="200"
+                             MaxLength="10"
+                             Text="{x:Bind PriceCheckVM.StockPriceModel.AvailableQuantity, Mode=TwoWay}"
+                             Visibility="{x:Bind PriceCheckVM.StockPriceModel.IsAvQtyVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                             Style="{StaticResource TextBox}"
+                             Grid.Column="1" />
+                </Grid>
+
+                <Grid Padding="0,15,0,0"
+                      Visibility="{x:Bind PriceCheckVM.StockPriceModel.IsTaxExemptVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                      Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <controls:CustomTextBox x:Uid="/Stock/txtTaxFreePrice"
+                                            IsEnabled="False"
+                                            Width="200"
+                                            Margin="0,0,40,0"
+                                            MaxLength="10"
+                                            NumericKeyType="Amount"
+                                            InputScope="Number"
+                                            Text="{Binding StockPriceModel.TaxExemptPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Style="{StaticResource value}" />
+
+                    <TextBox x:Uid="/Stock/txtTaxAvailableQuantity"
+                             Width="200"
+                             MaxLength="10"
+                             Text="{x:Bind PriceCheckVM.StockPriceModel.TaxExemptAvailable, Mode=TwoWay}"
+                             IsEnabled="False"
+                             Style="{StaticResource TextBox}"
+                             Grid.Column="1" />
+                </Grid>
+
+                <Grid Margin="0,15,0,0"
+                      Visibility="{x:Bind PriceCheckVM.ShowDates, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
+                      Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="185" />
+                    </Grid.ColumnDefinitions>
+                    <ControlLib:CustomCalendarDatePicker HorizontalAlignment="Left"
+                                                         x:Uid="/Stock/DateFrom"
+                                                         Width="145"
+                                                         IsEnabled="{x:Bind PriceCheckVM.IsEditButtonPressed ,Mode =OneWay}"
+                                                         BorderBrush="{StaticResource BackgroundColor1Light}"
+                                                         BorderThickness="1"
+                                                         SelectedDate="{x:Bind PriceCheckVM.StockPriceModel.FromDate, Mode=TwoWay}"
+                                                         VerticalAlignment="Top"
+                                                         CalendarViewStyle="{StaticResource CalendarViewStyle}" />
+
+                    <ControlLib:CustomCalendarDatePicker HorizontalAlignment="Left"
+                                                         x:Uid="/Stock/DateTo"
+                                                         Margin="40,0,0,0"
+                                                         IsEnabled="{x:Bind PriceCheckVM.IsEditButtonPressed ,Mode =OneWay}"
+                                                         Grid.Column="1"
+                                                         BorderBrush="{StaticResource BackgroundColor1Light}"
+                                                         BorderThickness="1"
+                                                         Width="145"
+                                                         SelectedDate="{x:Bind PriceCheckVM.StockPriceModel.ToDate, Mode=TwoWay}"
+                                                         VerticalAlignment="Top"
+                                                         CalendarViewStyle="{StaticResource CalendarViewStyle}" />
+
+                </Grid>
+
+                <ComboBox x:Uid="/Stock/PriceUnits"
+                          Visibility="{x:Bind PriceCheckVM.ShowPriceUnits, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
+                          Margin="0,15,0,0"
+                          ItemsSource="{x:Bind PriceCheckVM.PriceUnits, Mode=OneWay}"
+                          Grid.Row="4"
+                          BorderBrush="{StaticResource BackgroundColor1Light}"
+                          BorderThickness="1"
+                          FontSize="11"
+                          Foreground="{StaticResource LabelTextForegroundColor}"
+                          HorizontalAlignment="Left"
+                          Style="{StaticResource ComboBox}"
+                          Width="200"
+                          SelectedIndex="{x:Bind PriceCheckVM.SelectedPriceUnitIndex, Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                          VerticalAlignment="Stretch" />
+
+                <Grid Grid.Row="5"
+                      Visibility="{x:Bind PriceCheckVM.ShowGrids, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <!--#region data Template with one Column-->
+                    <Grid Width="345"
+                          Visibility="{x:Bind PriceCheckVM.ShowPrices, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Margin="0,15,0,0"
+                          HorizontalAlignment="Left">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border Background="{StaticResource HeaderBackgroundColor}"
+                                Width="330"
+                                HorizontalAlignment="Left"
+                                Margin="2,0,0,0"
+                                Padding="10">
+                            <TextBlock Text="{x:Bind PriceCheckVM.Column2Header, Mode=OneWay}"
+                                       HorizontalAlignment="Center"
+                                       Grid.Column="1"
+                                       Foreground="{StaticResource HeaderForegroundColor}" />
+                        </Border>
+
+                        <GridView Padding="0,0,0,5"
+                                  x:Name="ProductListContainer"
+                                  Grid.Row="1"
+                                  Margin="0,2,0,0"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  ScrollViewer.VerticalScrollMode="Enabled"
+                                  ItemsSource="{x:Bind PriceCheckVM.PriceTypeList, Mode=OneWay}">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="model:PriceTypeModel">
+                                    <Grid Width="400"
+                                          x:Name="PriceTypeList">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <!--<Rectangle Margin="2,-15,2,-10"
+                                                   VerticalAlignment="Stretch"
+                                                   Width="1"
+                                                   Stroke="{StaticResource DarkGray}"
+                                                   Grid.Column="1" />-->
+                                        <controls:CustomTextBox Width="330"
+                                                                MaxLength="10"
+                                                                NumericKeyType="Amount"
+                                                                InputScope="Number"
+                                                                IsEnabled="{Binding DataContext.IsEditButtonPressed, ElementName=RootGrid}"
+                                                                HorizontalAlignment="Left"
+                                                                Text="{Binding Column1, Mode=TwoWay ,Converter={StaticResource NothingConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                                                Style="{StaticResource value}" />
+                                    </Grid>
+
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region data Template with two Column-->
+                    <Grid Width="400"
+                          Margin="0,15,0,0"
+                          Visibility="{x:Bind PriceCheckVM.ShowQuantityAndPrice, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
+                          HorizontalAlignment="Left">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border Background="{StaticResource HeaderBackgroundColor}"
+                                HorizontalAlignment="Left"
+                                Width="343"
+                                Margin="2,0,0,0"
+                                Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="172" />
+                                    <ColumnDefinition Width="172" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Uid="/Stock/Quantity"
+                                           Margin="0"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{StaticResource HeaderForegroundColor}" />
+                                <TextBlock Text="{x:Bind PriceCheckVM.Column2Header, Mode=OneWay}"
+                                           HorizontalAlignment="Center"
+                                           Grid.Column="1"
+                                           Margin="0"
+                                           Foreground="{StaticResource HeaderForegroundColor}" />
+                            </Grid>
+                        </Border>
+
+                        <GridView Padding="0,0,0,5"
+                                  x:Name="gridViewWithTwoColumn"
+                                  Grid.Row="1"
+                                  Margin="0,2,0,0"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  ScrollViewer.VerticalScrollMode="Enabled"
+                                  ItemsSource="{x:Bind PriceCheckVM.PriceTypeList, Mode=OneWay}">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="model:PriceTypeModel">
+                                    <Grid Width="400"
+                                          x:Name="PriceTypeList">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <controls:CustomTextBox Width="169"
+                                                                Margin="0"
+                                                                MaxLength="10"
+                                                                NumericKeyType="Amount"
+                                                                InputScope="Number"
+                                                                IsEnabled="{Binding DataContext.IsEditButtonPressed, ElementName=RootGrid}"
+                                                                Text="{Binding Column1, Mode=TwoWay, Converter={StaticResource NothingConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                                                Style="{StaticResource value}" />
+
+                                        <controls:CustomTextBox Width="169"
+                                                                Grid.Column="1"
+                                                                NumericKeyType="Amount"
+                                                                InputScope="Number"
+                                                                IsEnabled="{Binding DataContext.IsEditButtonPressed, ElementName=RootGrid}"
+                                                                Margin="5,0,0,0"
+                                                                MaxLength="10"
+                                                                HorizontalAlignment="Left"
+                                                                Text="{Binding Column2, Mode=TwoWay ,Converter={StaticResource NothingConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                                                Style="{StaticResource value}" />
+
+                                        <Grid Grid.Column="2"
+                                              Visibility="{Binding DataContext.IsEditButtonPressed, ElementName=RootGrid, Converter={StaticResource BoolToVisibilityConverter}}"
+                                              Padding="9,2,10,0"
+                                              Background="{StaticResource BackgroundColor1Light}">
+                                            <Button Content="-"
+                                                    CommandParameter="{x:Bind Id , Mode=OneWay}"
+                                                    Command="{Binding DataContext.MinusCommand,ElementName=RootGrid, Mode=OneWay}" />
+                                        </Grid>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+
+                        <Grid Background="{StaticResource BackgroundColor1Light}"
+                              HorizontalAlignment="Stretch"
+                              Padding="0,5,8,0"
+                              Visibility="{x:Bind PriceCheckVM.IsEditButtonPressed, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                              Grid.Row="2">
+                            <Button Content="+"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    CommandParameter="{Binding SelectedIndex, ElementName=gridViewWithTwoColumn}"
+                                    Command="{Binding DataContext.PlusCommand,ElementName=RootGrid, Mode=OneWay}">
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region data Template with three Column-->
+                    <Grid Width="400"
+                          Visibility="{x:Bind PriceCheckVM.ShowFromToPrice, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
+                          Margin="0,15,0,0"
+                          HorizontalAlignment="Left">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border Background="{StaticResource HeaderBackgroundColor}"
+                                HorizontalAlignment="Left"
+                                Width="340"
+                                Margin="2,0,0,0"
+                                Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="110" />
+                                    <ColumnDefinition Width="110" />
+                                    <ColumnDefinition Width="105" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Uid="/Stock/From"
+                                           Margin="0"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{StaticResource HeaderForegroundColor}" />
+                                <TextBlock x:Uid="/Stock/To"
+                                           Grid.Column="1"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{StaticResource HeaderForegroundColor}" />
+                                <TextBlock Text="{x:Bind PriceCheckVM.Column2Header, Mode=OneWay}"
+                                           Grid.Column="2"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{StaticResource HeaderForegroundColor}" />
+                            </Grid>
+                        </Border>
+
+                        <GridView x:Name="gridView"
+                                  Padding="0,0,0,5"
+                                  Grid.Row="1"
+                                  Margin="0,2,0,0"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  ScrollViewer.VerticalScrollMode="Enabled"
+                                  ItemsSource="{x:Bind PriceCheckVM.PriceTypeList, Mode=OneWay}">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="model:PriceTypeModel">
+                                    <Grid Width="400"
+                                          x:Name="PriceTypeList">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <controls:CustomTextBox Width="110"
+                                                                Margin="0"
+                                                                MaxLength="10"
+                                                                NumericKeyType="Amount"
+                                                                InputScope="Number"
+                                                                IsEnabled="{Binding DataContext.IsEditButtonPressed, ElementName=RootGrid}"
+                                                                Text="{Binding Column1, Mode=TwoWay, Converter={StaticResource NothingConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                                                Style="{StaticResource value}" />
+                                        <controls:CustomTextBox Width="110"
+                                                                Margin="5,0,0,0"
+                                                                Grid.Column="1"
+                                                                NumericKeyType="Amount"
+                                                                InputScope="Number"
+                                                                MaxLength="10"
+                                                                IsEnabled="{Binding DataContext.IsEditButtonPressed, ElementName=RootGrid}"
+                                                                HorizontalAlignment="Left"
+                                                                Text="{Binding Column2, Mode=TwoWay ,Converter={StaticResource NothingConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                                                Style="{StaticResource value}" />
+                                        <controls:CustomTextBox Width="110"
+                                                                Margin="5,0,0,0"
+                                                                Grid.Column="2"
+                                                                NumericKeyType="Amount"
+                                                                InputScope="Number"
+                                                                MaxLength="10"
+                                                                IsEnabled="{Binding DataContext.IsEditButtonPressed, ElementName=RootGrid}"
+                                                                HorizontalAlignment="Left"
+                                                                Text="{Binding Column3, Mode=TwoWay ,Converter={StaticResource NothingConverter}, UpdateSourceTrigger=PropertyChanged}"
+                                                                Style="{StaticResource value}" />
+                                        <Grid Grid.Column="3"
+                                              Visibility="{Binding DataContext.IsEditButtonPressed, ElementName=RootGrid, Converter={StaticResource BoolToVisibilityConverter}}"
+                                              Background="{StaticResource BackgroundColor1Light}">
+                                            <Button Content="-"
+                                                    Margin="7,2,0,0"
+                                                    CommandParameter="{x:Bind Id , Mode=OneWay}"
+                                                    Command="{Binding DataContext.MinusCommand,ElementName=RootGrid, Mode=OneWay}" />
+                                        </Grid>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+
+                        <Grid Background="{StaticResource BackgroundColor1Light}"
+                              Visibility="{x:Bind PriceCheckVM.IsEditButtonPressed,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                              HorizontalAlignment="Stretch"
+                              Padding="0,5,12,0"
+                              Grid.Row="2">
+                            <Button Content="+"
+                                    Visibility="{Binding DataContext.StockPriceModel.IsAddButtonVisible, ElementName=RootGrid, Converter={StaticResource BoolToVisibilityConverter}}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    Command="{x:Bind PriceCheckVM.PlusCommand ,Mode=OneWay}" />
+                        </Grid>
+                    </Grid>
+                    <!--#endregion-->
+
+                </Grid>
+
+            </Grid>
+        </ScrollViewer>
+
+        <ControlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomColor}"
+                                  Margin="0,20,0,0"
+                                  Visibility="{x:Bind PriceCheckVM.ShowEditButton, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
+                                  IsEnabled="{x:Bind PriceCheckVM.StockPriceModel.IsChangePriceEnable, Mode=OneWay}"
+                                  Command="{x:Bind PriceCheckVM.EditPriceCommand, Mode=OneWay}"
+                                  Grid.Row="4"
+                                  HorizontalAlignment="Right"
+                                  x:Uid="/Stock/edit"
+                                  Width="140" />
+
+        <ControlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                  Margin="0,20,0,0"
+                                  Visibility="{x:Bind PriceCheckVM.ShowSaveButton, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
+                                  Command="{x:Bind PriceCheckVM.ChangePriceCommand, Mode=OneWay}"
+                                  Grid.Row="4"
+                                  HorizontalAlignment="Right"
+                                  x:Uid="/Stock/save"
+                                  Width="140" />
+    </Grid>
+</Page>

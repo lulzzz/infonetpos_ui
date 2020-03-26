@@ -1,0 +1,201 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.PumpOptions.Finish"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.PumpOptions"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:toolsKit="using:MyToolkit.Controls"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:triggers="using:WinRT.Triggers"
+      xmlns:control="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="TextBlock"
+               x:Key="DataGridHeader">
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="FontFamily"
+                    Value="Segoe UI SemiBold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource ExtraWhite}" />
+        </Style>
+
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:NothingConverter x:Key="NothingConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <control:ViewHeading x:Uid="txtFinish"
+                             BackCommand="{x:Bind FinishVM.BackCommand, Mode=OneWay}"/>
+
+        <Grid Padding="0,15,0,20"
+              Grid.Row="1">
+            <TextBlock Text="{x:Bind  FinishVM.UncompletePrepayModel.Caption,Mode=OneWay}"
+                       Foreground="{StaticResource DarkGray}" />
+        </Grid>
+
+        <!--#region Data Grid-->
+        <toolsKit:DataGrid Background="{StaticResource WaxWhite}"
+                           Grid.Row="2"
+                           HeaderBackground="{StaticResource DarkGray}"
+                           SelectedItem="{x:Bind FinishVM.SelectedUncompleteSaleModel, Mode=TwoWay, Converter={StaticResource NothingConverter}}"
+                           ItemsSource="{x:Bind FinishVM.UncompletePrepayModel.UncompleteSale, Mode=OneWay}">
+
+            <toolsKit:DataGrid.Columns>
+                <toolsKit:DataGridTextColumn Width="*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Binding="{Binding PumpId}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtPump"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="2*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Binding="{Binding PositionId}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtPosition"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="2*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Binding="{Binding SaleNumber}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtSale"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="2*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Binding="{Binding PrepayAmount}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtPrepayAmount"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="2*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Binding="{Binding PrepayVolume}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtPrepayVolume"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="2*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Binding="{Binding UsedAmount}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtUsedAmount"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="2*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Binding="{Binding UsedVolume}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtUsedVolume"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Binding="{Binding Grade}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="Grade"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+                <toolsKit:DataGridTextColumn Width="2*"
+                                             FontSize="11"
+                                             MaxCharacterLength="16"
+                                             TextAlignment="Left"
+                                             CanSort="False"
+                                             Binding="{Binding UnitPrice}"
+                                             Style="{StaticResource DisabledTextBoxStyle}">
+                    <toolsKit:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtUnitPrice"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolsKit:DataGridTextColumn.Header>
+                </toolsKit:DataGridTextColumn>
+            </toolsKit:DataGrid.Columns>
+        </toolsKit:DataGrid>
+        <!--#endregion-->
+
+        <Grid Grid.Row="3"
+              Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <controlLib:GenericButton Width="160"
+                                      HorizontalAlignment="Left"
+                                      Command="{x:Bind FinishVM.CompleteChangeCommand ,Mode=OneWay}"
+                                      IsEnabled="{x:Bind FinishVM.UncompletePrepayModel.IsChangeEnabled, Mode=OneWay}"
+                                      BottomBackGroundColor="{StaticResource LightGray}"
+                                      x:Uid="btnCompleteChange" />
+
+            <controlLib:GenericButton Width="188"
+                                      Grid.Column="1"
+                                      Command="{x:Bind FinishVM.CompleteOverPaymentCommand ,Mode=OneWay}"
+                                      IsEnabled="{x:Bind FinishVM.UncompletePrepayModel.IsOverPaymentEnabled, Mode=OneWay}"
+                                      HorizontalAlignment="Left"
+                                      BottomBackGroundColor="{StaticResource LightGray}"
+                                      x:Uid="btnCompleteOverPayment" />
+
+            <controlLib:GenericButton Width="140"
+                                      Grid.Column="2"
+                                      Command="{x:Bind FinishVM.DeleteCommand ,Mode=OneWay}"
+                                      IsEnabled="{x:Bind FinishVM.UncompletePrepayModel.IsDeleteEnabled, Mode=OneWay}"
+                                      Visibility="{x:Bind FinishVM.UncompletePrepayModel.IsDeleteVisible, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                      HorizontalAlignment="Right"
+                                      BottomBackGroundColor="{StaticResource LightGray}"
+                                      x:Uid="btnDelete" />
+        </Grid>
+    </Grid>
+</Page>

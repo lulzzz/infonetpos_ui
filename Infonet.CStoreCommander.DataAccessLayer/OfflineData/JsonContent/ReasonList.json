@@ -1,0 +1,21 @@
+﻿{
+  "reasonTitle": "Void Sales",
+  "reasons": [
+    {
+      "code": "1",
+      "description": "INVALID SALE"
+    },
+    {
+      "code": "2",
+      "description": "Not Wanted"
+    },
+    {
+      "code": "3",
+      "description": "Not Enough Cash"
+    },
+    {
+      "code": "99",
+      "description": "OTHERS"
+    }
+  ]
+}

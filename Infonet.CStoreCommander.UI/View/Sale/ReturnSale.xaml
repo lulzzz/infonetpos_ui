@@ -1,0 +1,208 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Sale.ReturnSale"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Sale"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:control="using:MyToolkit.Extended.Controls"
+      xmlns:toolKitControls="using:MyToolkit.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:triggers="using:WinRT.Triggers"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      mc:Ignorable="d">
+
+    <triggers:Interactions.Triggers>
+        <triggers:EventTrigger EventName="Loaded">
+            <triggers:InvokeCommandAction Command="{x:Bind ReturnSaleVM.GetAllSaleListCommand, Mode=OneWay}"
+                                          PassEventArgsToCommand="False" />
+        </triggers:EventTrigger>
+    </triggers:Interactions.Triggers>
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Resources/DatePicker.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:NothingConverter x:Key="NothingConverter" />
+            <converters:IsEnableConverter x:Key="IsEnableConverter" />
+            <Style TargetType="TextBlock"
+                   x:Key="DataGridHeader">
+                <Setter Property="TextAlignment"
+                        Value="Left" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="Margin"
+                        Value="0" />
+                <Setter Property="FontFamily"
+                        Value="Segoe UI SemiBold" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource HeaderForegroundColor}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Padding="8,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:ViewHeading x:Uid="txtReturnSale" />
+
+        <Grid Grid.Row="1"
+              Margin="0,20,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <control:CustomTextBox x:Name="txtbSearchSale"
+                                   BorderBrush="{StaticResource LabelTextForegroundColor}"
+                                   x:Uid="searchSale"
+                                   Style="{StaticResource TextBox}"
+                                   Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   EnterPressedCommand="{x:Bind ReturnSaleVM.SearchBySaleNumberCommand, Mode=OneWay}"
+                                   Width="243" />
+
+            <CalendarDatePicker x:Uid="date"
+                                Width="185"
+                                HorizontalAlignment="Right"
+                                Grid.Column="2"
+                                CalendarViewStyle="{StaticResource CalendarViewStyle}"
+                                DateFormat="{}{month.integer}/{day.integer}/{year.full}">
+                <triggers:Interactions.Triggers>
+                    <triggers:EventTrigger EventName="DateChanged">
+                        <triggers:InvokeCommandAction Command="{x:Bind ReturnSaleVM.SaleDateSelectedCommand, Mode=OneWay}"
+                                                      PassEventArgsToCommand="True" />
+                    </triggers:EventTrigger>
+                </triggers:Interactions.Triggers>
+            </CalendarDatePicker>
+
+        </Grid>
+
+
+        <!--#region Data Grid-->
+        <toolKitControls:DataGrid ItemsSource="{Binding Sales, Mode=OneWay}"
+                                  Grid.Row="2"
+                                  Background="{StaticResource BackgroundColor1Light}"
+                                  HeaderBackground="{StaticResource HeaderBackgroundColor}"
+                                  HeaderForeground="{StaticResource HeaderForegroundColor}"
+                                  RowBackgroundEvenBrush="{StaticResource BackgroundColor1Dark}"
+                                  RowBackgroundOddBrush="{StaticResource BackgroundColor1Light}"
+                                  SelectedItem="{x:Bind ReturnSaleVM.SelectedSaleModel, Mode=TwoWay, Converter={StaticResource NothingConverter}}">
+
+            <triggers:Interactions.Triggers>
+                <triggers:EventTrigger EventName="ScrolledTillEnd">
+                    <triggers:InvokeCommandAction Command="{x:Bind ReturnSaleVM.RefreshCommand, Mode=OneWay}"
+                                                  PassEventArgsToCommand="False" />
+                </triggers:EventTrigger>
+            </triggers:Interactions.Triggers>
+
+            <toolKitControls:DataGrid.Columns>
+                <toolKitControls:DataGridTextColumn Width="90*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding TillNumber}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtTill"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="110*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding SaleNumber}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtSale"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="110*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding Date}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtDate"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="100*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding Time}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtTime"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+                <toolKitControls:DataGridTextColumn Width="100*"
+                                                    CanSort="False"
+                                                    FontSize="11"
+                                                    TextAlignment="Left"
+                                                    Foreground="{StaticResource LabelTextForegroundColor}"
+                                                    Style="{StaticResource DisabledTextBoxStyle}"
+                                                    Binding="{Binding TotalAmount}">
+                    <toolKitControls:DataGridTextColumn.Header>
+                        <TextBlock x:Uid="txtAmount"
+                                   TextAlignment="Left"
+                                   Style="{StaticResource DataGridHeader}" />
+                    </toolKitControls:DataGridTextColumn.Header>
+                </toolKitControls:DataGridTextColumn>
+            </toolKitControls:DataGrid.Columns>
+        </toolKitControls:DataGrid>
+        <!--#endregion-->
+
+
+        <StackPanel Grid.Row="3"
+                    Margin="0,20,0,0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <controlLib:GenericButton x:Uid="btnReturn"
+                                      Width="140"
+                                      IsEnabled="{x:Bind ReturnSaleVM.IsReturnSaleEnabled,Mode=OneWay}"
+                                      Command="{x:Bind ReturnSaleVM.ReturnSaleCommand,Mode=OneWay}"
+                                      Margin="10,0,0,0"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomColor}" />
+            <controlLib:GenericButton x:Uid="btnReturnItems"
+                                      IsEnabled="{x:Bind ReturnSaleVM.IsReturnSaleEnabled,Mode=OneWay}"
+                                      Command="{x:Bind ReturnSaleVM.ReturnSaleItemCommand,Mode=OneWay}"
+                                      Width="140"
+                                      Margin="10,0,0,0"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomColor}" />
+            <controlLib:GenericButton x:Uid="btnCorrection"
+                                      Width="140"
+                                      Command="{x:Bind ReturnSaleVM.ReturnSaleCommand,Mode=OneWay}"
+                                      IsEnabled="{x:Bind ReturnSaleVM.AllowCorrection, Mode=OneWay}"
+                                      Margin="10,0,0,0"
+                                      BottomBackGroundColor="{StaticResource ButtonBottomColor}" />
+        </StackPanel>
+    </Grid>
+</Page>

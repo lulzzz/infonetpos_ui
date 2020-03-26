@@ -1,0 +1,1566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{04498998-0E57-4999-AA4A-94BFC462B895}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infonet.CStoreCommander.UI</RootNamespace>
+    <AssemblyName>Infonet.CStoreCommander.UI</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>Infonet.CStoreCommander.UI_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Auto</AppxBundle>
+    <AppxBundlePlatforms>x86</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>A9868973423777F0566A43F48FE9FF221110622F</PackageCertificateThumbprint>
+    <AppxPackageDir>C:\temp\Next_Gen\AppPackage\</AppxPackageDir>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath />
+    <SccProvider>
+    </SccProvider>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <PRIResource Include="Strings\ar\Resources.resw" />
+    <PRIResource Include="Strings\fr-CA\Stock.resw" />
+    <PRIResource Include="Strings\en-US\Stock.resw" />
+    <PRIResource Include="Strings\fr-CA\ApplicationConstants.Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="Strings\en-US\ApplicationConstants.Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="Strings\fr-CA\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="Strings\en-US\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AckrooAccoutBalance.xaml.cs">
+      <DependentUpon>AckrooAccoutBalance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AckrooTenderPopup.xaml.cs">
+      <DependentUpon>AckrooTenderPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BarCodeTextbox.xaml.cs">
+      <DependentUpon>BarCodeTextbox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CarwashPopup.xaml.cs">
+      <DependentUpon>CarwashPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CheckoutOptions.xaml.cs">
+      <DependentUpon>CheckoutOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EmergencyPopup.xaml.cs">
+      <DependentUpon>EmergencyPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EnvelopeNumberPopup.xaml.cs">
+      <DependentUpon>EnvelopeNumberPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FNGTRPopup.xaml.cs">
+      <DependentUpon>FNGTRPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FuelDiscountPopup.xaml.cs">
+      <DependentUpon>FuelDiscountPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GroupBox.xaml.cs">
+      <DependentUpon>GroupBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GstPstTaxExemptPopup.xaml.cs">
+      <DependentUpon>GstPstTaxExemptPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\KickBackNumberPopup.xaml.cs">
+      <DependentUpon>KickBackNumberPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\KickbackBalancePopup.xaml.cs">
+      <DependentUpon>KickbackBalancePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LargePopupHeader.xaml.cs">
+      <DependentUpon>LargePopupHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoadingPage.xaml.cs">
+      <DependentUpon>LoadingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MessagePopup.xaml.cs">
+      <DependentUpon>MessagePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PopupWithTextBox.xaml.cs">
+      <DependentUpon>PopupWithTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PurchaseOrderPopup.xaml.cs">
+      <DependentUpon>PurchaseOrderPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QitePopup.xaml.cs">
+      <DependentUpon>QitePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReasonList.xaml.cs">
+      <DependentUpon>ReasonList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NotificationPopup.xaml.cs">
+      <DependentUpon>NotificationPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumberPad.xaml.cs">
+      <DependentUpon>NumberPad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProductDatatemplate.xaml.cs">
+      <DependentUpon>ProductDatatemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PumpDataTemplate.xaml.cs">
+      <DependentUpon>PumpDataTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PopupWithTwoButtons.xaml.cs">
+      <DependentUpon>PopupWithTwoButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PumpOptions.xaml.cs">
+      <DependentUpon>PumpOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReturnsPopup.xaml.cs">
+      <DependentUpon>ReturnsPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SearchTextBox.xaml.cs">
+      <DependentUpon>SearchTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SecondFrameHeading.xaml.cs">
+      <DependentUpon>SecondFrameHeading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SmallPopupHeader.xaml.cs">
+      <DependentUpon>SmallPopupHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TaxExemptionPopup.xaml.cs">
+      <DependentUpon>TaxExemptionPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TenderDataTemplate.xaml.cs">
+      <DependentUpon>TenderDataTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ViewHeading.xaml.cs">
+      <DependentUpon>ViewHeading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\AmountDisplayConverter.cs" />
+    <Compile Include="Converter\AppendHashConverter.cs" />
+    <Compile Include="Converter\BoolToPassswordVisibilityConverter.cs" />
+    <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\CurrencyConverter.cs" />
+    <Compile Include="Converter\DecimalToStringConverter.cs" />
+    <Compile Include="Converter\DisabledConverter.cs" />
+    <Compile Include="Converter\DoubleDigitVisibilityConverter.cs" />
+    <Compile Include="Converter\FontsizeConverter.cs" />
+    <Compile Include="Converter\FourDigitVisibilityConverter.cs" />
+    <Compile Include="Converter\GiftCertificateListConverter.cs" />
+    <Compile Include="Converter\IntToStringConverter.cs" />
+    <Compile Include="Converter\IsEnableConverter.cs" />
+    <Compile Include="Converter\NothingConverter.cs" />
+    <Compile Include="Converter\NullToVisibilityConverter.cs" />
+    <Compile Include="Converter\ObjectToObjectConverter.cs" />
+    <Compile Include="Converter\ProductQuantityVisibilityConverter.cs" />
+    <Compile Include="Converter\SelectedCustomerConverter.cs" />
+    <Compile Include="Converter\SelectedStockConverter.cs" />
+    <Compile Include="Converter\StoreCreditListConverter.cs" />
+    <Compile Include="Converter\TierLevelListConverter.cs" />
+    <Compile Include="Converter\TripleDigitVisibilityConveter.cs" />
+    <Compile Include="DependencyResolver.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\AckrooAccoutBalanceMessage.cs" />
+    <Compile Include="Messages\AckrooOutStandingAmtChangeMessage.cs" />
+    <Compile Include="Messages\AckrooTenderInitMessage.cs" />
+    <Compile Include="Messages\AckrooTenderMessage.cs" />
+    <Compile Include="Messages\AckrooTenderPaymentMessage.cs" />
+    <Compile Include="Messages\AddManualFuelMessage.cs" />
+    <Compile Include="Messages\AddStockToSaleMessage.cs" />
+    <Compile Include="Messages\AkrooMessage.cs" />
+    <Compile Include="Messages\CloseKeyboardMessage.cs" />
+    <Compile Include="Messages\CloseTillMessage.cs" />
+    <Compile Include="Messages\EnableDisablePaymentButtonMessage.cs" />
+    <Compile Include="Messages\EnableFuelOptionButtonMessage.cs" />
+    <Compile Include="Messages\FinishMessage.cs" />
+    <Compile Include="Messages\ForceUserIDMessage.cs" />
+    <Compile Include="Messages\FuelDiscount.cs" />
+    <Compile Include="Messages\FuelLineInfo.cs" />
+    <Compile Include="Messages\FuelManualPumpMessage.cs" />
+    <Compile Include="Messages\FuelOnlySystemMessage.cs" />
+    <Compile Include="Messages\FuelPriceReportMessage.cs" />
+    <Compile Include="Messages\GiftCertificateSelectedMessage.cs" />
+    <Compile Include="Messages\GiveXSelectedMessage.cs" />
+    <Compile Include="Messages\KickBackForTenderScreenMessage.cs" />
+    <Compile Include="Messages\LoadHotCategoriesMessage.cs" />
+    <Compile Include="Messages\PrepayMessage.cs" />
+    <Compile Include="Messages\PSButtonMessage.cs" />
+    <Compile Include="Messages\PSMessage.cs" />
+    <Compile Include="Messages\PSProductInfo.cs" />
+    <Compile Include="Messages\PSReceipt.cs" />
+    <Compile Include="Messages\PumpOptionRemoveMessage.cs" />
+    <Compile Include="Messages\RequestForSyncHotProductsMessage.cs" />
+    <Compile Include="Messages\ResetPumpOptionMessage.cs" />
+    <Compile Include="Messages\SaveFuelPricesMessage.cs" />
+    <Compile Include="Messages\SelectFleetTabMessage.cs" />
+    <Compile Include="Messages\SetFleetMessage.cs" />
+    <Compile Include="Messages\SetFocusOnGridMessage.cs" />
+    <Compile Include="Messages\SetPostPayMessage.cs" />
+    <Compile Include="Messages\ShowFleetCreditTenders.cs" />
+    <Compile Include="Messages\SITEMessage.cs" />
+    <Compile Include="Messages\StoreCreditSelectedMessage.cs" />
+    <Compile Include="Model\Cash\CashButtonModel.cs" />
+    <Compile Include="Model\Cash\CashDrawModel.cs" />
+    <Compile Include="Model\Cash\CashDrawTypesModel.cs" />
+    <Compile Include="Model\Cash\CashDropEnvelopeModel.cs" />
+    <Compile Include="Model\Cash\TenderModel.cs" />
+    <Compile Include="Model\Checkout\ExplanationCodeModel.cs" />
+    <Compile Include="Model\Checkout\GiftCertificateModel.cs" />
+    <Compile Include="Model\Checkout\PurchaseItemModel.cs" />
+    <Compile Include="Model\Checkout\SaleSummaryModel.cs" />
+    <Compile Include="Model\Checkout\StoreCreditModel.cs" />
+    <Compile Include="Model\Checkout\TaxExemptSaleLineModel.cs" />
+    <Compile Include="Model\Checkout\TenderModel.cs" />
+    <Compile Include="Model\Checkout\VendorCouponModel.cs" />
+    <Compile Include="Model\Customer\CustomerModel.cs" />
+    <Compile Include="Model\DipInputs\DipInputModel.cs" />
+    <Compile Include="Model\FuelPrice\PriceIncrementModel.cs" />
+    <Compile Include="Model\FuelPump\FuelPricesModel.cs" />
+    <Compile Include="Model\FuelPump\PropaneModel.cs" />
+    <Compile Include="Model\FuelPump\TierLevelModel.cs" />
+    <Compile Include="Model\FuelPump\UncompletePrepayModel.cs" />
+    <Compile Include="Model\GiveX\GiveXReportModel.cs" />
+    <Compile Include="Model\Login\LoginModel.cs" />
+    <Compile Include="Model\HotCategory\HotProductModel.cs" />
+    <Compile Include="Model\Logout\CloseTillModel.cs" />
+    <Compile Include="Model\Payment\ARCustomerModel.cs" />
+    <Compile Include="Model\Payout\TaxModel.cs" />
+    <Compile Include="Model\Payout\VendorModel.cs" />
+    <Compile Include="Model\PumpDetailModel.cs" />
+    <Compile Include="Model\Reports\FlashReportModel.cs" />
+    <Compile Include="Model\Reports\FlashReportTotalModel.cs" />
+    <Compile Include="Model\Reports\SaleCountModel.cs" />
+    <Compile Include="Model\Reprint\ReportTypesModel.cs" />
+    <Compile Include="Model\Reprint\ReprintReportSaleModel.cs" />
+    <Compile Include="Model\Stock\PriceTypeModel.cs" />
+    <Compile Include="Model\Sale\SaleModel.cs" />
+    <Compile Include="Model\Sale\BottleModel.cs" />
+    <Compile Include="Model\Sale\BottleReturnSaleModel.cs" />
+    <Compile Include="Model\Sale\GiftCardModel.cs" />
+    <Compile Include="Model\Sale\SuspendSaleModel.cs" />
+    <Compile Include="Model\Settings\Maintenance\ChangePassword.cs" />
+    <Compile Include="Model\Stock\ProductDataModel.cs" />
+    <Compile Include="Model\Stock\StockModel.cs" />
+    <Compile Include="Model\Stock\StockPriceModel.cs" />
+    <Compile Include="Model\Stock\TaxCodes.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\NavigateService.cs" />
+    <Compile Include="Service\PeripheralsService.cs" />
+    <Compile Include="Service\SignalRService.cs" />
+    <Compile Include="Service\SoundService.cs" />
+    <Compile Include="Trigger\EqualsStateTrigger.cs" />
+    <Compile Include="Utility\ApplicationConstants.cs" />
+    <Compile Include="Utility\Extensions.cs" />
+    <Compile Include="Utility\FuelPricingTabs.cs" />
+    <Compile Include="Utility\Helper.cs" />
+    <Compile Include="Utility\LoadingService.cs" />
+    <Compile Include="Utility\MaintenanceTabs.cs" />
+    <Compile Include="Utility\MSRService.cs" />
+    <Compile Include="Utility\ObjectStorageUtility.cs" />
+    <Compile Include="Utility\PaymentSourceTabs.cs" />
+    <Compile Include="Utility\PaymentTabs.cs" />
+    <Compile Include="Utility\PopupService.cs" />
+    <Compile Include="Utility\PrintHelper.cs" />
+    <Compile Include="Utility\PumpsUtility.cs" />
+    <Compile Include="Utility\ReportTabs.cs" />
+    <Compile Include="Utility\StorageService.cs" />
+    <Compile Include="Utility\ViewUtility.cs" />
+    <Compile Include="ViewModel\Ackroo\AckrooTenderVM.cs" />
+    <Compile Include="ViewModel\Ackroo\AckrooVM.cs" />
+    <Compile Include="ViewModel\CashManager\CashDropVM.cs" />
+    <Compile Include="ViewModel\Checkout\AiteVM.cs" />
+    <Compile Include="ViewModel\Checkout\CouponVM.cs" />
+    <Compile Include="ViewModel\Checkout\FleetTenderVM.cs" />
+    <Compile Include="ViewModel\Checkout\FuelDiscountVM.cs" />
+    <Compile Include="ViewModel\Checkout\GiftCertificateVM.cs" />
+    <Compile Include="ViewModel\Checkout\GiveXTenderVM.cs" />
+    <Compile Include="ViewModel\Checkout\KickbackVM.cs" />
+    <Compile Include="ViewModel\Checkout\OverLimitVM.cs" />
+    <Compile Include="ViewModel\Checkout\OverrideLimitVM.cs" />
+    <Compile Include="ViewModel\Checkout\QiteVM.cs" />
+    <Compile Include="ViewModel\Checkout\SignatureVM.cs" />
+    <Compile Include="ViewModel\Checkout\SiteVM.cs" />
+    <Compile Include="ViewModel\Checkout\StoreCreditVM.cs" />
+    <Compile Include="ViewModel\Checkout\TaxExemptionVM.cs" />
+    <Compile Include="ViewModel\CashManager\CashDrawVM.cs" />
+    <Compile Include="ViewModel\Checkout\VendorCouponVM.cs" />
+    <Compile Include="ViewModel\Common\MasterPageVM.cs" />
+    <Compile Include="ViewModel\Common\NumberpadVM.cs" />
+    <Compile Include="ViewModel\Customer\AddCustomerScreenVM.cs" />
+    <Compile Include="ViewModel\Customer\CustomersScreenVM.cs" />
+    <Compile Include="ViewModel\Customer\LoyaltyCustomersScreenVM.cs" />
+    <Compile Include="ViewModel\DipInputs\DipInputVM.cs" />
+    <Compile Include="ViewModel\GiveX\GiveXReportVM.cs" />
+    <Compile Include="ViewModel\Login\CloseTillVM.cs" />
+    <Compile Include="ViewModel\Payment\FleetVM.cs" />
+    <Compile Include="ViewModel\Payment\PayoutVM.cs" />
+    <Compile Include="ViewModel\PSInet\PaymentSourceVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\ErrorsVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\FinishVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\FuelPricing\AddManualVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\FuelPricing\BasePricesVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\FuelPricing\FuelPricingVM.cs" />
+    <Compile Include="ViewModel\GiveX\GiveXVM.cs" />
+    <Compile Include="ViewModel\HomeScreenVM.cs" />
+    <Compile Include="ViewModel\HotCategoriesScreenVM.cs" />
+    <Compile Include="ViewModel\UtilsVM.cs" />
+    <Compile Include="ViewModel\Login\FreezedScreenVM.cs" />
+    <Compile Include="ViewModel\Login\LoginScreenVM.cs" />
+    <Compile Include="ViewModel\Login\LogoutScreenVM.cs" />
+    <Compile Include="ViewModel\ExtendedSplashScreenVM.cs" />
+    <Compile Include="ViewModel\Checkout\SaleSummaryVM.cs" />
+    <Compile Include="ViewModel\Payment\ARVM.cs" />
+    <Compile Include="ViewModel\Payment\PaymentVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\FuelPricing\PriceIncrementsVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\FuelPricing\PricesToDisplayVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\PrepayVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\PropaneGrade\PropaneGradeVM.cs" />
+    <Compile Include="ViewModel\Reports\ReportOptions\FlashReportVM.cs" />
+    <Compile Include="ViewModel\Reports\ReportOptions\ReportVM.cs" />
+    <Compile Include="ViewModel\Reports\ReportOptions\SalesCountVM.cs" />
+    <Compile Include="ViewModel\Reports\ReportOptions\TillAuditReportVM.cs" />
+    <Compile Include="ViewModel\Reports\ReportsScreenVM.cs" />
+    <Compile Include="ViewModel\Reprint\LastPrintVM.cs" />
+    <Compile Include="ViewModel\Reprint\ReprintVM.cs" />
+    <Compile Include="ViewModel\Sale\BottleReturnsScreenVM.cs" />
+    <Compile Include="ViewModel\Sale\ReturnSaleItemVM.cs" />
+    <Compile Include="ViewModel\Sale\ReturnSaleVM.cs" />
+    <Compile Include="ViewModel\Sale\SaleGridVM.cs" />
+    <Compile Include="ViewModel\Sale\UnsuspendSaleVM.cs" />
+    <Compile Include="ViewModel\SettingsMenu\MaintenanceVM.cs" />
+    <Compile Include="ViewModel\SettingsMenu\Maintenance\SwitchUserVM.cs" />
+    <Compile Include="ViewModel\Stock\AddStockScreenVM.cs" />
+    <Compile Include="ViewModel\Stock\PriceCheckVM.cs" />
+    <Compile Include="ViewModel\Stock\SearchStockScreenVM.cs" />
+    <Compile Include="ViewModel\PumpOptions\TierLevel\TierLevelVM.cs" />
+    <Compile Include="ViewModel\VMBase.cs" />
+    <Compile Include="View\Ackroo\CardOperations\Ackroo.xaml.cs">
+      <DependentUpon>Ackroo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Ackroo\CardOperations\AckrooBalance.xaml.cs">
+      <DependentUpon>AckrooBalance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Ackroo\CardOperations\AckrooCardActivation.xaml.cs">
+      <DependentUpon>AckrooCardActivation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Ackroo\CardOperations\AckrooIncreaseFund.xaml.cs">
+      <DependentUpon>AckrooIncreaseFund.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Ackroo\CardOperations\AckrooMenu.xaml.cs">
+      <DependentUpon>AckrooMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Ackroo\CardOperations\AckrooSellCarwashUnits.xaml.cs">
+      <DependentUpon>AckrooSellCarwashUnits.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BlankView.xaml.cs">
+      <DependentUpon>BlankView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CashManager\CashTender.xaml.cs">
+      <DependentUpon>CashTender.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CashManager\TendersNumberPad.xaml.cs">
+      <DependentUpon>TendersNumberPad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\Carwash.xaml.cs">
+      <DependentUpon>Carwash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\FuelDiscountPolicies.xaml.cs">
+      <DependentUpon>FuelDiscountPolicies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\GiveXTender.xaml.cs">
+      <DependentUpon>GiveXTender.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\TaxExempt\AITE.xaml.cs">
+      <DependentUpon>AITE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\TaxExempt\SignatureScreen.xaml.cs">
+      <DependentUpon>SignatureScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\TaxExempt\SITE.xaml.cs">
+      <DependentUpon>SITE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\TaxExempt\TaxExemptOverLimit.xaml.cs">
+      <DependentUpon>TaxExemptOverLimit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\TaxExempt\OverrideLimit.xaml.cs">
+      <DependentUpon>OverrideLimit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\TendersQuantityPad.xaml.cs">
+      <DependentUpon>TendersQuantityPad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\VendorCoupon.xaml.cs">
+      <DependentUpon>VendorCoupon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Errors.xaml.cs">
+      <DependentUpon>Errors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\MasterPage.xaml.cs">
+      <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\AddCustomer.xaml.cs">
+      <DependentUpon>AddCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddItemByCode.xaml.cs">
+      <DependentUpon>AddItemByCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DipInput\DipInput.xaml.cs">
+      <DependentUpon>DipInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GiveX\GIvexReport.xaml.cs">
+      <DependentUpon>GivexReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GiveX\GiveXReportGrid.xaml.cs">
+      <DependentUpon>GiveXReportGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\TillClose.xaml.cs">
+      <DependentUpon>TillClose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payments\Fleet.xaml.cs">
+      <DependentUpon>Fleet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Prepay\Prepay.xaml.cs">
+      <DependentUpon>Prepay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Prepay\PrepayNumberPad.xaml.cs">
+      <DependentUpon>PrepayNumberPad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PSInet\PaymentSource.xaml.cs">
+      <DependentUpon>PaymentSource.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PSInet\PSInetOptions\Download.xaml.cs">
+      <DependentUpon>Download.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PSInet\PSInetOptions\EP.xaml.cs">
+      <DependentUpon>EP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PSInet\PSInetOptions\PS.xaml.cs">
+      <DependentUpon>PS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PSInet\PSInetOptions\Receipt.xaml.cs">
+      <DependentUpon>Receipt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PSInet\PSInetOptions\Refund.xaml.cs">
+      <DependentUpon>Refund.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PSInet\PSInetOptions\TX.xaml.cs">
+      <DependentUpon>TX.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PSInet\PSInetOptions\VP.xaml.cs">
+      <DependentUpon>VP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Finish.xaml.cs">
+      <DependentUpon>Finish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\AddManual.xaml.cs">
+      <DependentUpon>AddManual.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\BasePrice.xaml.cs">
+      <DependentUpon>BasePrice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\Differences.xaml.cs">
+      <DependentUpon>Differences.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\FuelPriceQuantityPad.xaml.cs">
+      <DependentUpon>FuelPriceQuantityPad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\FuelPricing.xaml.cs">
+      <DependentUpon>FuelPricing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GiveX\GiveX.xaml.cs">
+      <DependentUpon>GiveX.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\Coupon.xaml.cs">
+      <DependentUpon>Coupon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\FleetCard.xaml.cs">
+      <DependentUpon>FleetCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\GiftCertificate.xaml.cs">
+      <DependentUpon>GiftCertificate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\PaymentByGiveX.xaml.cs">
+      <DependentUpon>PaymentByGiveX.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\SalesSummary.xaml.cs">
+      <DependentUpon>SalesSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\StoreCredit.xaml.cs">
+      <DependentUpon>StoreCredit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Checkout\Tender.xaml.cs">
+      <DependentUpon>Tender.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\Freezed.xaml.cs">
+      <DependentUpon>Freezed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CashManager\CashDraw.xaml.cs">
+      <DependentUpon>CashDraw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CashManager\CashDrop.xaml.cs">
+      <DependentUpon>CashDrop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CashManager\CashType.xaml.cs">
+      <DependentUpon>CashType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payments\AR.xaml.cs">
+      <DependentUpon>AR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payments\Payment.xaml.cs">
+      <DependentUpon>Payment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payments\Payouts.xaml.cs">
+      <DependentUpon>Payouts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\FuelReport.xaml.cs">
+      <DependentUpon>FuelReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\Increments.xaml.cs">
+      <DependentUpon>Increments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\PricesToDisplay.xaml.cs">
+      <DependentUpon>PricesToDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\TaxExemptDifferences.xaml.cs">
+      <DependentUpon>TaxExemptDifferences.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Fuel Pricing\TaxExemptIncrements.xaml.cs">
+      <DependentUpon>TaxExemptIncrements.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Propane\AmountNumberPad.xaml.cs">
+      <DependentUpon>AmountNumberPad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\Propane\PropaneGrade.xaml.cs">
+      <DependentUpon>PropaneGrade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\ReportOptions\FlashReport.xaml.cs">
+      <DependentUpon>FlashReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\ReportOptions\TillAuditReport.xaml.cs">
+      <DependentUpon>TillAuditReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\ReportOptions\Totals.xaml.cs">
+      <DependentUpon>Totals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\ReportOptions\Report.xaml.cs">
+      <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\ReportOptions\SalesCount.xaml.cs">
+      <DependentUpon>SalesCount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\Reports.xaml.cs">
+      <DependentUpon>Reports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reprint\LastPrint.xaml.cs">
+      <DependentUpon>LastPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reprint\ReceiptPreview.xaml.cs">
+      <DependentUpon>ReceiptPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reprint\Reprint.xaml.cs">
+      <DependentUpon>Reprint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\GiftCard.xaml.cs">
+      <DependentUpon>GiftCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\NumberpadForBottleItems.xaml.cs">
+      <DependentUpon>NumberpadForBottleItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\ReturnSaleItems.xaml.cs">
+      <DependentUpon>ReturnSaleItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\ReturnSale.xaml.cs">
+      <DependentUpon>ReturnSale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\UnsuspendSale.xaml.cs">
+      <DependentUpon>UnsuspendSale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Settings\MaintenanceOptions\Banking.xaml.cs">
+      <DependentUpon>Banking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\Customers.xaml.cs">
+      <DependentUpon>Customers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Customer\LoyaltyCustomers.xaml.cs">
+      <DependentUpon>LoyaltyCustomers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeScreen.xaml.cs">
+      <DependentUpon>HomeScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginScreen.xaml.cs">
+      <DependentUpon>LoginScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogoutScreen.xaml.cs">
+      <DependentUpon>LogoutScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Settings\Maintenance.xaml.cs">
+      <DependentUpon>Maintenance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\BottleItems.xaml.cs">
+      <DependentUpon>BottleItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\BottleReturns.xaml.cs">
+      <DependentUpon>BottleReturns.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetQuantityForHotCategories.xaml.cs">
+      <DependentUpon>SetQuantityForHotCategories.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Products.xaml.cs">
+      <DependentUpon>Products.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sale\SaleGrid.xaml.cs">
+      <DependentUpon>SaleGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Settings\MaintenanceOptions\Policy.xaml.cs">
+      <DependentUpon>Policy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Settings\MaintenanceOptions\ServicePump.xaml.cs">
+      <DependentUpon>ServicePump.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExtendedSplashScreen.xaml.cs">
+      <DependentUpon>ExtendedSplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Settings\MaintenanceOptions\SwitchUserOrChangePassword.xaml.cs">
+      <DependentUpon>SwitchUserOrChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Stock\AddStock.xaml.cs">
+      <DependentUpon>AddStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Stock\PriceCheck.xaml.cs">
+      <DependentUpon>PriceCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Stock\SearchStock.xaml.cs">
+      <DependentUpon>SearchStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PumpOptions\TierLevel\TierLevel.xaml.cs">
+      <DependentUpon>TierLevel.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="Infonet.CStoreCommander.UI_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\android-local-gas-station-512px.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Others\AckrooLogo.png" />
+    <Content Include="Images\Others\Mr-Gas-New-Card-WEB.jpg" />
+    <Content Include="Images\Others\Mr-Gas-New-Card-WEB.png" />
+    <Content Include="Images\SettingsMenu\Back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\HotCategories\MinusIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Pumps\pump_2.png" />
+    <Content Include="Images\Pumps\pump_3.png" />
+    <Content Include="Images\Pumps\pump_4.png" />
+    <Content Include="Images\Pumps\pump_5.png" />
+    <Content Include="Images\SettingsMenu\errorIndicator.png" />
+    <Content Include="Images\SettingsMenu\Hamburger.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\UtilityIcons\backarrow.png" />
+    <Content Include="Images\HotCategories\Burger.jpg" />
+    <Content Include="Images\HotCategories\Candy.jpg" />
+    <Content Include="Images\HotCategories\Chocolate.jpg" />
+    <Content Include="Images\HotCategories\Coffee.jpg" />
+    <Content Include="Images\HotCategories\Coke.jpg" />
+    <Content Include="Images\HotCategories\Fries.jpg" />
+    <Content Include="Images\HotCategories\HotDog.jpg" />
+    <Content Include="Images\HotCategories\IceCream.jpg" />
+    <Content Include="Images\UtilityIcons\backbtn.png" />
+    <Content Include="Images\UtilityIcons\Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\UtilityIcons\cardNumberIcon.png" />
+    <Content Include="Images\UtilityIcons\coupon-number_Icon.png" />
+    <Content Include="Images\UtilityIcons\greenArrow_108.png" />
+    <Content Include="Images\UtilityIcons\greenArrow_80.png" />
+    <Content Include="Images\UtilityIcons\New Bitmap Image.bmp" />
+    <Content Include="Images\UtilityIcons\plusicon.png" />
+    <Content Include="Images\HotCategories\PopCorn.jpg" />
+    <Content Include="Images\Pumps\Gas-station-512px.png" />
+    <Content Include="Images\SettingsMenu\logout.png" />
+    <Content Include="Images\SettingsMenu\payments.png" />
+    <Content Include="Images\SettingsMenu\reports.png" />
+    <Content Include="Images\SettingsMenu\settings.png" />
+    <Content Include="Images\UtilityIcons\copyright.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\UtilityIcons\White_payments.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Sounds\Calling1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling10.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling11.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling12.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling13.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling14.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling15.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling16.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\Calling9.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\CHIMES.WAV">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\DING.WAV">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\DOORBELL.WAV">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP10.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP11.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP12.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP13.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP14.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP15.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP16.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\HELP9.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\RECYCLE.WAV">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sounds\RING.WAV">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Controls\AckrooAccoutBalance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AckrooTenderPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\BarCodeTextbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CarwashPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CheckoutOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EmergencyPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EnvelopeNumberPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FNGTRPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FuelDiscountPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\GroupBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\GstPstTaxExemptPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\KickBackNumberPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\KickbackBalancePopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LargePopupHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoadingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MessagePopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PopupWithTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PurchaseOrderPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\QitePopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ReasonList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NotificationPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NumberPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProductDatatemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PumpDataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PopupWithTwoButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PumpOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ReturnsPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SearchTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SecondFrameHeading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SmallPopupHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TaxExemptionPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TenderDataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ViewHeading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\CheckBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\CustomPivot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\DatePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\DisabledTextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\GreenToggleSwitch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\SplitViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\TabStyleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="View\Ackroo\CardOperations\Ackroo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Ackroo\CardOperations\AckrooBalance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Ackroo\CardOperations\AckrooCardActivation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Ackroo\CardOperations\AckrooIncreaseFund.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Ackroo\CardOperations\AckrooMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Ackroo\CardOperations\AckrooSellCarwashUnits.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\BlankView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CashManager\CashTender.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CashManager\TendersNumberPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\Carwash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\FuelDiscountPolicies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Checkout\GiveXTender.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\TaxExempt\AITE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\TaxExempt\SignatureScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\TaxExempt\SITE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\TaxExempt\TaxExemptOverLimit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\TaxExempt\OverrideLimit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\TendersQuantityPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\VendorCoupon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Errors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\MasterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Customer\AddCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddItemByCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DipInput\DipInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GiveX\GivexReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\GiveX\GiveXReportGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Login\TillClose.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payments\Fleet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Prepay\Prepay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Prepay\PrepayNumberPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PSInet\PaymentSource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PSInet\PSInetOptions\Download.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PSInet\PSInetOptions\EP.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PSInet\PSInetOptions\PS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PSInet\PSInetOptions\Receipt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PSInet\PSInetOptions\Refund.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PSInet\PSInetOptions\TX.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PSInet\PSInetOptions\VP.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PumpOptions\Finish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\AddManual.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\BasePrice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\Differences.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\FuelPriceQuantityPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\FuelPricing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GiveX\GiveX.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\Coupon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\FleetCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\GiftCertificate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\PaymentByGiveX.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\SalesSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\StoreCredit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Checkout\Tender.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login\Freezed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CashManager\CashDraw.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CashManager\CashDrop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CashManager\CashType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payments\AR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payments\Payment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payments\Payouts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\FuelReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\Increments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\PricesToDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\TaxExemptDifferences.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Fuel Pricing\TaxExemptIncrements.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Propane\AmountNumberPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\Propane\PropaneGrade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reports\ReportOptions\FlashReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reports\ReportOptions\TillAuditReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reports\ReportOptions\Totals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reports\ReportOptions\Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reports\ReportOptions\SalesCount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reports\Reports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reprint\LastPrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reprint\ReceiptPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reprint\Reprint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sale\GiftCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sale\NumberpadForBottleItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sale\ReturnSaleItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sale\ReturnSale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sale\UnsuspendSale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Settings\MaintenanceOptions\Banking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Customer\Customers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Customer\LoyaltyCustomers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LogoutScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Settings\Maintenance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sale\BottleItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sale\BottleReturns.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SetQuantityForHotCategories.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Products.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sale\SaleGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Settings\MaintenanceOptions\Policy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Settings\MaintenanceOptions\ServicePump.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExtendedSplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Settings\MaintenanceOptions\SwitchUserOrChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Stock\AddStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Stock\PriceCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Stock\SearchStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PumpOptions\TierLevel\TierLevel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControlLib\Infonet.CStoreCommander.ControlLib.csproj">
+      <Project>{664afe3f-2cd3-4275-920d-0a322a028eaf}</Project>
+      <Name>Infonet.CStoreCommander.ControlLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infonet.CStoreCommander.BussinessLayer\Infonet.CStoreCommander.BussinessLayer.csproj">
+      <Project>{00811C43-FC50-4D65-8C3F-58D0CB8E2DA2}</Project>
+      <Name>Infonet.CStoreCommander.BussinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infonet.CStoreCommander.DataAccessLayer\Infonet.CStoreCommander.DataAccessLayer.csproj">
+      <Project>{3a7b4f2a-c0c9-4fbf-a47e-d8c4bf3d0613}</Project>
+      <Name>Infonet.CStoreCommander.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infonet.CStoreCommander.EntityLayer\Infonet.CStoreCommander.EntityLayer.csproj">
+      <Project>{5e8cb32b-35b5-40bb-9a3e-bbc8484e8e5f}</Project>
+      <Name>Infonet.CStoreCommander.EntityLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infonet.CStoreCommander.Logging\Infonet.CStoreCommander.Logger.csproj">
+      <Project>{8FBBFB10-08D9-478E-8586-26DCFEB309DB}</Project>
+      <Name>Infonet.CStoreCommander.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infonet.CStoreCommander.PeripheralLayer\Infonet.CStoreCommander.PeripheralLayer.csproj">
+      <Project>{0481fe67-0e86-4134-af63-0d5981cfd96e}</Project>
+      <Name>Infonet.CStoreCommander.PeripheralLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infonet.CStoreCommander.Utils\Infonet.CStoreCommander.Utils.csproj">
+      <Project>{03351c0e-110f-4834-aeb6-887765b5e0b7}</Project>
+      <Name>Infonet.CStoreCommander.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyToolkit.Extended.Uwp\MyToolkit.Extended.Uwp.csproj">
+      <Project>{28cdf611-02d2-474c-ac37-616024caf0c1}</Project>
+      <Name>MyToolkit.Extended.Uwp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyToolkit\MyToolkit.csproj">
+      <Project>{f01f49c0-5da2-4757-b4e0-02ec7a187ded}</Project>
+      <Name>MyToolkit</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Ackroo\TenderOperations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.SignalR.Client">
+      <Version>2.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>1.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLight">
+      <Version>5.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Win2D.uwp">
+      <Version>1.20.0</Version>
+    </PackageReference>
+    <PackageReference Include="WinRTTriggers">
+      <Version>1.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net">
+      <Version>0.16.4</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsDesktop, Version=10.0.18362.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

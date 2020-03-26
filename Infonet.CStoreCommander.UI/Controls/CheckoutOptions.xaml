@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="Infonet.CStoreCommander.UI.Controls.CheckoutOptions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Infonet.CStoreCommander.UI.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+             xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="ControlLib:GenericButton">
+            <Setter Property="BottomBackGroundColor"
+                    Value="{StaticResource ButtonBottomColor}" />
+            <Setter Property="Width"
+                    Value="140" />
+        </Style>
+
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.RowSpan="2"
+                Opacity="0.8"
+                Background="{StaticResource LightGray}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" />
+
+        <!--#region  Main Popup-->
+        <Grid VerticalAlignment="Top"
+              Margin="0,75,0,0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Background="{StaticResource BackgroundColor2}"
+                  Grid.Column="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <!--#region Heading with close button-->
+                <local:SmallPopupHeader x:Uid="txtCheckoutOptions"
+                                        CancelCommand="{x:Bind SaleGridVM.CloseCheckoutOptionsPopupCommand, Mode=OneWay}" />
+                <!--#endregion-->
+
+                <StackPanel Grid.Row="1"
+                            Padding="20,50,20,20">
+
+                    <StackPanel Margin="0,0,0,20"
+                                Orientation="Horizontal">
+
+                        <ControlLib:GenericButton IsEnabled="{x:Bind SaleGridVM.OperatorCanSuspendSale, Mode=OneWay}"
+                                                  Command="{x:Bind SaleGridVM.SuspendSaleCommand, Mode=OneWay}"
+                                                  Margin="0,0,10,0"
+                                                  BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  x:Uid="cntSuspendSale" />
+                        <ControlLib:GenericButton IsEnabled="{x:Bind SaleGridVM.OperatorCanUnsuspendSales, Mode=OneWay}"
+                                                  Margin="0,0,10,0"
+                                                  x:Uid="cntUnsuspend"
+                                                  Command="{x:Bind SaleGridVM.OpenSuspendedSalesCommand ,Mode=OneWay}" />
+
+
+                        <ControlLib:GenericButton Command="{x:Bind SaleGridVM.OpenReturnsPopupCommand, Mode=OneWay}"
+                                                  x:Uid="cntReturns" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,0,20"
+                                Orientation="Horizontal">
+                        <ControlLib:GenericButton Margin="0,0,10,0"
+                                                  Command="{x:Bind SaleGridVM.RaiseCashPopupCommand,Mode=OneWay}"
+                                                  x:Uid="cntCash" />
+                        
+                        <ControlLib:GenericButton x:Uid="cntMessage"
+                                                  Margin="0,0,10,0"
+                                                  IsEnabled="{x:Bind SaleGridVM.IsMessageInputEnable,Mode=OneWay}"
+                                                  Command="{x:Bind SaleGridVM.RaiseMessagePopupCommand,Mode=OneWay}" />
+
+                        <ControlLib:GenericButton x:Uid="cntWriteOff"
+                                                  IsEnabled="{x:Bind SaleGridVM.IsWriteOffEnabled, Mode=OneWay}"
+                                                  Command="{x:Bind SaleGridVM.WriteOffCommand, Mode=OneWay}" />
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,0,20"
+                                Visibility="{x:Bind SaleGridVM.SupportKickBack ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                Orientation="Horizontal">
+
+                        <ControlLib:GenericButton Margin="0,0,10,0"
+                                                  Command="{x:Bind SaleGridVM.OpenKickbackBalancePopupCommand,Mode=OneWay}"
+                                                  x:Uid="cntKickbackBalance" />
+
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,20"
+                                Visibility="{x:Bind SaleGridVM.IsCarwashSupported ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                Orientation="Horizontal">
+                        <StackPanel Visibility="{x:Bind SaleGridVM.IsCarwashIntegrated ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <ControlLib:GenericButton Margin="0,0,10,0"
+                                                  Command="{x:Bind SaleGridVM.OpenCarwashPopupCommand,Mode=OneWay}"
+                                                  x:Uid="cntCarwash" />
+                        </StackPanel>
+                     </StackPanel>
+                        <StackPanel Margin="0,0,0,20"
+                                Visibility="{x:Bind SaleGridVM.ISPSInetSupported ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                Orientation="Horizontal">
+
+                            <ControlLib:GenericButton Margin="0,0,10,0"
+                                                  Command="{x:Bind SaleGridVM.PSInetCommand,Mode=OneWay}"
+                                                  Content="{x:Bind SaleGridVM.PSINet_Type, Mode=OneWay}" />
+
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,20"
+                                Visibility="{x:Bind SaleGridVM.REWARDS_Enabled ,Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"
+                                Orientation="Horizontal">
+
+                            <ControlLib:GenericButton Margin="0,0,10,0"
+                                                  Command="{x:Bind SaleGridVM.AckrooCommand,Mode=OneWay}"
+                                                  Content="Ackroo Gift Cards" />
+
+                        </StackPanel>
+                     </StackPanel>
+                    </StackPanel>
+            </Grid>
+        </Grid>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>

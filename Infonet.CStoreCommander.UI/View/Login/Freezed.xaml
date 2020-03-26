@@ -1,0 +1,235 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.View.Login.Freezed"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.View.Login"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ViewModel="using:Infonet.CStoreCommander.UI.ViewModel"
+      xmlns:converters="using:Infonet.CStoreCommander.UI.Converter"
+      xmlns:controls="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:controlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+
+    <!--#region Resources-->
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+        <Storyboard x:Key="GradientAnimation"
+                    RepeatBehavior="Forever"
+                    SpeedRatio="0.2">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="gdLoginScreen"
+                                          Storyboard.TargetProperty="(UIElement.Background).(LinearGradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                          EnableDependentAnimation="True"
+                                          BeginTime="-0:0:0.5">
+                <LinearColorKeyFrame KeyTime="0:0:0"
+                                     Value="#FF0000" />
+                <LinearColorKeyFrame KeyTime="0:0:1"
+                                     Value="#FFFF00" />
+                <LinearColorKeyFrame KeyTime="0:0:2"
+                                     Value="#00FF00" />
+                <LinearColorKeyFrame KeyTime="0:0:3"
+                                     Value="#00FFFF" />
+                <LinearColorKeyFrame KeyTime="0:0:4"
+                                     Value="#0000FF" />
+                <LinearColorKeyFrame KeyTime="0:0:5"
+                                     Value="#FF00FF" />
+                <LinearColorKeyFrame KeyTime="0:0:6"
+                                     Value="#FF0000" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="gdLoginScreen"
+                                          Storyboard.TargetProperty="(UIElement.Background).(LinearGradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                          EnableDependentAnimation="True">
+                <LinearColorKeyFrame KeyTime="0:0:0"
+                                     Value="#FF0000" />
+                <LinearColorKeyFrame KeyTime="0:0:1"
+                                     Value="#FFFF00" />
+                <LinearColorKeyFrame KeyTime="0:0:2"
+                                     Value="#00FF00" />
+                <LinearColorKeyFrame KeyTime="0:0:3"
+                                     Value="#00FFFF" />
+                <LinearColorKeyFrame KeyTime="0:0:4"
+                                     Value="#0000FF" />
+                <LinearColorKeyFrame KeyTime="0:0:5"
+                                     Value="#FF00FF" />
+                <LinearColorKeyFrame KeyTime="0:0:6"
+                                     Value="#FF0000" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <!--#endregion-->
+
+    <Grid x:Name="gdLoginScreen">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="1,1">
+                <GradientStop Offset="0" />
+                <GradientStop Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="103*" />
+            <RowDefinition Height="492*" />
+            <RowDefinition Height="153*" />
+        </Grid.RowDefinitions>
+
+        <!--#region Login Popup-->
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="259*" />
+                <ColumnDefinition Width="165*" />
+                <ColumnDefinition Width="259*" />
+            </Grid.ColumnDefinitions>
+
+            <!--#region  Popup Beginning-->
+
+            <Popup IsOpen="{x:Bind FreezedScreenVM.IsUserFormVisible, Mode=OneWay}"
+                   Grid.Column="0"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   x:Name="LoginPopup">
+                <Border CornerRadius="0,0,4,4"
+                        Background="Transparent"
+                        BorderThickness="1"
+                        Width="{Binding Width, Mode=OneWay}">
+                    <Grid Background="{StaticResource BackgroundColor2}"
+                          BorderThickness="1"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          BorderBrush="{StaticResource BorderBrushForPopups}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!--#region Heading including Cancel button-->
+
+                        <controls:LargePopupHeader x:Uid="txtUnFreeze"
+                                                   CancelCommand="{x:Bind FreezedScreenVM.HideUserFormCommand, Mode=OneWay}" />
+
+                        <!--#endregion-->
+
+                        <StackPanel x:Name="spLoginDetails"
+                                    Grid.Row="1"
+                                    Padding="0,0,0,20"
+                                    Background="{StaticResource BackgroundColor1Light}"
+                                    HorizontalAlignment="Left">
+
+                            <!--#region User Name-->
+                            <TextBlock x:Name="txtUser"
+                                       x:Uid="txtUser"
+                                       HorizontalAlignment="Left"
+                                       Margin="20,7,0,14"
+                                       TextTrimming="CharacterEllipsis"
+                                       FontSize="11"
+                                       Foreground="{StaticResource LabelTextForegroundColor}"
+                                       VerticalAlignment="Top" />
+                            <TextBox x:Name="User"
+                                     InputScope="AlphanumericFullWidth"
+                                     Margin="20,0"
+                                     Height="36"
+                                     Width="290"
+                                     Style="{StaticResource TextBox}"
+                                     IsEnabled="False"
+                                     Text="{x:Bind FreezedScreenVM.UserName, Mode=OneWay}" />
+                            <!--#endregion-->
+
+                            <!--#region Password-->
+                            <TextBlock x:Name="txtPassword"
+                                       x:Uid="txtPassword"
+                                       HorizontalAlignment="Left"
+                                       Margin="20,14,0,14"
+                                       TextWrapping="Wrap"
+                                       Foreground="{StaticResource LabelTextForegroundColor}"
+                                       VerticalAlignment="Top"
+                                       FontSize="11" />
+                            <PasswordBox x:Name="Password"
+                                         MaxLength="10"
+                                         Margin="20,0"
+                                         VerticalAlignment="Top"
+                                         BorderBrush="{StaticResource BackgroundColor1Light}"
+                                         PasswordChar="*"
+                                         Height="36"
+                                         Width="290"
+                                         Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Style="{StaticResource PasswordBox}">
+
+                                <triggers:Interactions.Triggers>
+                                    <triggers:EventTrigger EventName="KeyUp">
+                                        <triggers:InvokeCommandAction Command="{x:Bind FreezedScreenVM.PasswordCompletedCommand, Mode=OneWay}"
+                                                                      PassEventArgsToCommand="True" />
+                                    </triggers:EventTrigger>
+                                </triggers:Interactions.Triggers>
+
+                                <!--<i:Interaction.Behaviors>
+                                        <ic:EventTriggerBehavior EventName="PointerExited">
+                                            <ic:InvokeCommandAction 
+										Command="{x:Bind FreezedScreenVM.GetTillsCommand, Mode=OneWay}"/>
+                                        </ic:EventTriggerBehavior>
+                                    </i:Interaction.Behaviors>-->
+
+                            </PasswordBox>
+
+                            <!--#endregion-->
+
+                            <!--#region Login Button-->
+                            <controlLib:GenericButton x:Name="btnLogin"
+                                                      x:Uid="btnLogin"
+                                                      BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                                      HorizontalAlignment="Right"
+                                                      Margin="0,40,20,0"
+                                                      Width="140"
+                                                      Command="{x:Bind FreezedScreenVM.UnFreezeCommand, Mode=OneWay}"
+                                                      IsEnabled="{x:Bind FreezedScreenVM.IsUnFreezeEnabled, Mode=OneWay}" />
+                            <!--#endregion-->
+
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Popup>
+
+            <!--#endregion-->
+
+            <!--#region Error Popup-->
+            <Popup x:Name="errorPopup"
+                   IsOpen="{x:Bind FreezedScreenVM.PopupService.IsAlertPopupOpen, Mode=OneWay}">
+                <controls:NotificationPopup  Height="{Binding ActualHeight, ElementName=gdLoginScreen}"
+                                             BackgroundOverlay="{StaticResource DarkGray}"
+                                             Width="{Binding ActualWidth, ElementName=gdLoginScreen}"
+                                             Message="{x:Bind FreezedScreenVM.PopupService.Message, Mode=OneWay}"
+                                             Continue="{x:Bind FreezedScreenVM.PopupService.Continue, Mode=OneWay}"
+                                             ButtonBackgroundColor="{x:Bind FreezedScreenVM.PopupService.OkButtonColor ,Mode=OneWay}"
+                                             Title="{x:Bind FreezedScreenVM.PopupService.Title, Mode=OneWay}" />
+            </Popup>
+            <!--#endregion-->
+
+            <!--#region Shift Popup-->
+            <Popup x:Name="shiftPopup"
+                   IsOpen="{x:Bind FreezedScreenVM.PopupService.IsConfirmationPopupOpen, Mode=OneWay}">
+                <controls:PopupWithTwoButtons x:Uid="ShiftAlert"
+                                              BackgroundOverlay="{StaticResource DarkGray}"
+                                              Height="{Binding ActualHeight, ElementName=gdLoginScreen}"
+                                              Width="{Binding ActualWidth, ElementName=gdLoginScreen}"
+                                              HeadingText="{x:Bind FreezedScreenVM.PopupService.Title, Mode=OneWay}"
+                                              FirstButtonBottomBackgroundColor="{x:Bind FreezedScreenVM.PopupService.YesButtonColor,Mode=OneWay}"
+                                              SecondButtonBottomBackgroundColor="{x:Bind FreezedScreenVM.PopupService.NoButtonColor,Mode=OneWay}"
+                                              FirstButtonText="{x:Bind FreezedScreenVM.PopupService.YesButtonText, Mode=OneWay}"
+                                              SecondButtonText="{x:Bind FreezedScreenVM.PopupService.NoButtonText, Mode=OneWay}"
+                                              Description="{x:Bind FreezedScreenVM.PopupService.Message, Mode=OneWay}" />
+            </Popup>
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+
+
+        <!--#region Loading Page-->
+        <Popup IsOpen="True">
+            <controls:LoadingPage Grid.RowSpan="3" />
+        </Popup>
+        <!--#endregion-->
+
+    </Grid>
+</Page>

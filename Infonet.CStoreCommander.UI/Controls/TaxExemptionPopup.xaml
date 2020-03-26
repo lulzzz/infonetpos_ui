@@ -1,0 +1,99 @@
+﻿<Page x:Class="Infonet.CStoreCommander.UI.Controls.TaxExemptionPopup"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Infonet.CStoreCommander.UI.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ControlLib="using:Infonet.CStoreCommander.ControlLib"
+      xmlns:triggers="using:WinRT.Triggers"
+      mc:Ignorable="d">
+
+    <Grid Loaded="{x:Bind GridLoaded, Mode=OneWay}">
+
+        <Border Grid.RowSpan="2"
+                Opacity="0.8"
+                Background="{x:Bind BackgroundOverlay, Mode=OneWay}" />
+
+        <!--#region  Main Popup-->
+        <Grid VerticalAlignment="Top"
+              Margin="0,75,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1"
+                  Background="{StaticResource BackgroundColor1Light}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--#region Heading with close button-->
+                <local:SmallPopupHeader x:Name="TitleText"
+                                        CancelCommand="{x:Bind CustomersScreenVM.PopupService.CloseCommand, Mode=OneWay}" />
+                <!--#endregion-->
+
+                <Grid Grid.Row="1"
+                      Margin="0"
+                      Width="370"
+                      Background="{StaticResource BackgroundColor1Light}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--#region Description if any-->
+
+                    <StackPanel Padding="20">
+
+                        <TextBlock Text="{x:Bind CustomersScreenVM.PopupService.Title, Mode=OneWay}"
+                                   Margin="0,0,0,15" />
+
+                        <TextBox Text="{Binding TaxExemptionNumber,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                 HorizontalAlignment="Stretch"
+                                 FontSize="16"
+                                 MaxLength="10"
+                                 Style="{StaticResource TextBox}"
+                                 x:Name="taxTextBox">
+
+                            <triggers:Interactions.Triggers>
+                                <triggers:EventTrigger EventName="KeyUp">
+                                    <triggers:InvokeCommandAction Command="{x:Bind CustomersScreenVM.EnterPressedOnTaxExemptionNumberCommand, Mode=OneWay}"
+                                                                  PassEventArgsToCommand="True" />
+                                </triggers:EventTrigger>
+                            </triggers:Interactions.Triggers>
+
+                        </TextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+
+                        <!--#region Ok and close buttons-->
+                        <ControlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomConfirmationColor}"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="20,15,10,20"
+                                                  x:Uid="ok"
+                                                  Command="{x:Bind CustomersScreenVM.SetTaxExemptionCommand, Mode=OneWay}"
+                                                  Width="160" />
+
+
+                        <ControlLib:GenericButton BottomBackGroundColor="{StaticResource ButtonBottomWarningColor}"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="0,15,20,20"
+                                                  x:Uid="cancel"
+                                                  Command="{x:Bind CustomersScreenVM.PopupService.CloseCommand, Mode=OneWay}"
+                                                  Width="160" />
+                        <!--#endregion-->
+
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+        <!--#endregion-->
+
+    </Grid>
+</Page>
